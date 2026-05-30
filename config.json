@@ -3,14 +3,16 @@
     "companyName": "NEXUS AI",
     "logoText": "NEXUS",
     "logoIcon": "N",
-    "logoType": "image",
-    "logoImageUrl": "https://raw.githubusercontent.com/Ryuyjg/nexus-website/main/uploads/logo.png",
+    "logoType": "text",
+    "logoImageUrl": "",
     "copyright": "© 2026 NEXUS AI. All rights reserved.",
     "primaryColor": "#00f2fe",
     "secondaryColor": "#4facfe",
     "accentColor": "#d946ef",
     "isDarkTheme": false,
-    "adminPasswordHash": "24075bab947d53b4b0e5110d7a961bebeb97cc93e5066a3d902d25087f9efb4b"
+    "adminPasswordHash": "24075bab947d53b4b0e5110d7a961bebeb97cc93e5066a3d902d25087f9efb4b",
+    "githubRepo": "Ryuyjg/nexus-website",
+    "githubBranch": "main"
   },
   "hero": {
     "badge": "Enterprise Intelligence Suite",
@@ -20,14 +22,30 @@
     "ctaPrimaryLink": "#/pricing",
     "ctaSecondaryText": "Explore Services",
     "ctaSecondaryLink": "#/services",
-    "visualType": "image",
-    "imageUrl": "https://raw.githubusercontent.com/Ryuyjg/nexus-website/main/uploads/hero.png"
+    "visualType": "mockup",
+    "imageUrl": ""
   },
   "stats": [
-    { "label": "System Uptime", "value": 99.99, "suffix": "%" },
-    { "label": "Capital Optimized", "value": 2.4, "suffix": "B+" },
-    { "label": "AI Models Active", "value": 450, "suffix": "k+" },
-    { "label": "Average Efficiency Boost", "value": 42, "suffix": "%" }
+    {
+      "label": "System Uptime",
+      "value": 99.99,
+      "suffix": "%"
+    },
+    {
+      "label": "Capital Optimized",
+      "value": 2.4,
+      "suffix": "B+"
+    },
+    {
+      "label": "AI Models Active",
+      "value": 450,
+      "suffix": "k+"
+    },
+    {
+      "label": "Average Efficiency Boost",
+      "value": 42,
+      "suffix": "%"
+    }
   ],
   "services": [
     {
@@ -91,28 +109,40 @@
       "role": "CEO & Founder",
       "bio": "Former head of Quantum Research at MIT with 15+ years experience building large scale statistical engines.",
       "avatarUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
-      "socials": { "twitter": "#", "linkedin": "#" }
+      "socials": {
+        "twitter": "#",
+        "linkedin": "#"
+      }
     },
     {
       "name": "Marcus Kaelen",
       "role": "Chief of AI Systems",
       "bio": "Led distributed database scaling projects at major tech firms. Specialist in neural compilers and low-latency graphs.",
       "avatarUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80",
-      "socials": { "twitter": "#", "linkedin": "#" }
+      "socials": {
+        "twitter": "#",
+        "linkedin": "#"
+      }
     },
     {
       "name": "Sora Tanaka",
       "role": "Head of Infrastructure",
       "bio": "Systems engineer who architected cloud orchestration platforms handling billions of requests per day.",
       "avatarUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80",
-      "socials": { "twitter": "#", "linkedin": "#" }
+      "socials": {
+        "twitter": "#",
+        "linkedin": "#"
+      }
     },
     {
       "name": "Elena Rostova",
       "role": "VP of Cybersecurity",
       "bio": "Expert in defensive cryptography and network sandboxing. Advises federal groups on cyber threat intelligence.",
       "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-      "socials": { "twitter": "#", "linkedin": "#" }
+      "socials": {
+        "twitter": "#",
+        "linkedin": "#"
+      }
     }
   ],
   "testimonials": [
@@ -284,15 +314,43 @@
   "status": {
     "globalState": "Operational",
     "components": [
-      { "name": "Cognitive Solver Engine", "status": "Operational", "latency": "12ms" },
-      { "name": "Simulated Quantum Node", "status": "Operational", "latency": "8ms" },
-      { "name": "Hybrid Cloud Orchestrator", "status": "Operational", "latency": "15ms" },
-      { "name": "Heuristic Intrusion Sandbox", "status": "Operational", "latency": "3ms" },
-      { "name": "Spot Price Compiler Core", "status": "Operational", "latency": "22ms" }
+      {
+        "name": "Cognitive Solver Engine",
+        "status": "Operational",
+        "latency": "12ms"
+      },
+      {
+        "name": "Simulated Quantum Node",
+        "status": "Operational",
+        "latency": "8ms"
+      },
+      {
+        "name": "Hybrid Cloud Orchestrator",
+        "status": "Operational",
+        "latency": "15ms"
+      },
+      {
+        "name": "Heuristic Intrusion Sandbox",
+        "status": "Operational",
+        "latency": "3ms"
+      },
+      {
+        "name": "Spot Price Compiler Core",
+        "status": "Operational",
+        "latency": "22ms"
+      }
     ],
     "incidents": [
-      { "date": "May 28, 2026", "title": "Spot compiler elasticity upgrade", "desc": "Successfully migrated compiler pipelines to zero-overhead spot nodes. Downtime: 0ms." },
-      { "date": "May 14, 2026", "title": "Sandbox endpoint routine quarantine audit", "desc": "Executed automated sandbox security quarantine simulation. Threat hunt systems quarantined mock packets in 118ms." }
+      {
+        "date": "May 28, 2026",
+        "title": "Spot compiler elasticity upgrade",
+        "desc": "Successfully migrated compiler pipelines to zero-overhead spot nodes. Downtime: 0ms."
+      },
+      {
+        "date": "May 14, 2026",
+        "title": "Sandbox endpoint routine quarantine audit",
+        "desc": "Executed automated sandbox security quarantine simulation. Threat hunt systems quarantined mock packets in 118ms."
+      }
     ]
   }
 }
