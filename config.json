@@ -3,8 +3,8 @@
     "companyName": "NEXUS AI",
     "logoText": "NEXUS",
     "logoIcon": "N",
-    "logoType": "text",
-    "logoImageUrl": "",
+    "logoType": "image",
+    "logoImageUrl": "https://raw.githubusercontent.com/Ryuyjg/nexus-website/main/uploads/logo.png",
     "copyright": "© 2026 NEXUS AI. All rights reserved.",
     "primaryColor": "#00f2fe",
     "secondaryColor": "#4facfe",
@@ -19,8 +19,8 @@
     "ctaPrimaryLink": "#/pricing",
     "ctaSecondaryText": "Explore Services",
     "ctaSecondaryLink": "#/services",
-    "visualType": "mockup",
-    "imageUrl": ""
+    "visualType": "image",
+    "imageUrl": "https://raw.githubusercontent.com/Ryuyjg/nexus-website/main/uploads/hero.png"
   },
   "stats": [
     { "label": "System Uptime", "value": 99.99, "suffix": "%" },
