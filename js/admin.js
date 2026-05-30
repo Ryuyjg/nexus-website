@@ -229,44 +229,51 @@ const AdminPanel = {
   },
 
   loadGeneralSettings() {
-    // GitHub Sync Inputs
-    const ghRepoInput = document.getElementById('adm-github-repo');
-    const ghBranchInput = document.getElementById('adm-github-branch');
-    const ghPatInput = document.getElementById('adm-github-pat');
+    const form = document.getElementById('admin-general-form');
+    if (!form) return;
+
+    // Clone the form first to clear any old event listeners
+    const newForm = form.cloneNode(true);
+    form.parentNode.replaceChild(newForm, form);
+
+    // Now query active inputs from the newly cloned form
+    const ghRepoInput = newForm.querySelector('#adm-github-repo');
+    const ghBranchInput = newForm.querySelector('#adm-github-branch');
+    const ghPatInput = newForm.querySelector('#adm-github-pat');
 
     // Info Inputs
-    const companyInput = document.getElementById('adm-company-name');
-    const logoTxtInput = document.getElementById('adm-logo-text');
-    const logoIconInput = document.getElementById('adm-logo-icon');
-    const footerInput = document.getElementById('adm-footer-copyright');
+    const companyInput = newForm.querySelector('#adm-company-name');
+    const logoTxtInput = newForm.querySelector('#adm-logo-text');
+    const logoIconInput = newForm.querySelector('#adm-logo-icon');
+    const footerInput = newForm.querySelector('#adm-footer-copyright');
 
     // Logo Image Customization
-    const logoTypeSelect = document.getElementById('adm-logo-type');
-    const logoImgGroup = document.getElementById('adm-logo-image-group');
-    const logoImgUrl = document.getElementById('adm-logo-image-url');
-    const logoFile = document.getElementById('adm-logo-file');
-    const logoPreviewRow = document.getElementById('adm-logo-preview-row');
-    const logoPreviewContainer = document.getElementById('adm-logo-preview-container');
+    const logoTypeSelect = newForm.querySelector('#adm-logo-type');
+    const logoImgGroup = newForm.querySelector('#adm-logo-image-group');
+    const logoImgUrl = newForm.querySelector('#adm-logo-image-url');
+    const logoFile = newForm.querySelector('#adm-logo-file');
+    const logoPreviewRow = newForm.querySelector('#adm-logo-preview-row');
+    const logoPreviewContainer = newForm.querySelector('#adm-logo-preview-container');
 
     // Hero Inputs
-    const heroBadgeInput = document.getElementById('adm-hero-badge');
-    const heroTitleInput = document.getElementById('adm-hero-title');
-    const heroDescInput = document.getElementById('adm-hero-desc');
-    const heroCta1Input = document.getElementById('adm-hero-cta1');
-    const heroCta2Input = document.getElementById('adm-hero-cta2');
+    const heroBadgeInput = newForm.querySelector('#adm-hero-badge');
+    const heroTitleInput = newForm.querySelector('#adm-hero-title');
+    const heroDescInput = newForm.querySelector('#adm-hero-desc');
+    const heroCta1Input = newForm.querySelector('#adm-hero-cta1');
+    const heroCta2Input = newForm.querySelector('#adm-hero-cta2');
 
     // Hero Image Customization
-    const heroTypeSelect = document.getElementById('adm-hero-type');
-    const heroImgGroup = document.getElementById('adm-hero-image-group');
-    const heroImgUrl = document.getElementById('adm-hero-image-url');
-    const heroFile = document.getElementById('adm-hero-file');
-    const heroPreviewRow = document.getElementById('adm-hero-preview-row');
-    const heroPreviewContainer = document.getElementById('adm-hero-preview-container');
+    const heroTypeSelect = newForm.querySelector('#adm-hero-type');
+    const heroImgGroup = newForm.querySelector('#adm-hero-image-group');
+    const heroImgUrl = newForm.querySelector('#adm-hero-image-url');
+    const heroFile = newForm.querySelector('#adm-hero-file');
+    const heroPreviewRow = newForm.querySelector('#adm-hero-preview-row');
+    const heroPreviewContainer = newForm.querySelector('#adm-hero-preview-container');
 
     // Color Pickers
-    const primaryPicker = document.getElementById('color-primary');
-    const secondaryPicker = document.getElementById('color-secondary');
-    const accentPicker = document.getElementById('color-accent');
+    const primaryPicker = newForm.querySelector('#color-primary');
+    const secondaryPicker = newForm.querySelector('#color-secondary');
+    const accentPicker = newForm.querySelector('#color-accent');
 
     // Set initial values
     if (ghRepoInput) ghRepoInput.value = this.config.general.githubRepo || 'Ryuyjg/nexus-website';
@@ -426,72 +433,84 @@ const AdminPanel = {
     if (accentPicker) accentPicker.addEventListener('input', applyColors);
 
     // Form Submits
-    const form = document.getElementById('admin-general-form');
-    if (form) {
-      // Clear listener
-      const newForm = form.cloneNode(true);
-      form.parentNode.replaceChild(newForm, form);
+    newForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const repo = ghRepoInput.value.trim();
+      const branch = ghBranchInput.value.trim();
+      const pat = ghPatInput.value.trim();
 
-      newForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const pat = ghPatInput.value.trim();
-        const repo = ghRepoInput.value.trim();
-        const branch = ghBranchInput.value.trim();
+      const companyVal = companyInput.value;
+      const logoTxtVal = logoTxtInput.value;
+      const logoIconVal = logoIconInput.value;
+      const logoTypeVal = logoTypeSelect.value;
+      const logoImageUrlVal = logoImgUrl.value.trim();
+      const copyrightVal = footerInput.value;
 
-        // Save Token locally
-        localStorage.setItem('nexus_github_pat', pat);
+      const heroBadgeVal = heroBadgeInput.value;
+      const heroTitleVal = heroTitleInput.value;
+      const heroDescVal = heroDescInput.value;
+      const heroCta1Val = heroCta1Input.value;
+      const heroCta2Val = heroCta2Input.value;
+      const heroVisualVal = heroTypeSelect.value;
+      const heroImageUrlVal = heroImgUrl.value.trim();
 
-        // Build updated configuration structure
-        this.config.general.githubRepo = repo;
-        this.config.general.githubBranch = branch;
-        this.config.general.companyName = companyInput.value;
-        this.config.general.logoText = logoTxtInput.value;
-        this.config.general.logoIcon = logoIconInput.value;
-        this.config.general.logoType = logoTypeSelect.value;
-        this.config.general.logoImageUrl = logoImgUrl.value.trim();
-        this.config.general.copyright = footerInput.value;
-        this.config.general.primaryColor = primaryPicker.value;
-        this.config.general.secondaryColor = secondaryPicker.value;
-        this.config.general.accentColor = accentPicker.value;
+      const primaryCol = primaryPicker.value;
+      const secondaryCol = secondaryPicker.value;
+      const accentCol = accentPicker.value;
 
-        this.config.hero.badge = heroBadgeInput.value;
-        this.config.hero.title = heroTitleInput.value;
-        this.config.hero.subtitle = heroDescInput.value;
-        this.config.hero.ctaPrimaryText = heroCta1Input.value;
-        this.config.hero.ctaSecondaryText = heroCta2Input.value;
-        this.config.hero.visualType = heroTypeSelect.value;
-        this.config.hero.imageUrl = heroImgUrl.value.trim();
+      // Save Token locally
+      localStorage.setItem('nexus_github_pat', pat);
 
-        window.Store.saveConfig(this.config);
-        
-        // Live updates header
-        if (window.App) {
-          window.App.renderHeaderFooter();
-          window.App.renderHome();
+      // Build updated configuration structure
+      this.config.general.githubRepo = repo;
+      this.config.general.githubBranch = branch;
+      this.config.general.companyName = companyVal;
+      this.config.general.logoText = logoTxtVal;
+      this.config.general.logoIcon = logoIconVal;
+      this.config.general.logoType = logoTypeVal;
+      this.config.general.logoImageUrl = logoImageUrlVal;
+      this.config.general.copyright = copyrightVal;
+      this.config.general.primaryColor = primaryCol;
+      this.config.general.secondaryColor = secondaryCol;
+      this.config.general.accentColor = accentCol;
+
+      this.config.hero.badge = heroBadgeVal;
+      this.config.hero.title = heroTitleVal;
+      this.config.hero.subtitle = heroDescVal;
+      this.config.hero.ctaPrimaryText = heroCta1Val;
+      this.config.hero.ctaSecondaryText = heroCta2Val;
+      this.config.hero.visualType = heroVisualVal;
+      this.config.hero.imageUrl = heroImageUrlVal;
+
+      window.Store.saveConfig(this.config);
+      
+      // Live updates header
+      if (window.App) {
+        window.App.renderHeaderFooter();
+        window.App.renderHome();
+      }
+
+      // Handle GitHub Sync
+      if (pat && repo) {
+        const submitBtn = newForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Syncing config to GitHub...';
+        submitBtn.disabled = true;
+        try {
+          await this.githubSaveConfig(this.config, repo, branch, pat);
+          alert('Configurations saved locally and successfully pushed to GitHub!\n\nGitHub Pages will rebuild and go live with these edits in approximately 30 seconds.');
+        } catch (err) {
+          console.error(err);
+          alert('Configurations saved locally, but syncing to GitHub failed.\nError: ' + err.message);
+        } finally {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
         }
-
-        // Handle GitHub Sync
-        if (pat && repo) {
-          const submitBtn = newForm.querySelector('button[type="submit"]');
-          const originalText = submitBtn.textContent;
-          submitBtn.textContent = 'Syncing config to GitHub...';
-          submitBtn.disabled = true;
-          try {
-            await this.githubSaveConfig(this.config, repo, branch, pat);
-            alert('Configurations saved locally and successfully pushed to GitHub!\n\nGitHub Pages will rebuild and go live with these edits in approximately 30 seconds.');
-          } catch (err) {
-            console.error(err);
-            alert('Configurations saved locally, but syncing to GitHub failed.\nError: ' + err.message);
-          } finally {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-          }
-        } else {
-          alert('Global configurations saved locally in this browser. To make this live on the web, please fill in your GitHub PAT and Repository details.');
-        }
-      });
-    }
+      } else {
+        alert('Global configurations saved locally in this browser. To make this live on the web, please fill in your GitHub PAT and Repository details.');
+      }
+    });
   },
 
   // ==================== TAB 2: EDIT SERVICES ====================
