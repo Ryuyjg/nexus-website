@@ -4,11 +4,29 @@ const AdminPanel = {
   config: {},
   activeTab: 'general',
 
-  init() {
+  async init() {
     this.config = window.Store.loadConfig();
     this.isLoggedIn = sessionStorage.getItem('admin_logged_in') === 'true';
 
+    // Auto-load GitHub token from local config (if available)
+    await this.loadLocalGithubToken();
+
     this.render();
+  },
+
+  async loadLocalGithubToken() {
+    try {
+      const res = await fetch('github_pat.json');
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.pat) {
+          localStorage.setItem('nexus_github_pat', data.pat.trim());
+          console.log('GitHub Token auto-loaded from local configuration file.');
+        }
+      }
+    } catch (e) {
+      // Normal when deployed on GitHub Pages
+    }
   },
 
   render() {

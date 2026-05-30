@@ -11,3 +11,7 @@ desktop.ini
 *.njsproj
 *.sln
 *.swp
+
+# Local credentials
+github_pat.json
+
