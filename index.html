@@ -567,7 +567,7 @@
             <p>Accessing the core site CMS content engine.</p>
             <form id="admin-login-form">
               <div class="form-group" style="margin-bottom: 24px;">
-                <input type="password" id="admin-password" class="form-control" placeholder="Enter password (default: admin123)" required>
+                <input type="password" id="admin-password" class="form-control" placeholder="Enter administrator password" required>
                 <div id="admin-login-error" style="color: #ff5f56; font-size: 12px; margin-top: 8px; opacity: 0; transition: opacity 0.2s;">Invalid password.</div>
               </div>
               <button type="submit" class="btn btn-primary" style="width: 100%;">Authorize Access</button>
@@ -740,6 +740,18 @@
                         <div style="font-size: 13px; font-weight: 600;">Accent Glow Color</div>
                         <div style="font-size: 11px; color: var(--text-muted);">Secondary Elements</div>
                       </div>
+                    </div>
+                  </div>
+
+                  <h4 style="margin-top: 32px; margin-bottom: 16px; font-family: var(--font-heading); font-size: 16px; color: var(--primary-color);">Change Administrator Password</h4>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="adm-new-password">New Password</label>
+                      <input type="password" id="adm-new-password" class="form-control" placeholder="Enter new password (optional)">
+                    </div>
+                    <div class="form-group">
+                      <label for="adm-confirm-password">Confirm Password</label>
+                      <input type="password" id="adm-confirm-password" class="form-control" placeholder="Confirm new password">
                     </div>
                   </div>
 

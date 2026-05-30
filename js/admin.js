@@ -14,6 +14,13 @@ const AdminPanel = {
     this.render();
   },
 
+  async sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  },
+
   async loadLocalGithubToken() {
     try {
       const res = await fetch('github_pat.json');
@@ -52,14 +59,16 @@ const AdminPanel = {
     const errorMsg = document.getElementById('admin-login-error');
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const passwordInput = document.getElementById('admin-password');
       if (!passwordInput) return;
 
       const password = passwordInput.value;
-      // Default mock credential check
-      if (password === 'admin123') {
+      const hash = await this.sha256(password);
+      const expectedHash = this.config.general.adminPasswordHash || '24075bab947d53b4b0e5110d7a961bebeb97cc93e5066a3d902d25087f9efb4b';
+
+      if (hash === expectedHash) {
         this.isLoggedIn = true;
         sessionStorage.setItem('admin_logged_in', 'true');
         passwordInput.value = '';
@@ -67,7 +76,7 @@ const AdminPanel = {
         this.render();
       } else {
         if (errorMsg) {
-          errorMsg.textContent = 'Invalid administrator password. Try admin123';
+          errorMsg.textContent = 'Invalid administrator password.';
           errorMsg.style.opacity = '1';
         }
       }
@@ -275,6 +284,10 @@ const AdminPanel = {
     const secondaryPicker = newForm.querySelector('#color-secondary');
     const accentPicker = newForm.querySelector('#color-accent');
 
+    // Password change inputs
+    const newPasswordInput = newForm.querySelector('#adm-new-password');
+    const confirmPasswordInput = newForm.querySelector('#adm-confirm-password');
+
     // Set initial values
     if (ghRepoInput) ghRepoInput.value = this.config.general.githubRepo || 'Ryuyjg/nexus-website';
     if (ghBranchInput) ghBranchInput.value = this.config.general.githubBranch || 'main';
@@ -459,6 +472,19 @@ const AdminPanel = {
       const secondaryCol = secondaryPicker.value;
       const accentCol = accentPicker.value;
 
+      // Handle password change
+      const newPasswordVal = newPasswordInput ? newPasswordInput.value : '';
+      const confirmPasswordVal = confirmPasswordInput ? confirmPasswordInput.value : '';
+
+      if (newPasswordVal) {
+        if (newPasswordVal !== confirmPasswordVal) {
+          alert('New passwords do not match. Please verify.');
+          return;
+        }
+        const newPasswordHash = await this.sha256(newPasswordVal);
+        this.config.general.adminPasswordHash = newPasswordHash;
+      }
+
       // Save Token locally
       localStorage.setItem('nexus_github_pat', pat);
 
@@ -485,6 +511,9 @@ const AdminPanel = {
 
       window.Store.saveConfig(this.config);
       
+      if (newPasswordInput) newPasswordInput.value = '';
+      if (confirmPasswordInput) confirmPasswordInput.value = '';
+
       // Live updates header
       if (window.App) {
         window.App.renderHeaderFooter();

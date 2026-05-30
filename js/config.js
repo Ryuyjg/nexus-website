@@ -10,7 +10,8 @@ const DEFAULT_CONFIG = {
     primaryColor: '#00f2fe',
     secondaryColor: '#4facfe',
     accentColor: '#d946ef',
-    isDarkTheme: false
+    isDarkTheme: false,
+    adminPasswordHash: '24075bab947d53b4b0e5110d7a961bebeb97cc93e5066a3d902d25087f9efb4b' // SHA-256 hash of default admin password
   },
   hero: {
     badge: 'Enterprise Intelligence Suite',
