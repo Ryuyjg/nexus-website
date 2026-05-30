@@ -8,6 +8,9 @@ const App = {
     // 1. Load active configuration from Store
     this.config = window.Store.loadConfig();
     
+    // Fetch live config from server asynchronously (Stale-While-Revalidate)
+    this.fetchLiveConfig();
+
     // 2. Setup theme toggle listener (in header)
     this.setupThemeToggle();
 
@@ -27,12 +30,53 @@ const App = {
     window.Router.init();
   },
 
+  async fetchLiveConfig() {
+    try {
+      const response = await fetch('config.json?t=' + Date.now());
+      if (response.ok) {
+        const liveConfig = await response.json();
+        const localConfigStr = localStorage.getItem(window.Store.configKey);
+        const liveConfigStr = JSON.stringify(liveConfig);
+        
+        if (localConfigStr !== liveConfigStr) {
+          console.log('New configurations detected from server. Updating cache.');
+          localStorage.setItem(window.Store.configKey, liveConfigStr);
+          this.config = liveConfig;
+          
+          // Re-render UI components to show updated remote config
+          this.renderHeaderFooter();
+          this.renderAllPublicSections();
+        }
+      }
+    } catch (e) {
+      console.warn('Could not fetch live configuration from server, using local cache.', e);
+    }
+  },
+
   // Dynamic Navbar and Footer Updates
   renderHeaderFooter() {
-    const logoIconEl = document.querySelector('.logo-icon');
-    const logoTextEl = document.getElementById('logo-text');
-    if (logoIconEl) logoIconEl.textContent = this.config.general.logoIcon;
-    if (logoTextEl) logoTextEl.textContent = this.config.general.logoText;
+    const logoIcons = document.querySelectorAll('.logo-icon');
+    const logoTexts = [document.getElementById('logo-text'), document.getElementById('footer-logo-text')];
+    const logoImageUrl = this.config.general.logoImageUrl;
+    const logoType = this.config.general.logoType;
+
+    logoIcons.forEach(logoIconEl => {
+      if (logoIconEl) {
+        if (logoType === 'image' && logoImageUrl) {
+          logoIconEl.innerHTML = `<img src="${logoImageUrl}" alt="Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: inherit;" />`;
+          logoIconEl.style.background = 'transparent';
+          logoIconEl.style.border = 'none';
+        } else {
+          logoIconEl.textContent = this.config.general.logoIcon;
+          logoIconEl.style.background = '';
+          logoIconEl.style.border = '';
+        }
+      }
+    });
+
+    logoTexts.forEach(logoTextEl => {
+      if (logoTextEl) logoTextEl.textContent = this.config.general.logoText;
+    });
 
     const footerCompany = document.getElementById('footer-company-name');
     const footerCopyright = document.getElementById('footer-copyright');
@@ -181,6 +225,52 @@ const App = {
       cta2.setAttribute('href', this.config.hero.ctaSecondaryLink);
     }
 
+    // Dynamic Hero Right-Side Visual
+    const heroVisualEl = document.querySelector('.hero-visual');
+    if (heroVisualEl) {
+      if (this.config.hero.visualType === 'image' && this.config.hero.imageUrl) {
+        heroVisualEl.innerHTML = `
+          <div class="hero-image-wrapper glass-card" style="width: 100%; height: 100%; min-height: 380px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--card-border); border-radius: 24px; padding: 12px; background: var(--card-bg); backdrop-filter: blur(12px);">
+            <img src="${this.config.hero.imageUrl}" alt="Hero Visual" style="width: 100%; height: 100%; min-height: 350px; object-fit: cover; border-radius: 16px;" />
+          </div>
+        `;
+      } else {
+        // Fallback/Default: Interactive analytics dashboard
+        heroVisualEl.innerHTML = `
+          <div class="hero-mockup glass-card">
+            <div class="mockup-header">
+              <div class="mockup-dot"></div>
+              <div class="mockup-dot"></div>
+              <div class="mockup-dot"></div>
+              <div class="mockup-title">NEXUS Real-time Analytics</div>
+            </div>
+            <div class="mockup-body">
+              <div class="mockup-stats">
+                <div class="mockup-stat-card">
+                  <div class="mockup-stat-label">Model Efficiency</div>
+                  <div class="mockup-stat-val">+48.2%</div>
+                </div>
+                <div class="mockup-stat-card">
+                  <div class="mockup-stat-label">Response Latency</div>
+                  <div class="mockup-stat-val">12.4 ms</div>
+                </div>
+              </div>
+              <div class="mockup-chart-container">
+                <div class="mockup-bar"></div>
+                <div class="mockup-bar"></div>
+                <div class="mockup-bar"></div>
+                <div class="mockup-bar"></div>
+                <div class="mockup-bar"></div>
+                <div class="mockup-bar"></div>
+                <div class="mockup-bar"></div>
+              </div>
+            </div>
+          </div>
+        `;
+        this.initHomeAnimations(); // Re-trigger dashboard animations
+      }
+    }
+
     const statsContainer = document.getElementById('stats-container');
     if (statsContainer) {
       statsContainer.innerHTML = this.config.stats.map((stat, i) => `
@@ -194,13 +284,18 @@ const App = {
     const showcaseContainer = document.getElementById('showcase-container');
     if (showcaseContainer) {
       const highlights = this.config.services.slice(0, 3);
-      showcaseContainer.innerHTML = highlights.map(srv => `
-        <div class="showcase-card glass-card">
-          <div class="showcase-icon">${srv.icon}</div>
-          <h3>${srv.title}</h3>
-          <p>${srv.shortDesc}</p>
-        </div>
-      `).join('');
+      showcaseContainer.innerHTML = highlights.map(srv => {
+        const iconOrImage = srv.imageUrl 
+          ? `<img src="${srv.imageUrl}" alt="${srv.title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />`
+          : srv.icon;
+        return `
+          <div class="showcase-card glass-card">
+            <div class="showcase-icon">${iconOrImage}</div>
+            <h3>${srv.title}</h3>
+            <p>${srv.shortDesc}</p>
+          </div>
+        `;
+      }).join('');
     }
 
     const testimonialsContainer = document.getElementById('testimonials-track');
@@ -349,17 +444,22 @@ const App = {
       ? this.config.services 
       : this.config.services.filter(s => s.category === category);
 
-    container.innerHTML = filtered.map(srv => `
-      <div class="service-card glass-card">
-        <div class="showcase-icon">${srv.icon}</div>
-        <h3>${srv.title}</h3>
-        <p>${srv.shortDesc}</p>
-        <span class="service-learn-more" data-id="${srv.id}">
-          Learn Details 
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span>
-      </div>
-    `).join('');
+    container.innerHTML = filtered.map(srv => {
+      const iconOrImage = srv.imageUrl 
+        ? `<img src="${srv.imageUrl}" alt="${srv.title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />`
+        : srv.icon;
+      return `
+        <div class="service-card glass-card">
+          <div class="showcase-icon">${iconOrImage}</div>
+          <h3>${srv.title}</h3>
+          <p>${srv.shortDesc}</p>
+          <span class="service-learn-more" data-id="${srv.id}">
+            Learn Details 
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </div>
+      `;
+    }).join('');
 
     container.querySelectorAll('.service-learn-more').forEach(trigger => {
       trigger.addEventListener('click', (e) => {
@@ -390,7 +490,19 @@ const App = {
     const modal = document.getElementById('service-modal');
     if (!srv || !modal) return;
 
-    modal.querySelector('.modal-icon').textContent = srv.icon;
+    const modalIconEl = modal.querySelector('.modal-icon');
+    if (modalIconEl) {
+      if (srv.imageUrl) {
+        modalIconEl.innerHTML = `<img src="${srv.imageUrl}" alt="${srv.title}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 16px;" />`;
+        modalIconEl.style.background = 'transparent';
+        modalIconEl.style.border = 'none';
+      } else {
+        modalIconEl.textContent = srv.icon;
+        modalIconEl.style.background = '';
+        modalIconEl.style.border = '';
+      }
+    }
+    
     modal.querySelector('.modal-title').textContent = srv.title;
     modal.querySelector('.modal-category').textContent = srv.category;
     modal.querySelector('.modal-desc').textContent = srv.longDesc;

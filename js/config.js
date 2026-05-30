@@ -4,6 +4,8 @@ const DEFAULT_CONFIG = {
     companyName: 'NEXUS AI',
     logoText: 'NEXUS',
     logoIcon: 'N', // Single character inside gradient
+    logoType: 'text', // 'text' or 'image'
+    logoImageUrl: '', // base64 or external url
     copyright: '© 2026 NEXUS AI. All rights reserved.',
     primaryColor: '#00f2fe',
     secondaryColor: '#4facfe',
@@ -17,7 +19,9 @@ const DEFAULT_CONFIG = {
     ctaPrimaryText: 'Calculate Your ROI',
     ctaPrimaryLink: '#/pricing',
     ctaSecondaryText: 'Explore Services',
-    ctaSecondaryLink: '#/services'
+    ctaSecondaryLink: '#/services',
+    visualType: 'mockup', // 'mockup' or 'image'
+    imageUrl: '' // base64 or external url
   },
   stats: [
     { label: 'System Uptime', value: 99.99, suffix: '%' },

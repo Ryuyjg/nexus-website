@@ -596,7 +596,27 @@
                   <span>General website configurations</span>
                 </div>
                 <form id="admin-general-form">
-                  <h4 style="margin-bottom: 16px; font-family: var(--font-heading); font-size: 16px; color: var(--primary-color);">Site Identity</h4>
+                  <h4 style="margin-bottom: 16px; font-family: var(--font-heading); font-size: 16px; color: var(--primary-color);">GitHub Sync Engine (CMS Mode)</h4>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="adm-github-repo">GitHub Repository (Owner/Name)</label>
+                      <input type="text" id="adm-github-repo" class="form-control" placeholder="Ryuyjg/nexus-website" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="adm-github-branch">Deploy Branch</label>
+                      <input type="text" id="adm-github-branch" class="form-control" placeholder="main" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="adm-github-pat">GitHub Personal Access Token (PAT)</label>
+                    <input type="password" id="adm-github-pat" class="form-control" placeholder="Paste ghp_... token (stored locally in browser)">
+                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                      Required to save configuration and upload images directly to GitHub. 
+                      <a href="https://github.com/settings/tokens/new?scopes=repo" target="_blank" style="color: var(--primary-color);">Generate one with 'repo' scope</a>.
+                    </div>
+                  </div>
+
+                  <h4 style="margin-top: 32px; margin-bottom: 16px; font-family: var(--font-heading); font-size: 16px; color: var(--primary-color);">Site Identity & Logo</h4>
                   <div class="form-row">
                     <div class="form-group">
                       <label for="adm-company-name">Company Name</label>
@@ -617,8 +637,33 @@
                       <input type="text" id="adm-footer-copyright" class="form-control" required>
                     </div>
                   </div>
+                  <div class="form-row" style="margin-top: 16px;">
+                    <div class="form-group">
+                      <label for="adm-logo-type">Logo Display Type</label>
+                      <select id="adm-logo-type" class="form-control" style="background: var(--input-bg); height: 48px; border: 1px solid var(--input-border); color: var(--text-color); border-radius: 8px; width: 100%; outline: none; padding: 12px 16px;">
+                        <option value="text">Character Icon & Text</option>
+                        <option value="image">Custom Logo Image</option>
+                      </select>
+                    </div>
+                    <div class="form-group" id="adm-logo-image-group" style="display: none;">
+                      <label for="adm-logo-image-url">Logo Image Source</label>
+                      <div style="display: flex; gap: 8px; align-items: center;">
+                        <input type="file" id="adm-logo-file" accept="image/*" style="display: none;">
+                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('adm-logo-file').click()" style="padding: 12px; height: 48px; font-size: 13px; white-space: nowrap;">Upload File</button>
+                        <input type="text" id="adm-logo-image-url" class="form-control" placeholder="Or paste image URL">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row" id="adm-logo-preview-row" style="display: none; margin-top: 12px;">
+                    <div class="form-group">
+                      <label>Logo Preview</label>
+                      <div id="adm-logo-preview-container" style="width: 60px; height: 60px; border: 1px dashed var(--card-border); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px; background: rgba(0,0,0,0.15);">
+                        <span style="color: var(--text-muted); font-size: 11px;">Empty</span>
+                      </div>
+                    </div>
+                  </div>
 
-                  <h4 style="margin-top: 32px; margin-bottom: 16px; font-family: var(--font-heading); font-size: 16px; color: var(--primary-color);">Hero Copywriting</h4>
+                  <h4 style="margin-top: 32px; margin-bottom: 16px; font-family: var(--font-heading); font-size: 16px; color: var(--primary-color);">Hero Copywriting & Visual</h4>
                   <div class="form-group">
                     <label for="adm-hero-badge">Hero Upper Tag</label>
                     <input type="text" id="adm-hero-badge" class="form-control" required>
@@ -639,6 +684,31 @@
                     <div class="form-group">
                       <label for="adm-hero-cta2">Secondary Button Text</label>
                       <input type="text" id="adm-hero-cta2" class="form-control" required>
+                    </div>
+                  </div>
+                  <div class="form-row" style="margin-top: 16px;">
+                    <div class="form-group">
+                      <label for="adm-hero-type">Hero Right Visual</label>
+                      <select id="adm-hero-type" class="form-control" style="background: var(--input-bg); height: 48px; border: 1px solid var(--input-border); color: var(--text-color); border-radius: 8px; width: 100%; outline: none; padding: 12px 16px;">
+                        <option value="mockup">Interactive Analytics Dashboard</option>
+                        <option value="image">Custom Hero Image</option>
+                      </select>
+                    </div>
+                    <div class="form-group" id="adm-hero-image-group" style="display: none;">
+                      <label for="adm-hero-image-url">Hero Image Source</label>
+                      <div style="display: flex; gap: 8px; align-items: center;">
+                        <input type="file" id="adm-hero-file" accept="image/*" style="display: none;">
+                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('adm-hero-file').click()" style="padding: 12px; height: 48px; font-size: 13px; white-space: nowrap;">Upload File</button>
+                        <input type="text" id="adm-hero-image-url" class="form-control" placeholder="Or paste image URL">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row" id="adm-hero-preview-row" style="display: none; margin-top: 12px;">
+                    <div class="form-group">
+                      <label>Hero Image Preview</label>
+                      <div id="adm-hero-preview-container" style="max-width: 200px; height: 100px; border: 1px dashed var(--card-border); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px; background: rgba(0,0,0,0.15);">
+                        <span style="color: var(--text-muted); font-size: 11px;">Empty</span>
+                      </div>
                     </div>
                   </div>
 

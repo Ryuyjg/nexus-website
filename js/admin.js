@@ -129,13 +129,106 @@ const AdminPanel = {
     this.render();
   },
 
-  // ==================== TAB 1: GENERAL SETTINGS ====================
+  // ==================== GITHUB INTEGRATION HELPERS ====================
+  async githubUploadFile(file, base64Content, repo, branch, pat) {
+    const cleanName = file.name.replace(/[^a-zA-Z0-9.]/g, '');
+    const extension = cleanName.split('.').pop() || 'png';
+    const filename = `uploads/img-${Date.now()}.${extension}`;
+    const url = `https://api.github.com/repos/${repo}/contents/${filename}`;
+    
+    // Split the data URL prefix if present
+    const base64Data = base64Content.includes(',') ? base64Content.split(',')[1] : base64Content;
+
+    const payload = {
+      message: `Upload ${filename} via CMS Admin Panel`,
+      content: base64Data,
+      branch: branch
+    };
+
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${pat}`,
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err.message || 'GitHub upload failed');
+    }
+
+    const data = await response.json();
+    return `https://raw.githubusercontent.com/${repo}/${branch}/${filename}`;
+  },
+
+  async githubSaveConfig(config, repo, branch, pat) {
+    const url = `https://api.github.com/repos/${repo}/contents/config.json`;
+    
+    // Get file SHA if it exists
+    let sha = null;
+    try {
+      const getRes = await fetch(url, {
+        headers: {
+          'Authorization': `token ${pat}`,
+          'Accept': 'application/vnd.github+json'
+        }
+      });
+      if (getRes.ok) {
+        const fileData = await getRes.json();
+        sha = fileData.sha;
+      }
+    } catch (e) {
+      console.log('config.json does not exist yet, creating fresh.');
+    }
+
+    const configStr = JSON.stringify(config, null, 2);
+    const base64Content = btoa(unescape(encodeURIComponent(configStr)));
+
+    const payload = {
+      message: 'CMS Update: Sync website configurations',
+      content: base64Content,
+      branch: branch
+    };
+    if (sha) payload.sha = sha;
+
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${pat}`,
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err.message || 'Failed to save config.json to GitHub');
+    }
+  },
+
   loadGeneralSettings() {
+    // GitHub Sync Inputs
+    const ghRepoInput = document.getElementById('adm-github-repo');
+    const ghBranchInput = document.getElementById('adm-github-branch');
+    const ghPatInput = document.getElementById('adm-github-pat');
+
     // Info Inputs
     const companyInput = document.getElementById('adm-company-name');
     const logoTxtInput = document.getElementById('adm-logo-text');
     const logoIconInput = document.getElementById('adm-logo-icon');
     const footerInput = document.getElementById('adm-footer-copyright');
+
+    // Logo Image Customization
+    const logoTypeSelect = document.getElementById('adm-logo-type');
+    const logoImgGroup = document.getElementById('adm-logo-image-group');
+    const logoImgUrl = document.getElementById('adm-logo-image-url');
+    const logoFile = document.getElementById('adm-logo-file');
+    const logoPreviewRow = document.getElementById('adm-logo-preview-row');
+    const logoPreviewContainer = document.getElementById('adm-logo-preview-container');
 
     // Hero Inputs
     const heroBadgeInput = document.getElementById('adm-hero-badge');
@@ -144,16 +237,31 @@ const AdminPanel = {
     const heroCta1Input = document.getElementById('adm-hero-cta1');
     const heroCta2Input = document.getElementById('adm-hero-cta2');
 
+    // Hero Image Customization
+    const heroTypeSelect = document.getElementById('adm-hero-type');
+    const heroImgGroup = document.getElementById('adm-hero-image-group');
+    const heroImgUrl = document.getElementById('adm-hero-image-url');
+    const heroFile = document.getElementById('adm-hero-file');
+    const heroPreviewRow = document.getElementById('adm-hero-preview-row');
+    const heroPreviewContainer = document.getElementById('adm-hero-preview-container');
+
     // Color Pickers
     const primaryPicker = document.getElementById('color-primary');
     const secondaryPicker = document.getElementById('color-secondary');
     const accentPicker = document.getElementById('color-accent');
 
-    // Set values
+    // Set initial values
+    if (ghRepoInput) ghRepoInput.value = this.config.general.githubRepo || 'Ryuyjg/nexus-website';
+    if (ghBranchInput) ghBranchInput.value = this.config.general.githubBranch || 'main';
+    if (ghPatInput) ghPatInput.value = localStorage.getItem('nexus_github_pat') || '';
+
     if (companyInput) companyInput.value = this.config.general.companyName;
     if (logoTxtInput) logoTxtInput.value = this.config.general.logoText;
     if (logoIconInput) logoIconInput.value = this.config.general.logoIcon;
     if (footerInput) footerInput.value = this.config.general.copyright;
+
+    if (logoTypeSelect) logoTypeSelect.value = this.config.general.logoType || 'text';
+    if (logoImgUrl) logoImgUrl.value = this.config.general.logoImageUrl || '';
 
     if (heroBadgeInput) heroBadgeInput.value = this.config.hero.badge;
     if (heroTitleInput) heroTitleInput.value = this.config.hero.title;
@@ -161,9 +269,128 @@ const AdminPanel = {
     if (heroCta1Input) heroCta1Input.value = this.config.hero.ctaPrimaryText;
     if (heroCta2Input) heroCta2Input.value = this.config.hero.ctaSecondaryText;
 
+    if (heroTypeSelect) heroTypeSelect.value = this.config.hero.visualType || 'mockup';
+    if (heroImgUrl) heroImgUrl.value = this.config.hero.imageUrl || '';
+
     if (primaryPicker) primaryPicker.value = this.config.general.primaryColor;
     if (secondaryPicker) secondaryPicker.value = this.config.general.secondaryColor;
     if (accentPicker) accentPicker.value = this.config.general.accentColor;
+
+    // Helper: update image preview
+    const updatePreview = (inputEl, previewEl, rowEl) => {
+      if (!inputEl || !previewEl || !rowEl) return;
+      const url = inputEl.value.trim();
+      if (url) {
+        previewEl.innerHTML = `<img src="${url}" style="width: 100%; height: 100%; object-fit: contain; border-radius: inherit;" />`;
+        rowEl.style.display = 'flex';
+      } else {
+        previewEl.innerHTML = `<span style="color: var(--text-muted); font-size: 11px;">Empty</span>`;
+        rowEl.style.display = 'none';
+      }
+    };
+
+    // Toggle fields visibility
+    const toggleLogoFields = () => {
+      if (logoTypeSelect && logoTypeSelect.value === 'image') {
+        if (logoImgGroup) logoImgGroup.style.display = 'block';
+        updatePreview(logoImgUrl, logoPreviewContainer, logoPreviewRow);
+      } else {
+        if (logoImgGroup) logoImgGroup.style.display = 'none';
+        if (logoPreviewRow) logoPreviewRow.style.display = 'none';
+      }
+    };
+
+    const toggleHeroFields = () => {
+      if (heroTypeSelect && heroTypeSelect.value === 'image') {
+        if (heroImgGroup) heroImgGroup.style.display = 'block';
+        updatePreview(heroImgUrl, heroPreviewContainer, heroPreviewRow);
+      } else {
+        if (heroImgGroup) heroImgGroup.style.display = 'none';
+        if (heroPreviewRow) heroPreviewRow.style.display = 'none';
+      }
+    };
+
+    if (logoTypeSelect) logoTypeSelect.addEventListener('change', toggleLogoFields);
+    if (heroTypeSelect) heroTypeSelect.addEventListener('change', toggleHeroFields);
+
+    toggleLogoFields();
+    toggleHeroFields();
+
+    // Listeners for manual URL input paste
+    if (logoImgUrl) logoImgUrl.addEventListener('input', () => updatePreview(logoImgUrl, logoPreviewContainer, logoPreviewRow));
+    if (heroImgUrl) heroImgUrl.addEventListener('input', () => updatePreview(heroImgUrl, heroPreviewContainer, heroPreviewRow));
+
+    // Handle Logo File Uploads
+    if (logoFile) {
+      logoFile.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = async (event) => {
+          const base64 = event.target.result;
+          const pat = ghPatInput.value.trim();
+          const repo = ghRepoInput.value.trim();
+          const branch = ghBranchInput.value.trim();
+
+          if (pat && repo) {
+            logoPreviewContainer.innerHTML = `<span style="color: var(--primary-color); font-size: 11px;">Uploading...</span>`;
+            logoPreviewRow.style.display = 'flex';
+            try {
+              const uploadedUrl = await this.githubUploadFile(file, base64, repo, branch, pat);
+              logoImgUrl.value = uploadedUrl;
+              updatePreview(logoImgUrl, logoPreviewContainer, logoPreviewRow);
+              alert('Logo uploaded directly to GitHub repository successfully!');
+            } catch (err) {
+              console.error(err);
+              alert('GitHub upload failed. Falling back to local Base64 configuration.\nError: ' + err.message);
+              logoImgUrl.value = base64;
+              updatePreview(logoImgUrl, logoPreviewContainer, logoPreviewRow);
+            }
+          } else {
+            logoImgUrl.value = base64;
+            updatePreview(logoImgUrl, logoPreviewContainer, logoPreviewRow);
+            alert('Configured locally! To make it live on the web, configure your GitHub repository and PAT token.');
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Handle Hero File Uploads
+    if (heroFile) {
+      heroFile.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = async (event) => {
+          const base64 = event.target.result;
+          const pat = ghPatInput.value.trim();
+          const repo = ghRepoInput.value.trim();
+          const branch = ghBranchInput.value.trim();
+
+          if (pat && repo) {
+            heroPreviewContainer.innerHTML = `<span style="color: var(--primary-color); font-size: 11px;">Uploading...</span>`;
+            heroPreviewRow.style.display = 'flex';
+            try {
+              const uploadedUrl = await this.githubUploadFile(file, base64, repo, branch, pat);
+              heroImgUrl.value = uploadedUrl;
+              updatePreview(heroImgUrl, heroPreviewContainer, heroPreviewRow);
+              alert('Hero image uploaded directly to GitHub repository successfully!');
+            } catch (err) {
+              console.error(err);
+              alert('GitHub upload failed. Falling back to local Base64 configuration.\nError: ' + err.message);
+              heroImgUrl.value = base64;
+              updatePreview(heroImgUrl, heroPreviewContainer, heroPreviewRow);
+            }
+          } else {
+            heroImgUrl.value = base64;
+            updatePreview(heroImgUrl, heroPreviewContainer, heroPreviewRow);
+            alert('Configured locally! To make it live on the web, configure your GitHub repository and PAT token.');
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    }
 
     // Real-time color updates to the layout!
     const applyColors = () => {
@@ -187,13 +414,24 @@ const AdminPanel = {
       const newForm = form.cloneNode(true);
       form.parentNode.replaceChild(newForm, form);
 
-      newForm.addEventListener('submit', (e) => {
+      newForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
+        const pat = ghPatInput.value.trim();
+        const repo = ghRepoInput.value.trim();
+        const branch = ghBranchInput.value.trim();
+
+        // Save Token locally
+        localStorage.setItem('nexus_github_pat', pat);
+
         // Build updated configuration structure
+        this.config.general.githubRepo = repo;
+        this.config.general.githubBranch = branch;
         this.config.general.companyName = companyInput.value;
         this.config.general.logoText = logoTxtInput.value;
         this.config.general.logoIcon = logoIconInput.value;
+        this.config.general.logoType = logoTypeSelect.value;
+        this.config.general.logoImageUrl = logoImgUrl.value.trim();
         this.config.general.copyright = footerInput.value;
         this.config.general.primaryColor = primaryPicker.value;
         this.config.general.secondaryColor = secondaryPicker.value;
@@ -204,15 +442,36 @@ const AdminPanel = {
         this.config.hero.subtitle = heroDescInput.value;
         this.config.hero.ctaPrimaryText = heroCta1Input.value;
         this.config.hero.ctaSecondaryText = heroCta2Input.value;
+        this.config.hero.visualType = heroTypeSelect.value;
+        this.config.hero.imageUrl = heroImgUrl.value.trim();
 
         window.Store.saveConfig(this.config);
         
         // Live updates header
         if (window.App) {
           window.App.renderHeaderFooter();
+          window.App.renderHome();
         }
 
-        alert('Global configurations saved successfully.');
+        // Handle GitHub Sync
+        if (pat && repo) {
+          const submitBtn = newForm.querySelector('button[type="submit"]');
+          const originalText = submitBtn.textContent;
+          submitBtn.textContent = 'Syncing config to GitHub...';
+          submitBtn.disabled = true;
+          try {
+            await this.githubSaveConfig(this.config, repo, branch, pat);
+            alert('Configurations saved locally and successfully pushed to GitHub!\n\nGitHub Pages will rebuild and go live with these edits in approximately 30 seconds.');
+          } catch (err) {
+            console.error(err);
+            alert('Configurations saved locally, but syncing to GitHub failed.\nError: ' + err.message);
+          } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          }
+        } else {
+          alert('Global configurations saved locally in this browser. To make this live on the web, please fill in your GitHub PAT and Repository details.');
+        }
       });
     }
   },
@@ -286,7 +545,8 @@ const AdminPanel = {
       shortDesc: '',
       longDesc: '',
       icon: '⚙️',
-      category: 'AI'
+      category: 'AI',
+      imageUrl: ''
     };
 
     editorContainer.innerHTML = `
@@ -314,7 +574,32 @@ const AdminPanel = {
             <input type="text" id="srv-icon" class="form-control" value="${srv.icon}" required>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-row" style="margin-top: 16px;">
+          <div class="form-group">
+            <label for="srv-representation">Service Representation</label>
+            <select id="srv-representation" class="form-control" style="background: var(--input-bg); height: 48px; border: 1px solid var(--input-border); color: var(--text-color); border-radius: 8px; width: 100%; outline: none; padding: 12px 16px;">
+              <option value="emoji" ${!srv.imageUrl ? 'selected' : ''}>Emoji Icon</option>
+              <option value="image" ${srv.imageUrl ? 'selected' : ''}>Custom Service Image</option>
+            </select>
+          </div>
+          <div class="form-group" id="srv-image-group" style="${srv.imageUrl ? '' : 'display: none;'}">
+            <label for="srv-image-url">Service Image Source</label>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <input type="file" id="srv-file" accept="image/*" style="display: none;">
+              <button type="button" class="btn btn-secondary" onclick="document.getElementById('srv-file').click()" style="padding: 12px; height: 48px; font-size: 13px; white-space: nowrap;">Upload File</button>
+              <input type="text" id="srv-image-url" class="form-control" value="${srv.imageUrl || ''}" placeholder="Or paste image URL">
+            </div>
+          </div>
+        </div>
+        <div class="form-row" id="srv-preview-row" style="${srv.imageUrl ? '' : 'display: none;'} margin-top: 12px;">
+          <div class="form-group">
+            <label>Service Image Preview</label>
+            <div id="srv-preview-container" style="width: 56px; height: 56px; border: 1px dashed var(--card-border); border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 2px; background: rgba(0,0,0,0.15);">
+              ${srv.imageUrl ? `<img src="${srv.imageUrl}" style="width:100%; height:100%; object-fit:cover; border-radius:inherit;" />` : '<span style="color: var(--text-muted); font-size: 11px;">Empty</span>'}
+            </div>
+          </div>
+        </div>
+        <div class="form-group" style="margin-top: 16px;">
           <label for="srv-short-desc">Short Summary Description</label>
           <input type="text" id="srv-short-desc" class="form-control" value="${srv.shortDesc}" required>
         </div>
@@ -329,13 +614,85 @@ const AdminPanel = {
       </form>
     `;
 
+    // Elements
+    const representationSelect = document.getElementById('srv-representation');
+    const srvImgGroup = document.getElementById('srv-image-group');
+    const srvImgUrl = document.getElementById('srv-image-url');
+    const srvFile = document.getElementById('srv-file');
+    const srvPreviewRow = document.getElementById('srv-preview-row');
+    const srvPreviewContainer = document.getElementById('srv-preview-container');
+
+    // Previews updates helper
+    const updateSrvPreview = () => {
+      if (!srvImgUrl || !srvPreviewContainer || !srvPreviewRow) return;
+      const url = srvImgUrl.value.trim();
+      if (url) {
+        srvPreviewContainer.innerHTML = `<img src="${url}" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />`;
+        srvPreviewRow.style.display = 'flex';
+      } else {
+        srvPreviewContainer.innerHTML = `<span style="color: var(--text-muted); font-size: 11px;">Empty</span>`;
+        srvPreviewRow.style.display = 'none';
+      }
+    };
+
+    // Listeners
+    if (representationSelect) {
+      representationSelect.addEventListener('change', () => {
+        if (representationSelect.value === 'image') {
+          if (srvImgGroup) srvImgGroup.style.display = 'block';
+          updateSrvPreview();
+        } else {
+          if (srvImgGroup) srvImgGroup.style.display = 'none';
+          if (srvPreviewRow) srvPreviewRow.style.display = 'none';
+        }
+      });
+    }
+
+    if (srvImgUrl) srvImgUrl.addEventListener('input', updateSrvPreview);
+
+    // Upload file
+    if (srvFile) {
+      srvFile.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = async (event) => {
+          const base64 = event.target.result;
+          const pat = localStorage.getItem('nexus_github_pat') || '';
+          const repo = this.config.general.githubRepo || 'Ryuyjg/nexus-website';
+          const branch = this.config.general.githubBranch || 'main';
+
+          if (pat && repo) {
+            srvPreviewContainer.innerHTML = `<span style="color: var(--primary-color); font-size: 11px;">Uploading...</span>`;
+            srvPreviewRow.style.display = 'flex';
+            try {
+              const uploadedUrl = await this.githubUploadFile(file, base64, repo, branch, pat);
+              srvImgUrl.value = uploadedUrl;
+              updateSrvPreview();
+              alert('Service image uploaded to GitHub successfully!');
+            } catch (err) {
+              console.error(err);
+              alert('GitHub upload failed. Falling back to local Base64.\nError: ' + err.message);
+              srvImgUrl.value = base64;
+              updateSrvPreview();
+            }
+          } else {
+            srvImgUrl.value = base64;
+            updateSrvPreview();
+            alert('Saved locally. To make it work on the web, configure your GitHub repository and PAT token.');
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
     // Cancel Button
     document.getElementById('btn-srv-cancel').addEventListener('click', () => {
       this.loadServicesList();
     });
 
     // Form Submission
-    document.getElementById('admin-srv-form').addEventListener('submit', (e) => {
+    document.getElementById('admin-srv-form').addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const updatedSrv = {
@@ -343,6 +700,7 @@ const AdminPanel = {
         title: document.getElementById('srv-title').value,
         category: document.getElementById('srv-category').value,
         icon: document.getElementById('srv-icon').value,
+        imageUrl: representationSelect.value === 'image' ? srvImgUrl.value.trim() : '',
         shortDesc: document.getElementById('srv-short-desc').value,
         longDesc: document.getElementById('srv-long-desc').value
       };
@@ -354,7 +712,38 @@ const AdminPanel = {
       }
 
       window.Store.saveConfig(this.config);
-      this.loadServicesList();
+
+      // Live updates views
+      if (window.App) {
+        window.App.renderHome();
+        window.App.renderServices();
+      }
+
+      // Handle GitHub sync
+      const pat = localStorage.getItem('nexus_github_pat') || '';
+      const repo = this.config.general.githubRepo;
+      const branch = this.config.general.githubBranch || 'main';
+
+      if (pat && repo) {
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Syncing config...';
+        submitBtn.disabled = true;
+        try {
+          await this.githubSaveConfig(this.config, repo, branch, pat);
+          alert('Service saved and successfully synced to GitHub!');
+        } catch (err) {
+          console.error(err);
+          alert('Saved locally, but failed to sync to GitHub.\nError: ' + err.message);
+        } finally {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          this.loadServicesList();
+        }
+      } else {
+        alert('Service configurations saved locally.');
+        this.loadServicesList();
+      }
     });
   },
 
