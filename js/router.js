@@ -1,4 +1,4 @@
-// Client-side Router for NEXUS AI SPA
+// Client-side Router for Lumina SPA
 const Router = {
   routes: ['home', 'services', 'portfolio', 'blog', 'careers', 'faq', 'about', 'pricing', 'status', 'contact', 'admin'],
   defaultRoute: 'home',

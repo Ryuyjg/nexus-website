@@ -9,7 +9,7 @@ const Store = {
 
   configKey: 'nexus_site_config',
   configVersion: 'nexus_config_v',
-  currentVersion: 4, // Bump this when config structure changes
+  currentVersion: 5, // Bump this when config structure changes
   inquiriesKey: 'nexus_inquiries_db',
   appsKey: 'nexus_job_apps',
   ticketsKey: 'nexus_support_tickets',
