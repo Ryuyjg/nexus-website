@@ -584,11 +584,11 @@ const App = {
       const security = parseInt(secInput.value);
 
       document.getElementById('employees-val').textContent = employees.toLocaleString();
-      document.getElementById('data-val').textContent = data + ' TB';
-      document.getElementById('security-val').textContent = 'Level ' + security;
+      document.getElementById('data-val').textContent = data + ' Hrs';
+      document.getElementById('security-val').textContent = 'Tier ' + security;
 
-      const annualSavings = (employees * 1800) + (data * 450) + (security * 15000);
-      const efficiencyVal = Math.min(30 + (employees / 20) + (security * 6), 96).toFixed(0);
+      const annualSavings = (employees * 5000) + (data * 150) + (security * 12000);
+      const efficiencyVal = Math.min(50 + (employees / 20) + (security * 5), 99).toFixed(0);
 
       let savingsText = '';
       if (annualSavings >= 1000000) {
@@ -609,9 +609,9 @@ const App = {
         enterpriseCard.classList.remove('featured');
         customCard.classList.remove('featured');
 
-        if (data > 200 || employees > 600 || security > 4) {
+        if (employees > 200 || security > 3) {
           customCard.classList.add('featured');
-        } else if (employees > 150 || data > 25 || security > 2) {
+        } else if (employees > 20 || security > 1) {
           enterpriseCard.classList.add('featured');
         } else {
           starterCard.classList.add('featured');
