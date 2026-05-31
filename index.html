@@ -4,14 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NEXUS AI - Enterprise Intelligence Suite</title>
-  <meta name="description" content="NEXUS AI merges cognitive automation with quantum optimization to drive operations at peak efficiency.">
+  <meta name="description" content="NEXUS AI merges cognitive automation with quantum optimization to drive operations at peak efficiency. Enterprise-grade AI solutions for workflow automation, cloud optimization, and security.">
+  <meta name="theme-color" content="#00f2fe">
+  <link rel="canonical" href="https://nexusai.io/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2300f2fe'/><text x='50%25' y='50%25' text-anchor='middle' dy='.35em' font-size='18' font-weight='bold' fill='%230b0f19'>N</text></svg>">
+
+  <!-- Performance: Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NEXUS AI - Enterprise Intelligence Suite">
+  <meta property="og:description" content="NEXUS AI merges cognitive automation with quantum optimization to drive operations at peak efficiency.">
+  <meta property="og:url" content="https://nexusai.io/">
+  <meta property="og:image" content="https://nexusai.io/og-image.png">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NEXUS AI - Enterprise Intelligence Suite">
+  <meta name="twitter:description" content="Automate decisions and maximize ROI with quantum-optimized enterprise AI.">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NEXUS AI",
+    "url": "https://nexusai.io",
+    "logo": "https://nexusai.io/logo.png",
+    "description": "Enterprise Intelligence Suite combining cognitive automation with quantum optimization.",
+    "sameAs": [],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-800-555-6398",
+      "contactType": "sales",
+      "availableLanguage": "English"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <!-- Skip-to-Content Link (Accessibility) -->
+  <a href="#app-content" class="skip-link">Skip to Content</a>
+
   <!-- Ambient Backdrops -->
   <div class="ambient-glow"></div>
   <div class="ambient-glow-2"></div>
+
+  <!-- Cursor Glow Tracker -->
+  <div class="cursor-glow" id="cursor-glow"></div>
 
   <!-- Navigation Header -->
   <header>
@@ -33,13 +79,35 @@
         <li><a href="#contact">Contact Us</a></li>
       </ul>
       <div class="nav-right">
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark and light theme">
           <!-- SVG injected via App.js -->
         </button>
         <a href="#contact" class="btn btn-primary">Book Consultation</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+    <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+    <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile navigation">
+      <a href="#home" class="mobile-nav-link">Home</a>
+      <a href="#services" class="mobile-nav-link">Services</a>
+      <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
+      <a href="#blog" class="mobile-nav-link">Blog</a>
+      <a href="#careers" class="mobile-nav-link">Careers</a>
+      <a href="#faq" class="mobile-nav-link">FAQ</a>
+      <a href="#about" class="mobile-nav-link">About Us</a>
+      <a href="#pricing" class="mobile-nav-link">Pricing</a>
+      <a href="#status" class="mobile-nav-link">Status</a>
+      <a href="#contact" class="mobile-nav-link">Contact Us</a>
+    </nav>
+  </div>
 
   <!-- Viewport Content Area -->
   <main id="app-content">
@@ -50,6 +118,7 @@
       <!-- 1. HOME SECTION -->
       <div id="home" class="scroll-reveal">
         <section class="hero">
+          <canvas id="particle-canvas"></canvas>
           <div class="container hero-grid">
             <div class="hero-text">
               <span class="badge" id="hero-badge">Enterprise Intelligence</span>
@@ -164,7 +233,7 @@
               <p>Analyze how major operations groups deployed our solvers to balance processing pipelines and cut cloud overhead.</p>
             </div>
             
-            <div class="admin-list-container" id="portfolio-grid" style="gap: 32px;">
+            <div class="admin-list-container portfolio-grid" id="portfolio-grid">
               <!-- Portfolio case studies injected dynamically -->
             </div>
           </div>
@@ -218,17 +287,17 @@
             <div class="contact-grid">
               <!-- FAQ Search & Accordion -->
               <div>
-                <div class="form-group" style="margin-bottom: 32px;">
+                <div class="form-group faq-search-group">
                   <input type="text" id="faq-search-input" class="form-control" placeholder="🔍 Search FAQs (e.g. cloud, security, speed)...">
                 </div>
-                <div id="faq-accordions-container" style="display: flex; flex-direction: column; gap: 16px;">
+                <div id="faq-accordions-container" class="faq-accordion-wrapper">
                   <!-- FAQs injected dynamically -->
                 </div>
               </div>
               
               <!-- Support Ticket Form -->
               <div class="contact-form-panel glass-card">
-                <h3 style="font-family: var(--font-heading); font-size: 20px; margin-bottom: 24px;">Submit Support Ticket</h3>
+                <h3 class="panel-title">Submit Support Ticket</h3>
                 <form id="faq-ticket-form">
                   <div class="form-row">
                     <div class="form-group">
@@ -243,7 +312,7 @@
                   <div class="form-row">
                     <div class="form-group">
                       <label for="ticket-category">Category</label>
-                      <select id="ticket-category" name="category" class="form-control" style="background: var(--input-bg); height: 48px; border: 1px solid var(--input-border); color: var(--text-color); border-radius: 8px; width: 100%; outline: none; padding: 12px 16px;">
+                      <select id="ticket-category" name="category" class="form-select">
                         <option value="Technical">Technical Operations</option>
                         <option value="Billing">Billing & SLA</option>
                         <option value="Security">Security & Policy</option>
@@ -252,7 +321,7 @@
                     </div>
                     <div class="form-group">
                       <label for="ticket-priority">Priority</label>
-                      <select id="ticket-priority" name="priority" class="form-control" style="background: var(--input-bg); height: 48px; border: 1px solid var(--input-border); color: var(--text-color); border-radius: 8px; width: 100%; outline: none; padding: 12px 16px;">
+                      <select id="ticket-priority" name="priority" class="form-select">
                         <option value="Low">Low (Next Business Day)</option>
                         <option value="Medium" selected>Medium (Under 8 Hours)</option>
                         <option value="High">High (Under 2 Hours)</option>
@@ -276,10 +345,10 @@
                 </form>
                 
                 <!-- Support ticket success panel -->
-                <div id="ticket-success-panel" style="display: none; text-align: center; padding: 20px 0;">
+                <div id="ticket-success-panel" class="ticket-success" style="display: none;">
                   <div class="success-icon">✓</div>
                   <h3>Support Ticket Lodged</h3>
-                  <p style="color: var(--text-muted); margin-bottom: 20px;">Your ticket was logged. Live SLA response trackers are initialized.</p>
+                  <p class="careers-success-text">Your ticket was logged. Live SLA response trackers are initialized.</p>
                   <button type="button" class="btn btn-secondary" id="btn-ticket-done">Submit Another Ticket</button>
                 </div>
               </div>
@@ -295,18 +364,18 @@
             <div class="about-intro-grid">
               <div>
                 <span class="badge">Company Profile</span>
-                <h2 style="font-family: var(--font-heading); font-size: 38px; margin-bottom: 24px;">Re-inventing Corporate Operational Math</h2>
-                <p style="color: var(--text-muted); margin-bottom: 16px;">
+                <h2 class="about-heading">Re-inventing Corporate Operational Math</h2>
+                <p class="about-text">
                   NEXUS AI was founded by leading mathematical physicists and machine learning engineers to solve a structural business reality: modern businesses accumulate variables faster than teams can optimize them.
                 </p>
-                <p style="color: var(--text-muted);">
+                <p class="about-text" style="margin-bottom: 0;">
                   By deploying quantum-inspired simulation modeling with scalable neural transformers, we automate the core mathematical equations of resource allocation, routing paths, and server configurations.
                 </p>
               </div>
-              <div class="glass-card" style="padding: 40px; text-align: center;">
-                <h3 style="font-family: var(--font-heading); font-size: 24px; margin-bottom: 16px; color: var(--primary-color);">Global Standards</h3>
-                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Adhering strictly to federal cybersecurity sandboxing models and ethical AI directives.</p>
-                <div style="font-size: 40px;">🏅</div>
+              <div class="glass-card about-standards">
+                <h3 class="about-standards-title">Global Standards</h3>
+                <p class="about-standards-desc">Adhering strictly to federal cybersecurity sandboxing models and ethical AI directives.</p>
+                <div class="about-standards-icon">🏅</div>
               </div>
             </div>
 
@@ -857,9 +926,9 @@
 
   <!-- Modal overlays (service/careers/blog) outside scrolling content -->
   <!-- Service Modal -->
-  <div class="modal-overlay" id="service-modal">
+  <div class="modal-overlay" id="service-modal" role="dialog" aria-modal="true" aria-label="Service details">
     <div class="modal-card glass-card">
-      <button class="modal-close" id="modal-close">&times;</button>
+      <button class="modal-close" id="modal-close" aria-label="Close service details">&times;</button>
       <div class="modal-icon">⚙️</div>
       <span class="badge modal-category">AI</span>
       <h3 class="modal-title">Service Details</h3>
@@ -868,10 +937,10 @@
   </div>
 
   <!-- Careers Application Modal -->
-  <div class="modal-overlay" id="careers-modal">
-    <div class="modal-card glass-card" style="max-width: 580px;">
-      <button class="modal-close" id="careers-modal-close">&times;</button>
-      <h3 id="careers-job-title" style="font-family: var(--font-heading); font-size: 22px; margin-bottom: 24px;">Apply for: Role</h3>
+  <div class="modal-overlay" id="careers-modal" role="dialog" aria-modal="true" aria-label="Job application">
+    <div class="modal-card modal-careers-card glass-card">
+      <button class="modal-close" id="careers-modal-close" aria-label="Close application form">&times;</button>
+      <h3 id="careers-job-title" class="modal-careers-title">Apply for: Role</h3>
       <input type="hidden" id="careers-job-id">
       <form id="careers-apply-form">
         <div class="form-row">
@@ -901,29 +970,29 @@
         </div>
       </form>
       <!-- Career Application Success -->
-      <div id="careers-success-panel" style="display: none; text-align: center; padding: 20px 0;">
+      <div id="careers-success-panel" class="careers-success" style="display: none;" aria-live="polite">
         <div class="success-icon">✓</div>
         <h3>Application Submitted</h3>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">Your application has been received. Our talent team will review and respond within 48 hours.</p>
+        <p class="careers-success-text">Your application has been received. Our talent team will review and respond within 48 hours.</p>
         <button type="button" class="btn btn-secondary" id="btn-careers-done">Close</button>
       </div>
     </div>
   </div>
 
   <!-- Blog Post Reader Modal -->
-  <div class="modal-overlay" id="blog-modal">
-    <div class="modal-card glass-card" style="max-width: 700px; max-height: 80vh; overflow-y: auto;">
-      <button class="modal-close" id="blog-modal-close">&times;</button>
+  <div class="modal-overlay" id="blog-modal" role="dialog" aria-modal="true" aria-label="Blog article">
+    <div class="modal-card modal-blog-card glass-card">
+      <button class="modal-close" id="blog-modal-close" aria-label="Close article">&times;</button>
       <span class="badge" id="blog-modal-category">Category</span>
-      <h3 id="blog-modal-title" style="font-family: var(--font-heading); font-size: 28px; margin: 16px 0 8px;">Article Title</h3>
-      <p id="blog-modal-meta" style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">By Author | Date</p>
-      <div id="blog-modal-content" style="color: var(--text-muted); font-size: 15px; line-height: 1.8; white-space: pre-wrap; margin-bottom: 32px;">
+      <h3 id="blog-modal-title" class="modal-blog-title">Article Title</h3>
+      <p id="blog-modal-meta" class="modal-blog-meta">By Author | Date</p>
+      <div id="blog-modal-content" class="modal-blog-content">
         Content loading...
       </div>
       <!-- Comments Section -->
-      <div style="border-top: 1px solid var(--card-border); padding-top: 24px;">
-        <h4 style="font-family: var(--font-heading); font-size: 18px; margin-bottom: 16px;">💬 Discussion</h4>
-        <div id="blog-comments-list" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+      <div class="modal-comments-section">
+        <h4 class="modal-comments-heading">💬 Discussion</h4>
+        <div id="blog-comments-list" class="modal-comments-list">
           <!-- Comments rendered dynamically -->
         </div>
         <form id="blog-comment-form">

@@ -1,5 +1,12 @@
 // LocalStorage State Manager
 const Store = {
+  // XSS Protection: Sanitize user-generated content before rendering
+  escapeHTML(str) {
+    if (typeof str !== 'string') return str;
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return str.replace(/[&<>"']/g, ch => map[ch]);
+  },
+
   configKey: 'nexus_site_config',
   configVersion: 'nexus_config_v',
   currentVersion: 4, // Bump this when config structure changes

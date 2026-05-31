@@ -832,32 +832,41 @@ const AdminPanel = {
 
     inboxContainer.innerHTML = `
       <div class="inbox-list">
-        ${inquiries.map(inq => `
-          <div class="inbox-card glass-card">
-            <div class="inbox-header">
-              <div class="inbox-meta">
-                <strong>Sender:</strong> ${inq.name || 'Anonymous'} (${inq.email || 'No email'})<br>
-                <strong>Company:</strong> ${inq.company || 'N/A'} &nbsp;|&nbsp; 
-                <strong>Budget:</strong> ${inq.budget || 'N/A'}
+        ${inquiries.map(inq => {
+          const escName = window.Store.escapeHTML(inq.name || 'Anonymous');
+          const escEmail = window.Store.escapeHTML(inq.email || 'No email');
+          const escCompany = window.Store.escapeHTML(inq.company || 'N/A');
+          const escBudget = window.Store.escapeHTML(inq.budget || 'N/A');
+          const escDate = window.Store.escapeHTML(inq.date || '');
+          const escSubject = window.Store.escapeHTML(inq.subject || 'No Subject');
+          const escMessage = window.Store.escapeHTML(inq.message || 'No message content.');
+          return `
+            <div class="inbox-card glass-card">
+              <div class="inbox-header">
+                <div class="inbox-meta">
+                  <strong>Sender:</strong> ${escName} (${escEmail})<br>
+                  <strong>Company:</strong> ${escCompany} &nbsp;|&nbsp; 
+                  <strong>Budget:</strong> ${escBudget}
+                </div>
+                <div class="inbox-meta" style="text-align: right;">
+                  ${escDate}
+                </div>
               </div>
-              <div class="inbox-meta" style="text-align: right;">
-                ${inq.date}
+              <div class="inbox-subject">Subject: ${escSubject}</div>
+              <div class="inbox-body">${escMessage}</div>
+              <div class="inbox-actions">
+                <button class="btn-icon btn-del-inq" data-id="${inq.id}" title="Delete Message">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                  </svg>
+                </button>
               </div>
             </div>
-            <div class="inbox-subject">Subject: ${inq.subject || 'No Subject'}</div>
-            <div class="inbox-body">${inq.message || 'No message content.'}</div>
-            <div class="inbox-actions">
-              <button class="btn-icon btn-del-inq" data-id="${inq.id}" title="Delete Message">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3 6 5 6 21 6"></polyline>
-                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                  <line x1="10" y1="11" x2="10" y2="17"></line>
-                  <line x1="14" y1="11" x2="14" y2="17"></line>
-                </svg>
-              </button>
-            </div>
-          </div>
-        `).join('')}
+          `;
+        }).join('')}
       </div>
     `;
 
@@ -1032,32 +1041,40 @@ const AdminPanel = {
 
     container.innerHTML = `
       <div class="inbox-list">
-        ${apps.map(app => `
-          <div class="inbox-card glass-card">
-            <div class="inbox-header">
-              <div class="inbox-meta">
-                <strong>Applicant:</strong> ${app.name} (${app.email})<br>
-                <strong>Applying for:</strong> <span style="color: var(--primary-color); font-weight: 700;">${app.jobTitle}</span> &bull; 
-                <strong>Resume Link:</strong> <a href="${app.resume}" target="_blank" style="color: var(--primary-color);">${app.resume}</a>
+        ${apps.map(app => {
+          const escName = window.Store.escapeHTML(app.name || 'Anonymous');
+          const escEmail = window.Store.escapeHTML(app.email || '');
+          const escJobTitle = window.Store.escapeHTML(app.jobTitle || '');
+          const escResume = window.Store.escapeHTML(app.resume || '');
+          const escDate = window.Store.escapeHTML(app.date || '');
+          const escMessage = window.Store.escapeHTML(app.message || 'No cover letter provided.');
+          return `
+            <div class="inbox-card glass-card">
+              <div class="inbox-header">
+                <div class="inbox-meta">
+                  <strong>Applicant:</strong> ${escName} (${escEmail})<br>
+                  <strong>Applying for:</strong> <span style="color: var(--primary-color); font-weight: 700;">${escJobTitle}</span> &bull; 
+                  <strong>Resume Link:</strong> <a href="${escResume}" target="_blank" style="color: var(--primary-color);">${escResume}</a>
+                </div>
+                <div class="inbox-meta" style="text-align: right;">
+                  ${escDate}
+                </div>
               </div>
-              <div class="inbox-meta" style="text-align: right;">
-                ${app.date}
+              <div class="inbox-subject">Cover Letter / Interest Statement:</div>
+              <div class="inbox-body">${escMessage}</div>
+              <div class="inbox-actions">
+                <button class="btn-icon btn-del-app" data-id="${app.id}" title="Delete Application">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                  </svg>
+                </button>
               </div>
             </div>
-            <div class="inbox-subject">Cover Letter / Interest Statement:</div>
-            <div class="inbox-body">${app.message}</div>
-            <div class="inbox-actions">
-              <button class="btn-icon btn-del-app" data-id="${app.id}" title="Delete Application">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3 6 5 6 21 6"></polyline>
-                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                  <line x1="10" y1="11" x2="10" y2="17"></line>
-                  <line x1="14" y1="11" x2="14" y2="17"></line>
-                </svg>
-              </button>
-            </div>
-          </div>
-        `).join('')}
+          `;
+        }).join('')}
       </div>
     `;
 
@@ -1100,32 +1117,41 @@ const AdminPanel = {
 
     container.innerHTML = `
       <div class="inbox-list">
-        ${tickets.map(t => `
-          <div class="inbox-card glass-card">
-            <div class="inbox-header">
-              <div class="inbox-meta">
-                <strong>Sender:</strong> ${t.name} (${t.email})<br>
-                <strong>Category:</strong> ${t.category} &nbsp;|&nbsp; 
-                <strong>Priority:</strong> <span style="color: ${priorityColors[t.priority] || 'var(--text-color)'}; font-weight: 800;">${t.priority}</span>
+        ${tickets.map(t => {
+          const escName = window.Store.escapeHTML(t.name || 'Anonymous');
+          const escEmail = window.Store.escapeHTML(t.email || '');
+          const escCategory = window.Store.escapeHTML(t.category || '');
+          const escPriority = window.Store.escapeHTML(t.priority || '');
+          const escDate = window.Store.escapeHTML(t.date || '');
+          const escSubject = window.Store.escapeHTML(t.subject || 'No Subject');
+          const escMessage = window.Store.escapeHTML(t.message || 'No message content.');
+          return `
+            <div class="inbox-card glass-card">
+              <div class="inbox-header">
+                <div class="inbox-meta">
+                  <strong>Sender:</strong> ${escName} (${escEmail})<br>
+                  <strong>Category:</strong> ${escCategory} &nbsp;|&nbsp; 
+                  <strong>Priority:</strong> <span style="color: ${priorityColors[escPriority] || 'var(--text-color)'}; font-weight: 800;">${escPriority}</span>
+                </div>
+                <div class="inbox-meta" style="text-align: right;">
+                  ${escDate}
+                </div>
               </div>
-              <div class="inbox-meta" style="text-align: right;">
-                ${t.date}
+              <div class="inbox-subject">Subject: ${escSubject}</div>
+              <div class="inbox-body">${escMessage}</div>
+              <div class="inbox-actions">
+                <button class="btn-icon btn-del-ticket" data-id="${t.id}" title="Delete Ticket">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                  </svg>
+                </button>
               </div>
             </div>
-            <div class="inbox-subject">Subject: ${t.subject}</div>
-            <div class="inbox-body">${t.message}</div>
-            <div class="inbox-actions">
-              <button class="btn-icon btn-del-ticket" data-id="${t.id}" title="Delete Ticket">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="3 6 5 6 21 6"></polyline>
-                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                  <line x1="10" y1="11" x2="10" y2="17"></line>
-                  <line x1="14" y1="11" x2="14" y2="17"></line>
-                </svg>
-              </button>
-            </div>
-          </div>
-        `).join('')}
+          `;
+        }).join('')}
       </div>
     `;
 

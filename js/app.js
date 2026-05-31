@@ -28,6 +28,15 @@ const App = {
 
     // 7. Initialize client-side router
     window.Router.init();
+
+    // 8. Initialize premium visual upgrades and interactivity
+    this.initParticles();
+    this.initCursorGlow();
+    this.initHeroTyping();
+    this.initMobileNav();
+    this.initNavbarScroll();
+    this.initModalA11y();
+    this.initTestimonialsTouch();
   },
 
   async fetchLiveConfig() {
@@ -274,7 +283,7 @@ const App = {
     const statsContainer = document.getElementById('stats-container');
     if (statsContainer) {
       statsContainer.innerHTML = this.config.stats.map((stat, i) => `
-        <div class="stat-item glass-card">
+        <div class="stat-item glass-card" data-delay="${i + 1}">
           <div class="stat-num" id="stat-num-${i}" data-val="${stat.value}" data-suffix="${stat.suffix}">0</div>
           <div class="stat-label">${stat.label}</div>
         </div>
@@ -284,12 +293,12 @@ const App = {
     const showcaseContainer = document.getElementById('showcase-container');
     if (showcaseContainer) {
       const highlights = this.config.services.slice(0, 3);
-      showcaseContainer.innerHTML = highlights.map(srv => {
+      showcaseContainer.innerHTML = highlights.map((srv, i) => {
         const iconOrImage = srv.imageUrl 
-          ? `<img src="${srv.imageUrl}" alt="${srv.title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />`
+          ? `<img src="${srv.imageUrl}" alt="${srv.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />`
           : srv.icon;
         return `
-          <div class="showcase-card glass-card">
+          <div class="showcase-card glass-card" data-delay="${i + 1}">
             <div class="showcase-icon">${iconOrImage}</div>
             <h3>${srv.title}</h3>
             <p>${srv.shortDesc}</p>
@@ -303,17 +312,21 @@ const App = {
       testimonialsContainer.innerHTML = this.config.testimonials.map(t => {
         let stars = '';
         for (let i = 0; i < t.rating; i++) stars += '★';
+        const escName = window.Store.escapeHTML(t.name);
+        const escPos = window.Store.escapeHTML(t.position);
+        const escQuote = window.Store.escapeHTML(t.quote);
+        const escAvatar = window.Store.escapeHTML(t.avatarUrl);
         return `
           <div class="testimonial-card glass-card">
             <div class="testimonial-header">
-              <img class="testimonial-avatar" src="${t.avatarUrl}" alt="${t.name}">
+              <img class="testimonial-avatar" src="${escAvatar}" alt="${escName}" loading="lazy">
               <div class="testimonial-info">
-                <h4>${t.name}</h4>
-                <p>${t.position}</p>
+                <h4>${escName}</h4>
+                <p>${escPos}</p>
               </div>
             </div>
             <div class="testimonial-stars">${stars}</div>
-            <p class="testimonial-quote">"${t.quote}"</p>
+            <p class="testimonial-quote">"${escQuote}"</p>
           </div>
         `;
       }).join('');
@@ -446,7 +459,7 @@ const App = {
 
     container.innerHTML = filtered.map(srv => {
       const iconOrImage = srv.imageUrl 
-        ? `<img src="${srv.imageUrl}" alt="${srv.title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />`
+        ? `<img src="${srv.imageUrl}" alt="${srv.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />`
         : srv.icon;
       return `
         <div class="service-card glass-card">
@@ -517,7 +530,7 @@ const App = {
       teamContainer.innerHTML = this.config.team.map(member => `
         <div class="team-card glass-card">
           <div class="team-avatar-container">
-            <img src="${member.avatarUrl}" alt="${member.name}">
+            <img src="${member.avatarUrl}" alt="${member.name}" loading="lazy">
           </div>
           <h4>${member.name}</h4>
           <p>${member.role}</p>
@@ -779,20 +792,28 @@ const App = {
       return;
     }
 
-    grid.innerHTML = blogs.map(post => `
-      <div class="service-card glass-card">
-        <span class="badge" style="margin-bottom: 12px;">${post.category}</span>
-        <h3 style="font-size: 20px; font-family: var(--font-heading); margin-bottom: 8px; line-height: 1.3;">${post.title}</h3>
-        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
-          By ${post.author} &bull; ${post.date}
+    grid.innerHTML = blogs.map(post => {
+      const escCat = window.Store.escapeHTML(post.category);
+      const escTitle = window.Store.escapeHTML(post.title);
+      const escAuthor = window.Store.escapeHTML(post.author);
+      const escDate = window.Store.escapeHTML(post.date);
+      const escSummary = window.Store.escapeHTML(post.summary);
+      const escId = window.Store.escapeHTML(post.id);
+      return `
+        <div class="service-card glass-card">
+          <span class="badge" style="margin-bottom: 12px;">${escCat}</span>
+          <h3 style="font-size: 20px; font-family: var(--font-heading); margin-bottom: 8px; line-height: 1.3;">${escTitle}</h3>
+          <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
+            By ${escAuthor} &bull; ${escDate}
+          </div>
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px; flex-grow: 1;">${escSummary}</p>
+          <span class="service-learn-more btn-read-blog" data-id="${escId}">
+            Read Insights 
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
         </div>
-        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px; flex-grow: 1;">${post.summary}</p>
-        <span class="service-learn-more btn-read-blog" data-id="${post.id}">
-          Read Insights 
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span>
-      </div>
-    `).join('');
+      `;
+    }).join('');
 
     const modal = document.getElementById('blog-modal');
     const closeBtn = document.getElementById('blog-modal-close');
@@ -866,15 +887,20 @@ const App = {
       return;
     }
 
-    container.innerHTML = comments.map(c => `
-      <div style="background: var(--subtle-bg); border: 1px solid var(--card-border); padding: 16px; border-radius: 8px;">
-        <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; margin-bottom: 8px;">
-          <span>👤 ${c.author}</span>
-          <span style="color: var(--text-muted);">${c.date}</span>
+    container.innerHTML = comments.map(c => {
+      const escAuthor = window.Store.escapeHTML(c.author);
+      const escDate = window.Store.escapeHTML(c.date);
+      const escText = window.Store.escapeHTML(c.text);
+      return `
+        <div style="background: var(--subtle-bg); border: 1px solid var(--card-border); padding: 16px; border-radius: 8px;">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; margin-bottom: 8px;">
+            <span>👤 ${escAuthor}</span>
+            <span style="color: var(--text-muted);">${escDate}</span>
+          </div>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; white-space: pre-wrap;">${escText}</p>
         </div>
-        <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; white-space: pre-wrap;">${c.text}</p>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   },
 
   // ==================== FAQ PAGE ====================
@@ -906,11 +932,11 @@ const App = {
 
       accordionContainer.innerHTML = filtered.map((faq, index) => `
         <div class="glass-card faq-accordion-item" style="overflow: hidden;">
-          <div class="faq-header" style="padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; border-bottom: 1px solid transparent; transition: var(--transition-fast);" data-index="${index}">
+          <div class="faq-header" role="button" aria-expanded="false" aria-controls="faq-body-${index}" style="padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; border-bottom: 1px solid transparent; transition: var(--transition-fast);" data-index="${index}">
             <span>${faq.question}</span>
             <span class="faq-arrow" style="transition: transform 0.3s; font-size: 12px;">▼</span>
           </div>
-          <div class="faq-body" style="padding: 0 24px; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s, opacity 0.3s;">
+          <div id="faq-body-${index}" class="faq-body" role="region" aria-label="${faq.question}" style="padding: 0 24px; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s, opacity 0.3s;">
             <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6; padding-bottom: 20px;">${faq.answer}</p>
           </div>
         </div>
@@ -926,6 +952,8 @@ const App = {
 
           accordionContainer.querySelectorAll('.faq-accordion-item').forEach(otherItem => {
             otherItem.classList.remove('active');
+            const otherHeader = otherItem.querySelector('.faq-header');
+            if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
             otherItem.querySelector('.faq-body').style.maxHeight = '0';
             otherItem.querySelector('.faq-body').style.opacity = '0';
             otherItem.querySelector('.faq-body').style.padding = '0 24px';
@@ -935,6 +963,7 @@ const App = {
 
           if (!isActive) {
             item.classList.add('active');
+            header.setAttribute('aria-expanded', 'true');
             body.style.maxHeight = body.scrollHeight + 20 + 'px';
             body.style.opacity = '1';
             body.style.padding = '12px 24px 20px 24px';
@@ -1139,6 +1168,273 @@ const App = {
         const group = input.closest('.form-group');
         group.classList.remove('invalid');
       });
+    });
+  },
+
+  // ==================== PREMIUM UPGRADES ====================
+
+  initParticles() {
+    const canvas = document.getElementById('particle-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    let width = 0;
+    let height = 0;
+    let particles = [];
+    
+    const maxParticles = 60;
+    const maxDistance = 100;
+    
+    const resizeCanvas = () => {
+      const parent = canvas.parentElement;
+      width = canvas.width = parent.clientWidth;
+      height = canvas.height = parent.clientHeight;
+    };
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    for (let i = 0; i < maxParticles; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 2 + 1
+      });
+    }
+    
+    let isVisible = true;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isVisible = entry.isIntersecting;
+      });
+    });
+    observer.observe(canvas);
+    
+    const animate = () => {
+      if (!isVisible) {
+        requestAnimationFrame(animate);
+        return;
+      }
+      
+      ctx.clearRect(0, 0, width, height);
+      
+      const isDark = !document.body.classList.contains('light-mode');
+      const particleColor = isDark ? 'rgba(0, 242, 254, 0.4)' : 'rgba(8, 145, 178, 0.25)';
+      const lineColor = isDark ? 'rgba(0, 242, 254, 0.08)' : 'rgba(8, 145, 178, 0.05)';
+      
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        
+        if (p.x < 0 || p.x > width) p.vx = -p.vx;
+        if (p.y < 0 || p.y > height) p.vy = -p.vy;
+        
+        ctx.fillStyle = particleColor;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      
+      for (let i = 0; i < particles.length; i++) {
+        const p1 = particles[i];
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+          if (dist < maxDistance) {
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      }
+      
+      requestAnimationFrame(animate);
+    };
+    
+    requestAnimationFrame(animate);
+  },
+
+  initCursorGlow() {
+    const glow = document.getElementById('cursor-glow');
+    if (!glow) return;
+
+    document.addEventListener('mousemove', (e) => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+
+    document.addEventListener('mouseenter', () => {
+      glow.style.opacity = '1';
+    });
+
+    document.addEventListener('mouseleave', () => {
+      glow.style.opacity = '0';
+    });
+  },
+
+  initHeroTyping() {
+    const titleEl = document.getElementById('hero-title');
+    if (!titleEl) return;
+    const text = this.config.hero.title || "Automate Decisions. Maximize ROI.";
+    titleEl.innerHTML = '';
+    
+    let index = 0;
+    const type = () => {
+      if (index <= text.length) {
+        titleEl.innerHTML = text.slice(0, index) + '<span class="hero-typing-cursor"></span>';
+        index++;
+        setTimeout(type, 80 + Math.random() * 40);
+      }
+    };
+    type();
+  },
+
+  initMobileNav() {
+    const hamburger = document.getElementById('hamburger-btn');
+    const overlay = document.getElementById('mobile-nav-overlay');
+    const backdrop = document.getElementById('mobile-nav-backdrop');
+    const links = document.querySelectorAll('.mobile-nav-link');
+    if (!hamburger || !overlay) return;
+
+    const closeMenu = () => {
+      hamburger.classList.remove('active');
+      overlay.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('active');
+      overlay.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    if (backdrop) backdrop.addEventListener('click', closeMenu);
+    links.forEach(link => link.addEventListener('click', closeMenu));
+  },
+
+  initNavbarScroll() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    let scrollScheduled = false;
+    const checkScroll = () => {
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      scrollScheduled = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!scrollScheduled) {
+        scrollScheduled = true;
+        requestAnimationFrame(checkScroll);
+      }
+    }, { passive: true });
+    
+    checkScroll();
+  },
+
+  initModalA11y() {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const activeModal = document.querySelector('.modal-overlay.active');
+        if (activeModal) {
+          const closeBtn = activeModal.querySelector('.modal-close');
+          if (closeBtn) closeBtn.click();
+        }
+      }
+    });
+
+    const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    
+    const trapFocus = (e, modal) => {
+      if (e.key !== 'Tab') return;
+
+      const focusables = modal.querySelectorAll(focusableSelectors);
+      if (focusables.length === 0) return;
+
+      const firstFocusable = focusables[0];
+      const lastFocusable = focusables[focusables.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusable) {
+          lastFocusable.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastFocusable) {
+          firstFocusable.focus();
+          e.preventDefault();
+        }
+      }
+    };
+
+    const modals = document.querySelectorAll('.modal-overlay');
+    modals.forEach(modal => {
+      modal.addEventListener('keydown', (e) => trapFocus(e, modal));
+      
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach(mutation => {
+          if (mutation.attributeName === 'class') {
+            const isActive = modal.classList.contains('active');
+            if (isActive) {
+              modal._lastActiveElement = document.activeElement;
+              const focusables = modal.querySelectorAll(focusableSelectors);
+              if (focusables.length > 0) {
+                const closeBtn = modal.querySelector('.modal-close') || focusables[0];
+                setTimeout(() => closeBtn.focus(), 50);
+              }
+            } else {
+              if (modal._lastActiveElement && modal._lastActiveElement.focus) {
+                modal._lastActiveElement.focus();
+              }
+            }
+          }
+        });
+      });
+      observer.observe(modal, { attributes: true });
+    });
+  },
+
+  initTestimonialsTouch() {
+    const track = document.getElementById('testimonials-track');
+    if (!track) return;
+
+    let startX = 0;
+    let isSwiping = false;
+
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      isSwiping = true;
+    }, { passive: true });
+
+    track.addEventListener('touchmove', (e) => {
+      if (!isSwiping) return;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      if (!isSwiping) return;
+      isSwiping = false;
+      const endX = e.changedTouches[0].clientX;
+      const diffX = startX - endX;
+      const numTestimonials = this.config.testimonials.length;
+
+      if (diffX > 50) {
+        const nextIndex = Math.min(this.currentSlide + 1, numTestimonials - 1);
+        this.slideCarousel(nextIndex);
+      } else if (diffX < -50) {
+        const prevIndex = Math.max(this.currentSlide - 1, 0);
+        this.slideCarousel(prevIndex);
+      }
     });
   }
 };
