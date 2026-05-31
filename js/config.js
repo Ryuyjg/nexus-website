@@ -138,7 +138,7 @@ const DEFAULT_CONFIG = {
     tiers: [
       {
         name: 'Hot Desk',
-        price: '299',
+        price: '4,999',
         features: [
           'Access to all open lounges',
           'High-speed secure Wi-Fi',
@@ -149,7 +149,7 @@ const DEFAULT_CONFIG = {
       },
       {
         name: 'Dedicated Desk',
-        price: '499',
+        price: '8,499',
         featured: true,
         features: [
           'Your own permanent desk',
@@ -207,7 +207,7 @@ const DEFAULT_CONFIG = {
       challenge: 'Needed a fully managed, branded 50-person office in downtown Kuttiady within 45 days without standard 5-year lease commitments.',
       solution: 'Lumina designed and built an Enterprise Suite with custom glass partitioning and dedicated IT infrastructure in just 30 days.',
       efficiencyBoost: 'Zero Overhead',
-      annualSavings: '$250k CapEx',
+      annualSavings: '₹20 Lakhs CapEx',
       logoChar: 'T'
     },
     {

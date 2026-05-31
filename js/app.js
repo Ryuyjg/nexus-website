@@ -553,7 +553,7 @@ const App = {
     grid.innerHTML = this.config.pricing.tiers.map((tier, i) => {
       const isFeatured = tier.featured === true;
       const isContact = tier.price === 'Contact Us';
-      const formattedPrice = isContact ? tier.price : `$${tier.price}`;
+      const formattedPrice = isContact ? tier.price : `₹${tier.price}`;
       const priceSub = isContact ? '' : '<span>/mo</span>';
       
       return `
@@ -574,27 +574,26 @@ const App = {
   initRoiCalculator() {
     const empInput = document.getElementById('employees-input');
     const dataInput = document.getElementById('data-input');
-    const secInput = document.getElementById('security-input');
 
-    if (!empInput || !dataInput || !secInput) return;
+    if (!empInput || !dataInput) return;
 
     const updateCalc = () => {
       const employees = parseInt(empInput.value);
       const data = parseInt(dataInput.value);
-      const security = parseInt(secInput.value);
 
       document.getElementById('employees-val').textContent = employees.toLocaleString();
       document.getElementById('data-val').textContent = data + ' Hrs';
-      document.getElementById('security-val').textContent = 'Tier ' + security;
 
-      const annualSavings = (employees * 5000) + (data * 150) + (security * 12000);
-      const efficiencyVal = Math.min(50 + (employees / 20) + (security * 5), 99).toFixed(0);
+      const annualSavings = (employees * 48000) + (data * 18000);
+      const efficiencyVal = Math.min(65 + (employees / 20), 99).toFixed(0);
 
       let savingsText = '';
-      if (annualSavings >= 1000000) {
-        savingsText = `$${(annualSavings / 1000000).toFixed(2)}M`;
+      if (annualSavings >= 10000000) {
+        savingsText = `₹${(annualSavings / 10000000).toFixed(2)} Cr`;
+      } else if (annualSavings >= 100000) {
+        savingsText = `₹${(annualSavings / 100000).toFixed(2)} Lakhs`;
       } else {
-        savingsText = `$${annualSavings.toLocaleString()}`;
+        savingsText = `₹${annualSavings.toLocaleString('en-IN')}`;
       }
 
       document.getElementById('savings-result').textContent = savingsText;
@@ -609,9 +608,9 @@ const App = {
         enterpriseCard.classList.remove('featured');
         customCard.classList.remove('featured');
 
-        if (employees > 200 || security > 3) {
+        if (employees > 200) {
           customCard.classList.add('featured');
-        } else if (employees > 20 || security > 1) {
+        } else if (employees > 20) {
           enterpriseCard.classList.add('featured');
         } else {
           starterCard.classList.add('featured');
@@ -621,7 +620,6 @@ const App = {
 
     empInput.addEventListener('input', updateCalc);
     dataInput.addEventListener('input', updateCalc);
-    secInput.addEventListener('input', updateCalc);
 
     updateCalc();
   },
