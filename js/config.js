@@ -178,7 +178,7 @@ const DEFAULT_CONFIG = {
       id: 'job-1',
       title: 'Community Manager',
       department: 'Operations',
-      location: 'New York, NY',
+      location: 'Kuttiady, Kerala',
       type: 'Full-Time',
       requirements: '3+ years in hospitality or coworking management. Excellent interpersonal skills and a passion for building vibrant professional communities.'
     },
@@ -186,7 +186,7 @@ const DEFAULT_CONFIG = {
       id: 'job-2',
       title: 'Enterprise Sales Director',
       department: 'Sales',
-      location: 'London, UK',
+      location: 'Kuttiady, Kerala',
       type: 'Full-Time',
       requirements: 'Proven track record in commercial real estate or B2B enterprise sales. Ability to close high-value multi-year suite leases.'
     },
@@ -194,7 +194,7 @@ const DEFAULT_CONFIG = {
       id: 'job-3',
       title: 'Facilities Technician',
       department: 'Facilities',
-      location: 'Austin, TX',
+      location: 'Kuttiady, Kerala',
       type: 'Full-Time',
       requirements: 'Experience maintaining HVAC, access control systems, and general building repairs. Responsive and detail-oriented.'
     }
@@ -203,7 +203,7 @@ const DEFAULT_CONFIG = {
     {
       company: 'TechNova Solutions',
       industry: 'Software Development',
-      challenge: 'Needed a fully managed, branded 50-person office in downtown Manhattan within 45 days without standard 5-year lease commitments.',
+      challenge: 'Needed a fully managed, branded 50-person office in downtown Kuttiady within 45 days without standard 5-year lease commitments.',
       solution: 'Lumina designed and built an Enterprise Suite with custom glass partitioning and dedicated IT infrastructure in just 30 days.',
       efficiencyBoost: 'Zero Overhead',
       annualSavings: '$250k CapEx',
