@@ -150,15 +150,15 @@ const App = {
     this.renderHome();
     this.initHomeAnimations();
     this.renderServices();
+    this.renderFloorMap();
     this.renderPortfolio();
     this.renderBlog();
     this.renderCareers();
-    this.renderFaq();
+    this.renderGallery();
     this.renderAbout();
     this.renderPricing();
-    this.initRoiCalculator();
     this.initContactForm();
-    this.renderSystemStatus();
+    this.renderFaqAccordion();
   },
 
   // ==================== SCROLL SYSTEM & OBSERVERS ====================
@@ -1167,6 +1167,265 @@ const App = {
         group.classList.remove('invalid');
       });
     });
+  },
+
+  // ==================== INTERACTIVE FLOOR MAP ====================
+  renderFloorMap() {
+    const svg = document.getElementById('floor-map-svg');
+    const infoPanel = document.getElementById('map-selection-details');
+    const defaultPanel = document.getElementById('map-selection-default');
+    
+    if (!svg || !infoPanel || !defaultPanel) return;
+
+    const spaces = {
+      'cabin-1': {
+        name: 'Private Cabin 1',
+        type: 'Private Office Suite',
+        rate: '₹18,000 / mo',
+        status: 'Available',
+        desc: 'Fully furnished acoustically soundproofed cabin for up to 4 desks. Includes sit-stand wood tables and Herman Miller chairs.'
+      },
+      'cabin-2': {
+        name: 'Private Cabin 2',
+        type: 'Private Office Suite',
+        rate: '₹18,000 / mo',
+        status: 'Occupied',
+        desc: 'Currently leased by a local startup team. Join our waitlist or reserve Cabin 1.'
+      },
+      'meeting-room': {
+        name: 'Executive Meeting Room',
+        type: 'Conference Space',
+        rate: '₹1,500 / hr',
+        status: 'Available',
+        desc: 'Equipped with dual 4K screen displays, Zoom Room array, wireless casting, and modular whiteboard setups.'
+      },
+      'desk-d1': { name: 'Dedicated Desk D1', type: 'Dedicated Desk', rate: '₹8,499 / mo', status: 'Available', desc: 'Premium ergonomic permanent desk in our beautiful open plan workspace area. Includes personal locker.' },
+      'desk-d2': { name: 'Dedicated Desk D2', type: 'Dedicated Desk', rate: '₹8,499 / mo', status: 'Occupied', desc: 'Currently occupied by a resident builder.' },
+      'desk-d3': { name: 'Dedicated Desk D3', type: 'Dedicated Desk', rate: '₹8,499 / mo', status: 'Available', desc: 'Premium ergonomic permanent desk in our beautiful open plan workspace area. Includes personal locker.' },
+      'desk-d4': { name: 'Dedicated Desk D4', type: 'Dedicated Desk', rate: '₹8,499 / mo', status: 'Available', desc: 'Premium ergonomic permanent desk in our beautiful open plan workspace area. Includes personal locker.' },
+      'desk-d5': { name: 'Dedicated Desk D5', type: 'Dedicated Desk', rate: '₹8,499 / mo', status: 'Available', desc: 'Premium ergonomic permanent desk in our beautiful open plan workspace area. Includes personal locker.' },
+      'desk-d6': { name: 'Dedicated Desk D6', type: 'Dedicated Desk', rate: '₹8,499 / mo', status: 'Available', desc: 'Premium ergonomic permanent desk in our beautiful open plan workspace area. Includes personal locker.' },
+      'desk-d7': { name: 'Dedicated Desk D7', type: 'Dedicated Desk', rate: '₹8,499 / mo', status: 'Occupied', desc: 'Currently occupied by a resident builder.' },
+      'desk-d8': { name: 'Dedicated Desk D8', type: 'Dedicated Desk', rate: '₹8,499 / mo', status: 'Available', desc: 'Premium ergonomic permanent desk in our beautiful open plan workspace area. Includes personal locker.' },
+      'desk-d9': { name: 'Dedicated Desk D9', type: 'Dedicated Desk', rate: '₹8,499 / mo', status: 'Available', desc: 'Premium ergonomic permanent desk in our beautiful open plan workspace area. Includes personal locker.' },
+      'desk-d10': { name: 'Dedicated Desk D10', type: 'Dedicated Desk', rate: '₹8,499 / mo', status: 'Available', desc: 'Premium ergonomic permanent desk in our beautiful open plan workspace area. Includes personal locker.' },
+      'desk-d11': { name: 'Mini Lounge A', type: 'Semi-Private Lounge', rate: '₹12,000 / mo', status: 'Available', desc: 'A semi-private lounge alcove for informal collabs, comfortable sofa seats.' }
+    };
+
+    let selectedSpaceId = null;
+
+    const selectSpace = (element, id) => {
+      // Clear previous selections
+      svg.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+      
+      const space = spaces[id];
+      if (!space) return;
+
+      selectedSpaceId = id;
+
+      // Highlight element
+      const childRect = element.querySelector('rect');
+      if (childRect) childRect.classList.add('selected');
+
+      // Update Panel Info
+      document.getElementById('selected-space-name').textContent = space.name;
+      document.getElementById('selected-space-type').textContent = space.type;
+      document.getElementById('selected-space-rate').textContent = space.rate;
+      
+      const statusEl = document.getElementById('selected-space-status');
+      statusEl.textContent = space.status;
+      statusEl.className = 'details-value ' + space.status.toLowerCase();
+
+      document.getElementById('selected-space-desc').textContent = space.desc;
+
+      // Handle Reservation Button State
+      const bookBtn = document.getElementById('book-selected-space-btn');
+      if (space.status === 'Occupied') {
+        bookBtn.disabled = true;
+        bookBtn.textContent = 'Space Occupied';
+      } else {
+        bookBtn.disabled = false;
+        bookBtn.textContent = 'Reserve ' + space.name;
+      }
+
+      defaultPanel.style.display = 'none';
+      infoPanel.style.display = 'block';
+    };
+
+    // Listeners for Rooms and Desks
+    svg.querySelectorAll('.map-room, .map-desk').forEach(item => {
+      const id = item.getAttribute('data-id');
+      item.addEventListener('click', () => selectSpace(item, id));
+    });
+
+    // Book Button listener
+    document.getElementById('book-selected-space-btn').addEventListener('click', () => {
+      if (!selectedSpaceId) return;
+      const space = spaces[selectedSpaceId];
+      if (!space || space.status === 'Occupied') return;
+
+      const subjectInput = document.getElementById('contact-subject');
+      const messageInput = document.getElementById('contact-message');
+      
+      if (subjectInput) subjectInput.value = `Booking Reservation: ${space.name}`;
+      if (messageInput) messageInput.value = `Hello, I would like to book the ${space.name} (${space.type}) at Lumina Kuttiady. Please verify its availability for my team.`;
+
+      // Smooth scroll to contact
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+        
+        // Add a temporary glow to draw focus
+        const formPanel = contactSection.querySelector('.contact-form-panel');
+        if (formPanel) {
+          formPanel.style.transition = 'all 0.5s ease';
+          formPanel.style.borderColor = 'var(--primary-color)';
+          formPanel.style.boxShadow = '0 0 25px rgba(var(--primary-color-rgb), 0.3)';
+          
+          setTimeout(() => {
+            formPanel.style.borderColor = 'var(--card-border)';
+            formPanel.style.boxShadow = 'none';
+          }, 2000);
+        }
+      }
+    });
+  },
+
+  // ==================== WORKSPACE GALLERY & LIGHTBOX ====================
+  renderGallery() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+    const lightbox = document.getElementById('gallery-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeBtn = document.querySelector('.lightbox-close');
+    const prevBtn = document.querySelector('.lightbox-prev');
+    const nextBtn = document.querySelector('.lightbox-next');
+
+    if (!galleryItems.length || !lightbox) return;
+
+    let activeFilter = 'all';
+    let currentImageIndex = 0;
+    let visibleItems = Array.from(galleryItems);
+
+    // 1. Filtering Logic
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        activeFilter = btn.getAttribute('data-filter');
+        visibleItems = [];
+
+        galleryItems.forEach(item => {
+          const category = item.getAttribute('data-category');
+          if (activeFilter === 'all' || category === activeFilter) {
+            item.style.display = 'block';
+            visibleItems.push(item);
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 2. Lightbox Open
+    const openLightbox = (index) => {
+      currentImageIndex = index;
+      const item = visibleItems[index];
+      const img = item.querySelector('img');
+      const title = item.querySelector('h4').textContent;
+      const desc = item.querySelector('p').textContent;
+
+      lightboxImg.src = img.src;
+      lightboxCaption.innerHTML = `<h4>${title}</h4><p>${desc}</p>`;
+      lightbox.classList.add('active');
+    };
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const index = visibleItems.indexOf(item);
+        if (index !== -1) openLightbox(index);
+      });
+    });
+
+    // 3. Navigation inside Lightbox
+    const showNext = () => {
+      let nextIndex = currentImageIndex + 1;
+      if (nextIndex >= visibleItems.length) nextIndex = 0;
+      openLightbox(nextIndex);
+    };
+
+    const showPrev = () => {
+      let prevIndex = currentImageIndex - 1;
+      if (prevIndex < 0) prevIndex = visibleItems.length - 1;
+      openLightbox(prevIndex);
+    };
+
+    if (closeBtn) closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+    if (nextBtn) nextBtn.addEventListener('click', showNext);
+    if (prevBtn) prevBtn.addEventListener('click', showPrev);
+
+    // Close on click outside content
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+
+    // Key board navigation support
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
+  },
+
+  // ==================== FAQ ACCORDION & SEARCH ====================
+  renderFaqAccordion() {
+    const faqCards = document.querySelectorAll('.faq-card');
+    const searchInput = document.getElementById('faq-search-input');
+
+    if (!faqCards.length) return;
+
+    // 1. Accordion Toggle
+    faqCards.forEach(card => {
+      const header = card.querySelector('.faq-header');
+      const body = card.querySelector('.faq-body');
+      const icon = card.querySelector('.faq-icon');
+
+      header.addEventListener('click', () => {
+        const isActive = card.classList.contains('active');
+        
+        // Close others
+        faqCards.forEach(c => {
+          c.classList.remove('active');
+          c.querySelector('.faq-icon').innerHTML = '&#43;';
+        });
+
+        if (!isActive) {
+          card.classList.add('active');
+          icon.innerHTML = '&minus;';
+        }
+      });
+    });
+
+    // 2. FAQ search filter logic
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase().trim();
+
+        faqCards.forEach(card => {
+          const question = card.querySelector('h3').textContent.toLowerCase();
+          const answer = card.querySelector('.faq-body p').textContent.toLowerCase();
+
+          if (question.includes(query) || answer.includes(query)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    }
   },
 
   // ==================== PREMIUM UPGRADES ====================

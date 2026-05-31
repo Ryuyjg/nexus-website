@@ -45,8 +45,8 @@
   }
   </script>
 
-  <link rel="stylesheet" href="css/variables.css?v=10">
-  <link rel="stylesheet" href="css/styles.css?v=10">
+  <link rel="stylesheet" href="css/variables.css?v=11">
+  <link rel="stylesheet" href="css/styles.css?v=11">
 </head>
 <body>
   <!-- Skip-to-Content Link (Accessibility) -->
@@ -238,6 +238,149 @@
         </section>
       </div>
 
+      <!-- 2.5 FLOOR MAP SECTION -->
+      <div id="floor-map-section" class="scroll-reveal">
+        <section>
+          <div class="container">
+            <div class="section-header">
+              <span class="badge">Interactive Seat Map</span>
+              <h2>Explore Our Floor Layout</h2>
+              <p>Click on any available desk, cabin, or meeting room to reserve your spot instantly.</p>
+            </div>
+            
+            <div class="map-layout-grid">
+              <!-- Map Visualization -->
+              <div class="map-visual-panel glass-card">
+                <div class="map-header">
+                  <div class="map-title-row">
+                    <span class="map-office-label">Lumina Kuttiady Floor Plan</span>
+                    <div class="map-legends">
+                      <span class="legend-item"><span class="legend-dot available"></span> Available</span>
+                      <span class="legend-item"><span class="legend-dot occupied"></span> Occupied</span>
+                      <span class="legend-item"><span class="legend-dot selected"></span> Selected</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="map-svg-container">
+                  <svg id="floor-map-svg" viewBox="0 0 800 500" width="100%" height="100%">
+                    <!-- Walls & Rooms Outline -->
+                    <rect x="10" y="10" width="780" height="480" rx="12" fill="none" stroke="var(--card-border)" stroke-width="3" />
+                    
+                    <!-- Reception Area -->
+                    <rect x="30" y="30" width="180" height="120" rx="8" fill="rgba(var(--primary-color-rgb), 0.05)" stroke="var(--card-border)" stroke-width="2" />
+                    <text x="120" y="90" text-anchor="middle" font-weight="700" fill="var(--text-color)" font-size="14">Reception / Lounge</text>
+                    
+                    <!-- Café & Lounge Area -->
+                    <rect x="30" y="180" width="220" height="290" rx="8" fill="rgba(var(--primary-color-rgb), 0.03)" stroke="var(--card-border)" stroke-width="2" />
+                    <text x="140" y="330" text-anchor="middle" font-weight="700" fill="var(--text-color)" font-size="14">Lumina Social Café</text>
+                    
+                    <!-- Executive Meeting Room -->
+                    <g class="map-room" data-room="Executive Meeting Room" data-id="meeting-room">
+                      <rect x="520" y="30" width="250" height="160" rx="8" class="map-room-rect available" />
+                      <text x="645" y="115" text-anchor="middle" font-weight="700" class="map-room-text">Executive Meeting Room</text>
+                    </g>
+                    
+                    <!-- Private Cabins -->
+                    <g class="map-room" data-room="Private Cabin 1" data-id="cabin-1">
+                      <rect x="240" y="30" width="120" height="120" rx="8" class="map-room-rect available" />
+                      <text x="300" y="95" text-anchor="middle" font-weight="700" class="map-room-text">Cabin 1</text>
+                    </g>
+                    <g class="map-room" data-room="Private Cabin 2" data-id="cabin-2">
+                      <rect x="380" y="30" width="120" height="120" rx="8" class="map-room-rect occupied" />
+                      <text x="440" y="95" text-anchor="middle" font-weight="700" class="map-room-text">Cabin 2 (Occupied)</text>
+                    </g>
+                    
+                    <!-- Dedicated Desks Rows -->
+                    <g class="map-desk" data-desk="Desk D1" data-id="desk-d1">
+                      <rect x="300" y="220" width="50" height="40" rx="4" class="map-desk-rect available" />
+                      <text x="325" y="245" text-anchor="middle" font-size="11" class="map-desk-text">D1</text>
+                    </g>
+                    <g class="map-desk" data-desk="Desk D2" data-id="desk-d2">
+                      <rect x="360" y="220" width="50" height="40" rx="4" class="map-desk-rect occupied" />
+                      <text x="385" y="245" text-anchor="middle" font-size="11" class="map-desk-text">D2</text>
+                    </g>
+                    <g class="map-desk" data-desk="Desk D3" data-id="desk-d3">
+                      <rect x="420" y="220" width="50" height="40" rx="4" class="map-desk-rect available" />
+                      <text x="445" y="245" text-anchor="middle" font-size="11" class="map-desk-text">D3</text>
+                    </g>
+                    <g class="map-desk" data-desk="Desk D4" data-id="desk-d4">
+                      <rect x="480" y="220" width="50" height="40" rx="4" class="map-desk-rect available" />
+                      <text x="505" y="245" text-anchor="middle" font-size="11" class="map-desk-text">D4</text>
+                    </g>
+                    
+                    <g class="map-desk" data-desk="Desk D5" data-id="desk-d5">
+                      <rect x="300" y="280" width="50" height="40" rx="4" class="map-desk-rect available" />
+                      <text x="325" y="305" text-anchor="middle" font-size="11" class="map-desk-text">D5</text>
+                    </g>
+                    <g class="map-desk" data-desk="Desk D6" data-id="desk-d6">
+                      <rect x="360" y="280" width="50" height="40" rx="4" class="map-desk-rect available" />
+                      <text x="385" y="305" text-anchor="middle" font-size="11" class="map-desk-text">D6</text>
+                    </g>
+                    <g class="map-desk" data-desk="Desk D7" data-id="desk-d7">
+                      <rect x="420" y="280" width="50" height="40" rx="4" class="map-desk-rect occupied" />
+                      <text x="445" y="305" text-anchor="middle" font-size="11" class="map-desk-text">D7</text>
+                    </g>
+                    <g class="map-desk" data-desk="Desk D8" data-id="desk-d8">
+                      <rect x="480" y="280" width="50" height="40" rx="4" class="map-desk-rect available" />
+                      <text x="505" y="305" text-anchor="middle" font-size="11" class="map-desk-text">D8</text>
+                    </g>
+                    
+                    <g class="map-desk" data-desk="Desk D9" data-id="desk-d9">
+                      <rect x="330" y="380" width="50" height="40" rx="4" class="map-desk-rect available" />
+                      <text x="355" y="405" text-anchor="middle" font-size="11" class="map-desk-text">D9</text>
+                    </g>
+                    <g class="map-desk" data-desk="Desk D10" data-id="desk-d10">
+                      <rect x="390" y="380" width="50" height="40" rx="4" class="map-desk-rect available" />
+                      <text x="415" y="405" text-anchor="middle" font-size="11" class="map-desk-text">D10</text>
+                    </g>
+                    
+                    <g class="map-desk" data-desk="Mini Lounge A" data-id="desk-d11">
+                      <rect x="480" y="380" width="110" height="80" rx="6" class="map-desk-rect available" />
+                      <text x="535" y="425" text-anchor="middle" font-size="12" font-weight="700" class="map-desk-text">Mini Lounge A</text>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              
+              <!-- Map Selection Widget Panel -->
+              <div class="map-info-panel glass-card">
+                <h3>Space Details</h3>
+                <div id="map-selection-default">
+                  <p class="text-muted">Click any active area or desk on the map to display its rates, availability, and to book instantly.</p>
+                  <div style="text-align: center; margin-top: 40px; font-size: 48px;">🗺️</div>
+                </div>
+                <div id="map-selection-details" style="display: none;">
+                  <div class="selected-details-row">
+                    <span class="details-label">Selected Space:</span>
+                    <span class="details-value" id="selected-space-name">-</span>
+                  </div>
+                  <div class="selected-details-row">
+                    <span class="details-label">Type:</span>
+                    <span class="details-value" id="selected-space-type">-</span>
+                  </div>
+                  <div class="selected-details-row">
+                    <span class="details-label">Monthly Rate:</span>
+                    <span class="details-value" id="selected-space-rate">-</span>
+                  </div>
+                  <div class="selected-details-row">
+                    <span class="details-label">Status:</span>
+                    <span class="details-value" id="selected-space-status">-</span>
+                  </div>
+                  <div class="details-desc-box" id="selected-space-desc">
+                    -
+                  </div>
+                  
+                  <button id="book-selected-space-btn" class="btn btn-primary" style="width: 100%; margin-top: 24px;">
+                    Reserve Selected Spot
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
       <!-- 3. PORTFOLIO SECTION -->
       <div id="portfolio" class="scroll-reveal">
         <section>
@@ -372,6 +515,76 @@
         </section>
       </div>
 
+      <!-- 6.5 GALLERY SECTION -->
+      <div id="gallery" class="scroll-reveal">
+        <section>
+          <div class="container">
+            <div class="section-header">
+              <span class="badge">Virtual Tour</span>
+              <h2>Lumina Spaces Gallery</h2>
+              <p>Browse through high-resolution captures of our premium workspaces, cafe, and lounge zones.</p>
+            </div>
+            
+            <div class="gallery-filter-bar">
+              <button class="gallery-filter-btn active" data-filter="all">All Spaces</button>
+              <button class="gallery-filter-btn" data-filter="cabins">Cabins</button>
+              <button class="gallery-filter-btn" data-filter="desks">Dedicated Desks</button>
+              <button class="gallery-filter-btn" data-filter="cafe">Cafe & Social</button>
+              <button class="gallery-filter-btn" data-filter="lounge">Lounge</button>
+            </div>
+            
+            <div class="gallery-grid">
+              <div class="gallery-item glass-card" data-category="lounge">
+                <img src="uploads/gallery_lounge.png" alt="Lumina Premium Lounge" loading="lazy">
+                <div class="gallery-overlay">
+                  <h4>Lumina Premium Lounge</h4>
+                  <p>Biophilic design social lounge for relaxed discussions.</p>
+                </div>
+              </div>
+              <div class="gallery-item glass-card" data-category="cabins">
+                <img src="uploads/private_office.png" alt="Private Cabin Suites" loading="lazy">
+                <div class="gallery-overlay">
+                  <h4>Private Cabin Suites</h4>
+                  <p>Acoustically isolated private offices for small teams.</p>
+                </div>
+              </div>
+              <div class="gallery-item glass-card" data-category="desks">
+                <img src="uploads/hero.png" alt="Minimalist Dedicated Desks" loading="lazy">
+                <div class="gallery-overlay">
+                  <h4>Minimalist Dedicated Desks</h4>
+                  <p>Ergonomic personal desks with custom storage.</p>
+                </div>
+              </div>
+              <div class="gallery-item glass-card" data-category="cafe">
+                <img src="uploads/gallery_cafe.png" alt="Lumina Social Café" loading="lazy">
+                <div class="gallery-overlay">
+                  <h4>Lumina Social Café</h4>
+                  <p>Chic bar serving premium hand-crafted espresso.</p>
+                </div>
+              </div>
+              <div class="gallery-item glass-card" data-category="lounge">
+                <img src="uploads/gallery_meeting.png" alt="Executive Conference Room" loading="lazy">
+                <div class="gallery-overlay">
+                  <h4>Executive Conference Room</h4>
+                  <p>4K displays, high-fidelity acoustics, and Zoom Rooms.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Lightbox Modal -->
+      <div id="gallery-lightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-prev">&#10094;</span>
+        <span class="lightbox-next">&#10095;</span>
+        <div class="lightbox-content">
+          <img id="lightbox-img" src="" alt="Expanded Workspace Capture">
+          <div id="lightbox-caption"></div>
+        </div>
+      </div>
+
       <!-- 7. ABOUT US SECTION -->
       <div id="about" class="scroll-reveal">
         <section>
@@ -422,6 +635,81 @@
         </section>
       </div>
 
+      <!-- 7.5 EVENTS TICKER SECTION -->
+      <div id="community-events" class="scroll-reveal">
+        <section style="padding: 60px 0; background: rgba(var(--primary-color-rgb), 0.02); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);">
+          <div class="container">
+            <div class="section-header" style="margin-bottom: 30px;">
+              <span class="badge">Events & Networking</span>
+              <h2>Upcoming Community Events</h2>
+              <p>Connect and learn with local innovators and startup founders at Lumina Kuttiady.</p>
+            </div>
+            
+            <div class="events-ticker-container">
+              <div class="events-ticker-track">
+                <div class="event-ticker-card glass-card">
+                  <div class="event-ticker-date">June 04</div>
+                  <div class="event-ticker-info">
+                    <h4>Kuttiady Founder Meetup</h4>
+                    <p>Networking and panel discussion with local startup founders.</p>
+                  </div>
+                </div>
+                <div class="event-ticker-card glass-card">
+                  <div class="event-ticker-date">June 10</div>
+                  <div class="event-ticker-info">
+                    <h4>UI/UX Masterclass</h4>
+                    <p>Learn premium design heuristics and modern spacing practices.</p>
+                  </div>
+                </div>
+                <div class="event-ticker-card glass-card">
+                  <div class="event-ticker-date">June 18</div>
+                  <div class="event-ticker-info">
+                    <h4>Freelancer Huddle</h4>
+                    <p>Coffee and social sessions for local independent remote builders.</p>
+                  </div>
+                </div>
+                <div class="event-ticker-card glass-card">
+                  <div class="event-ticker-date">June 25</div>
+                  <div class="event-ticker-info">
+                    <h4>Digital Marketing Boot</h4>
+                    <p>Strategies for scaling e-commerce brands in Kerala.</p>
+                  </div>
+                </div>
+                
+                <div class="event-ticker-card glass-card">
+                  <div class="event-ticker-date">June 04</div>
+                  <div class="event-ticker-info">
+                    <h4>Kuttiady Founder Meetup</h4>
+                    <p>Networking and panel discussion with local startup founders.</p>
+                  </div>
+                </div>
+                <div class="event-ticker-card glass-card">
+                  <div class="event-ticker-date">June 10</div>
+                  <div class="event-ticker-info">
+                    <h4>UI/UX Masterclass</h4>
+                    <p>Learn premium design heuristics and modern spacing practices.</p>
+                  </div>
+                </div>
+                <div class="event-ticker-card glass-card">
+                  <div class="event-ticker-date">June 18</div>
+                  <div class="event-ticker-info">
+                    <h4>Freelancer Huddle</h4>
+                    <p>Coffee and social sessions for local independent remote builders.</p>
+                  </div>
+                </div>
+                <div class="event-ticker-card glass-card">
+                  <div class="event-ticker-date">June 25</div>
+                  <div class="event-ticker-info">
+                    <h4>Digital Marketing Boot</h4>
+                    <p>Strategies for scaling e-commerce brands in Kerala.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
       <!-- 8. PRICING SECTION -->
       <div id="pricing" class="scroll-reveal">
         <section>
@@ -442,6 +730,71 @@
       </div>
 
 
+
+      <!-- 9.5 FAQ SECTION -->
+      <div id="faq" class="scroll-reveal">
+        <section>
+          <div class="container">
+            <div class="section-header">
+              <span class="badge">FAQ & Support</span>
+              <h2>Frequently Asked Questions</h2>
+              <p>Everything you need to know about access, utility billing, and rules at Lumina Kuttiady.</p>
+            </div>
+            
+            <div class="faq-search-wrapper">
+              <input type="text" id="faq-search-input" placeholder="Search FAQ topics... (e.g. access, printing, keys)">
+            </div>
+            
+            <div class="faq-accordion-list">
+              <div class="faq-card glass-card">
+                <div class="faq-header">
+                  <h3>When can I access my workspace?</h3>
+                  <span class="faq-icon">&#43;</span>
+                </div>
+                <div class="faq-body">
+                  <p>Dedicated Desk and Private Cabin members have 24/7 biometric building access. Hot Desk members can access the workspace during business hours (8:00 AM - 7:00 PM, Monday to Saturday).</p>
+                </div>
+              </div>
+              <div class="faq-card glass-card">
+                <div class="faq-header">
+                  <h3>Are there utility charges or electricity bills?</h3>
+                  <span class="faq-icon">&#43;</span>
+                </div>
+                <div class="faq-body">
+                  <p>No. All utility costs, including premium air conditioning, backup power, water, and cleaning services are 100% included in your monthly membership fee.</p>
+                </div>
+              </div>
+              <div class="faq-card glass-card">
+                <div class="faq-header">
+                  <h3>Are meeting room credits included?</h3>
+                  <span class="faq-icon">&#43;</span>
+                </div>
+                <div class="faq-body">
+                  <p>Yes. Hot Desk members receive 2 hours of meeting room bookings per month. Dedicated Desks get 5 hours, and Private Cabins receive 15+ hours. Additional credits can be purchased at discounted rates.</p>
+                </div>
+              </div>
+              <div class="faq-card glass-card">
+                <div class="faq-header">
+                  <h3>Is there a lock-in period or contract?</h3>
+                  <span class="faq-icon">&#43;</span>
+                </div>
+                <div class="faq-body">
+                  <p>No, we keep it simple. All plans run on flexible month-to-month terms. You can upgrade, downgrade, or cancel your subscription by giving a 15-day notice before your next renewal.</p>
+                </div>
+              </div>
+              <div class="faq-card glass-card">
+                <div class="faq-header">
+                  <h3>Can I receive packages and mail?</h3>
+                  <span class="faq-icon">&#43;</span>
+                </div>
+                <div class="faq-body">
+                  <p>Yes. Private Cabin and Dedicated Desk plans include mail handling and receptionist sign-off. We notify you via WhatsApp/Email as soon as your package arrives.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
 
       <!-- 10. CONTACT US SECTION -->
       <div id="contact" class="scroll-reveal">
@@ -512,10 +865,27 @@
                     <div class="form-group">
                       <label for="contact-budget">Estimated Monthly Budget</label>
                       <select id="contact-budget" name="budget" class="form-control" style="background: var(--input-bg); height: 48px; border: 1px solid var(--input-border); color: var(--text-color); border-radius: 8px; width: 100%; outline: none; padding: 12px 16px;">
-                        <option value="Under $1k">Under $1,000</option>
-                        <option value="$1k - $5k">$1,000 - $5,000</option>
-                        <option value="$5k - $20k">$5,000 - $20,000</option>
-                        <option value="$20k+">$20,000 +</option>
+                        <option value="Under ₹10k">Under ₹10,000</option>
+                        <option value="₹10k - ₹50k">₹10,000 - ₹50,000</option>
+                        <option value="₹50k - ₹2L">₹50,000 - ₹2,00,000</option>
+                        <option value="₹2L+">₹2,00,000 +</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="contact-tour-date">Preferred Tour Date</label>
+                      <input type="date" id="contact-tour-date" name="tour_date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="contact-tour-slot">Preferred Time Slot</label>
+                      <select id="contact-tour-slot" name="tour_slot" class="form-control" style="background: var(--input-bg); height: 48px; border: 1px solid var(--input-border); color: var(--text-color); border-radius: 8px; width: 100%; outline: none; padding: 12px 16px;">
+                        <option value="">Select a Slot...</option>
+                        <option value="09:00 - 11:00">09:00 AM - 11:00 AM</option>
+                        <option value="11:00 - 13:00">11:00 AM - 01:00 PM</option>
+                        <option value="14:00 - 16:00">02:00 PM - 04:00 PM</option>
+                        <option value="16:00 - 18:00">04:00 PM - 06:00 PM</option>
                       </select>
                     </div>
                   </div>
@@ -956,6 +1326,8 @@
         <ul class="footer-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#services">Services</a></li>
+          <li><a href="#floor-map-section">Floor Map</a></li>
+          <li><a href="#gallery">Gallery</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#blog">Blog</a></li>
           <li><a href="#careers">Careers</a></li>
