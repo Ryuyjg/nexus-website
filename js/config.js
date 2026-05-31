@@ -22,7 +22,7 @@ const DEFAULT_CONFIG = {
     ctaSecondaryText: 'Explore Locations',
     ctaSecondaryLink: '#services',
     visualType: 'image',
-    imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80'
+    imageUrl: 'uploads/hero.png'
   },
   stats: [
     { label: 'Global Locations', value: 45, suffix: '' },
@@ -37,7 +37,8 @@ const DEFAULT_CONFIG = {
       shortDesc: 'Fully furnished, acoustically treated private suites for teams of 2 to 50.',
       longDesc: 'Our private offices are designed for maximum productivity and privacy. Featuring ergonomic Herman Miller seating, sit-stand desks, and sound-dampening glass, these suites are perfect for focused deep work. Includes 24/7 access and unlimited premium coffee.',
       icon: '🏢',
-      category: 'Workspaces'
+      category: 'Workspaces',
+      imageUrl: 'uploads/private_office.png'
     },
     {
       id: 'dedicated-desks',
