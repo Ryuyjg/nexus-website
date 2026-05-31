@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nexusai.io/sitemap.xml
+Sitemap: https://luminaworkspaces.com/sitemap.xml

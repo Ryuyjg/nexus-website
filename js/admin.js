@@ -27,7 +27,7 @@ const AdminPanel = {
       if (res.ok) {
         const data = await res.json();
         if (data && data.pat) {
-          localStorage.setItem('nexus_github_pat', data.pat.trim());
+          localStorage.setItem('lumina_github_pat', data.pat.trim());
           console.log('GitHub Token auto-loaded from local configuration file.');
         }
       }
@@ -289,9 +289,9 @@ const AdminPanel = {
     const confirmPasswordInput = newForm.querySelector('#adm-confirm-password');
 
     // Set initial values
-    if (ghRepoInput) ghRepoInput.value = this.config.general.githubRepo || 'Ryuyjg/nexus-website';
+    if (ghRepoInput) ghRepoInput.value = this.config.general.githubRepo || 'Ryuyjg/lumina-website';
     if (ghBranchInput) ghBranchInput.value = this.config.general.githubBranch || 'main';
-    if (ghPatInput) ghPatInput.value = localStorage.getItem('nexus_github_pat') || '';
+    if (ghPatInput) ghPatInput.value = localStorage.getItem('lumina_github_pat') || '';
 
     if (companyInput) companyInput.value = this.config.general.companyName;
     if (logoTxtInput) logoTxtInput.value = this.config.general.logoText;
@@ -486,7 +486,7 @@ const AdminPanel = {
       }
 
       // Save Token locally
-      localStorage.setItem('nexus_github_pat', pat);
+      localStorage.setItem('lumina_github_pat', pat);
 
       // Build updated configuration structure
       this.config.general.githubRepo = repo;
@@ -610,8 +610,8 @@ const AdminPanel = {
       title: '',
       shortDesc: '',
       longDesc: '',
-      icon: '⚙️',
-      category: 'AI',
+      icon: '🏢',
+      category: 'Workspaces',
       imageUrl: ''
     };
 
@@ -628,9 +628,11 @@ const AdminPanel = {
           <div class="form-group">
             <label for="srv-category">Service Category</label>
             <select id="srv-category" class="form-control" style="background: var(--input-bg); height: 48px; border: 1px solid var(--input-border); color: var(--text-color); border-radius: 8px; width: 100%; outline: none; padding: 12px 16px;">
-              <option value="AI" ${srv.category === 'AI' ? 'selected' : ''}>AI & Automation</option>
-              <option value="Infrastructure" ${srv.category === 'Infrastructure' ? 'selected' : ''}>Infrastructure & Cloud</option>
-              <option value="Security" ${srv.category === 'Security' ? 'selected' : ''}>Cybersecurity</option>
+              <option value="Workspaces" ${srv.category === 'Workspaces' ? 'selected' : ''}>Workspaces</option>
+              <option value="Meetings" ${srv.category === 'Meetings' ? 'selected' : ''}>Meetings</option>
+              <option value="Events" ${srv.category === 'Events' ? 'selected' : ''}>Events</option>
+              <option value="Services" ${srv.category === 'Services' ? 'selected' : ''}>Services</option>
+              <option value="Enterprise" ${srv.category === 'Enterprise' ? 'selected' : ''}>Enterprise</option>
             </select>
           </div>
         </div>
@@ -724,8 +726,8 @@ const AdminPanel = {
         const reader = new FileReader();
         reader.onload = async (event) => {
           const base64 = event.target.result;
-          const pat = localStorage.getItem('nexus_github_pat') || '';
-          const repo = this.config.general.githubRepo || 'Ryuyjg/nexus-website';
+          const pat = localStorage.getItem('lumina_github_pat') || '';
+          const repo = this.config.general.githubRepo || 'Ryuyjg/lumina-website';
           const branch = this.config.general.githubBranch || 'main';
 
           if (pat && repo) {
@@ -786,7 +788,7 @@ const AdminPanel = {
       }
 
       // Handle GitHub sync
-      const pat = localStorage.getItem('nexus_github_pat') || '';
+      const pat = localStorage.getItem('lumina_github_pat') || '';
       const repo = this.config.general.githubRepo;
       const branch = this.config.general.githubBranch || 'main';
 

@@ -7,14 +7,14 @@ const Store = {
     return str.replace(/[&<>"']/g, ch => map[ch]);
   },
 
-  configKey: 'nexus_site_config',
-  configVersion: 'nexus_config_v',
+  configKey: 'lumina_site_config',
+  configVersion: 'lumina_config_v',
   currentVersion: 5, // Bump this when config structure changes
-  inquiriesKey: 'nexus_inquiries_db',
-  appsKey: 'nexus_job_apps',
-  ticketsKey: 'nexus_support_tickets',
-  blogsKey: 'nexus_blog_posts',
-  commentsKey: 'nexus_blog_comments',
+  inquiriesKey: 'lumina_inquiries_db',
+  appsKey: 'lumina_job_apps',
+  ticketsKey: 'lumina_support_tickets',
+  blogsKey: 'lumina_blog_posts',
+  commentsKey: 'lumina_blog_comments',
 
   // Load configuration from LocalStorage or fallback to DEFAULT_CONFIG
   loadConfig() {

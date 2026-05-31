@@ -251,17 +251,17 @@ const App = {
               <div class="mockup-dot"></div>
               <div class="mockup-dot"></div>
               <div class="mockup-dot"></div>
-              <div class="mockup-title">NEXUS Real-time Analytics</div>
+              <div class="mockup-title">Lumina Facilities Monitor</div>
             </div>
             <div class="mockup-body">
               <div class="mockup-stats">
                 <div class="mockup-stat-card">
-                  <div class="mockup-stat-label">Model Efficiency</div>
-                  <div class="mockup-stat-val">+48.2%</div>
+                  <div class="mockup-stat-label">Occupancy Rate</div>
+                  <div class="mockup-stat-val">88.5%</div>
                 </div>
                 <div class="mockup-stat-card">
-                  <div class="mockup-stat-label">Response Latency</div>
-                  <div class="mockup-stat-val">12.4 ms</div>
+                  <div class="mockup-stat-label">Energy Saved</div>
+                  <div class="mockup-stat-val">31.4%</div>
                 </div>
               </div>
               <div class="mockup-chart-container">
