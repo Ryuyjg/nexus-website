@@ -1,157 +1,101 @@
-/* Design Tokens & Theme Variables — Nexa Workspace */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
-
-/* Animatable custom properties via @property */
-@property --gradient-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@property --glow-opacity {
-  syntax: '<number>';
-  initial-value: 0;
-  inherits: false;
-}
+/* Design Tokens & Theme Variables — Apple / iOS Premium Style */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
 :root {
-  /* Default Theme: Dark Glassmorphic Space Theme */
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Typography */
+  /* Fallback to system-ui to hit native SF Pro on Apple devices, Inter on others */
+  --font-heading: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
 
-  /* Dynamically editable colors (updated via admin panel) */
-  --primary-color: #00f2fe;
-  --primary-color-rgb: 0, 242, 254;
-  --secondary-color: #4facfe;
-  --secondary-color-rgb: 79, 172, 254;
-  --accent-color: #d946ef;
-  --accent-color-rgb: 217, 70, 239;
+  /* Brand Palette — Action Blue & Grayscale */
+  --primary-color: #0066cc; /* Action Blue */
+  --primary-focus: #0071e3;
+  --primary-on-dark: #2997ff; /* Sky Link Blue */
 
-  /* Theme Core Colors - Dark Mode default */
-  --bg-color: #080b11;
-  --bg-gradient: radial-gradient(circle at 50% 0%, #111827 0%, #080b11 100%);
-  --text-color: #f3f4f6;
-  --text-muted: #9ca3af;
-  --text-inv: #0b0f19;
+  /* Text & Inks */
+  --ink: #1d1d1f;
+  --ink-muted: #7a7a7a;
+  --ink-muted-80: #333333;
   
-  /* Glassmorphism settings */
-  --card-bg: rgba(17, 24, 39, 0.65);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  --blur-amount: 16px;
-
-  /* Subtle backgrounds for inner elements */
-  --subtle-bg: rgba(255, 255, 255, 0.03);
-  --subtle-bg-hover: rgba(255, 255, 255, 0.06);
-
-  /* Utilities */
-  --nav-bg: rgba(8, 11, 17, 0.75);
-  --input-bg: rgba(255, 255, 255, 0.03);
-  --input-border: rgba(255, 255, 255, 0.1);
-  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-fast: all 0.2s ease;
+  --text-color: var(--ink);
+  --text-muted: var(--ink-muted);
+  --text-on-dark: #ffffff;
   
-  /* Badge variables */
-  --badge-glow: rgba(0, 242, 254, 0.15);
+  /* Surfaces */
+  --canvas: #ffffff;
+  --canvas-parchment: #f5f5f7;
+  --surface-pearl: #fafafc;
+  --surface-tile-1: #272729;
+  --surface-tile-2: #2a2a2c;
+  --surface-tile-3: #252527;
+  --surface-black: #000000;
+  --surface-chip-translucent: rgba(210, 210, 215, 0.64);
 
-  /* Button text color */
-  --btn-primary-text: #0b0f19;
-  --btn-secondary-bg: rgba(255, 255, 255, 0.05);
-  --btn-secondary-bg-hover: rgba(255, 255, 255, 0.1);
-
-  /* Premium Additions */
-  --glow-intensity: 0.35;
-  --particle-opacity: 0.6;
-  --gradient-angle: 0deg;
-
-  /* Enhanced shadow system */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.37);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 40px rgba(var(--primary-color-rgb), 0.15);
-
-  /* Section divider */
-  --divider-gradient: linear-gradient(90deg, transparent, rgba(var(--primary-color-rgb), 0.3), rgba(var(--accent-color-rgb), 0.2), transparent);
-
-  /* Focus ring */
-  --focus-ring: 0 0 0 3px rgba(var(--primary-color-rgb), 0.4);
-}
-
-/* Light Theme overrides */
-body.light-mode {
-  --bg-color: #f8fafc;
-  --bg-gradient: radial-gradient(circle at 50% 0%, #eff6ff 0%, #f8fafc 100%);
-  --text-color: #0f172a;
-  --text-muted: #475569;
-  --text-inv: #ffffff;
+  /* Theme Defaults (Light mode is base) */
+  --bg-color: var(--canvas);
+  --nav-bg: rgba(0, 0, 0, 0.95);
+  --nav-text: var(--text-on-dark);
   
-  --card-bg: rgba(255, 255, 255, 0.80);
-  --card-border: rgba(15, 23, 42, 0.10);
-  --card-shadow: 0 10px 30px -10px rgba(79, 172, 254, 0.12);
+  --card-bg: var(--canvas);
+  --card-border: #e0e0e0; /* Hairline */
+  --divider-soft: rgba(0, 0, 0, 0.04);
   
-  --subtle-bg: rgba(15, 23, 42, 0.04);
-  --subtle-bg-hover: rgba(15, 23, 42, 0.07);
+  /* Radii */
+  --rounded-none: 0px;
+  --rounded-sm: 8px;
+  --rounded-md: 11px;
+  --rounded-lg: 18px;
+  --rounded-pill: 9999px;
 
-  --nav-bg: rgba(248, 250, 252, 0.88);
-  --input-bg: rgba(15, 23, 42, 0.03);
-  --input-border: rgba(15, 23, 42, 0.12);
+  /* Transitions */
+  --transition-smooth: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease, background-color 0.2s ease;
+  --transition-fast: all 0.15s ease;
+
+  /* Shadows — Only ONE shadow in the entire system, for product imagery */
+  --shadow-product: rgba(0, 0, 0, 0.22) 3px 5px 30px 0;
   
-  --badge-glow: rgba(79, 172, 254, 0.1);
+  /* No UI shadows */
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
 
+  /* Form & Inputs */
+  --input-bg: var(--canvas-parchment);
+  --input-border: #d2d2d7;
+
+  /* Buttons */
   --btn-primary-text: #ffffff;
-  --btn-secondary-bg: rgba(15, 23, 42, 0.04);
-  --btn-secondary-bg-hover: rgba(15, 23, 42, 0.08);
-
-  /* Premium light mode */
-  --glow-intensity: 0.15;
-  --particle-opacity: 0.3;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.12);
-  --shadow-glow: 0 0 40px rgba(var(--primary-color-rgb), 0.08);
-  --focus-ring: 0 0 0 3px rgba(var(--primary-color-rgb), 0.25);
 }
 
-/* ==================== MICRO-ANIMATION KEYFRAMES ==================== */
+/* Dark Theme Overrides (For system toggle, though Apple relies mostly on tile-alternation) */
+body.dark-mode {
+  --text-color: var(--text-on-dark);
+  --text-muted: #cccccc;
+  
+  --bg-color: var(--surface-tile-1);
+  --canvas: var(--surface-tile-1);
+  --canvas-parchment: var(--surface-tile-2);
+  --surface-pearl: var(--surface-tile-3);
+  
+  --card-bg: var(--surface-tile-2);
+  --card-border: #333333;
+  --divider-soft: rgba(255, 255, 255, 0.04);
 
-@keyframes gradient-rotate {
-  0% { --gradient-angle: 0deg; }
-  100% { --gradient-angle: 360deg; }
+  --input-bg: var(--surface-tile-3);
+  --input-border: #444444;
+
+  --primary-color: var(--primary-on-dark);
+  --btn-primary-text: var(--ink);
+  
+  --nav-bg: rgba(29, 29, 31, 0.95);
+  --nav-text: var(--text-on-dark);
 }
 
-@keyframes float-subtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes pulse-glow {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(50px, 80px) scale(1.1); }
-}
-
-@keyframes pulse-glow-reverse {
-  0% { transform: translate(0, 0) scale(1.1); }
-  100% { transform: translate(-80px, -40px) scale(0.9); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-@keyframes btn-pulse {
-  0%, 100% { box-shadow: 0 4px 15px rgba(var(--primary-color-rgb), 0.3); }
-  50% { box-shadow: 0 4px 30px rgba(var(--primary-color-rgb), 0.55), 0 0 60px rgba(var(--primary-color-rgb), 0.15); }
-}
+/* ==================== KEYFRAMES ==================== */
 
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes scale-up {
-  0% { transform: scale(0.5); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
 }
 
 @keyframes spinner {
@@ -162,16 +106,6 @@ body.light-mode {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes status-ping {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(2.5); opacity: 0; }
-}
-
-@keyframes typing-cursor {
-  0%, 100% { border-right-color: var(--primary-color); }
-  50% { border-right-color: transparent; }
-}
-
 @keyframes slide-in-right {
   from { transform: translateX(100%); }
   to { transform: translateX(0); }
@@ -180,4 +114,9 @@ body.light-mode {
 @keyframes slide-out-right {
   from { transform: translateX(0); }
   to { transform: translateX(100%); }
+}
+
+@keyframes scrollEvents {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 12px)); }
 }

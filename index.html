@@ -52,12 +52,8 @@
   <!-- Skip-to-Content Link (Accessibility) -->
   <a href="#app-content" class="skip-link">Skip to Content</a>
 
-  <!-- Ambient Backdrops -->
-  <div class="ambient-glow"></div>
-  <div class="ambient-glow-2"></div>
-
-  <!-- Cursor Glow Tracker -->
-  <div class="cursor-glow" id="cursor-glow"></div>
+  <!-- Ambient Backdrops Removed for Apple Style -->
+  <!-- Cursor Glow Tracker Removed for Apple Style -->
 
   <!-- Navigation Header -->
   <header>
@@ -114,49 +110,18 @@
 
       <!-- 1. HOME SECTION -->
       <div id="home" class="scroll-reveal">
-        <section class="hero">
-          <canvas id="particle-canvas"></canvas>
-          <div class="container hero-grid">
-            <div class="hero-text">
-              <span class="badge" id="hero-badge">Enterprise Intelligence</span>
-              <h1 id="hero-title">Automate Decisions. Maximize ROI.</h1>
-              <p id="hero-subtitle">Optimize workflows, balance cloud networks, and build complete enterprise simulations dynamically.</p>
-              <div class="hero-actions">
-                <a href="#pricing" class="btn btn-primary" id="hero-cta-primary">Calculate Your ROI</a>
-                <a href="#services" class="btn btn-secondary" id="hero-cta-secondary">Explore Services</a>
-              </div>
+        <section class="product-tile tile-parchment" id="hero-tile">
+          <div class="hero-text">
+            <h1 class="hero-display" id="hero-title">Automate Decisions. Maximize ROI.</h1>
+            <p class="lead" id="hero-subtitle">Optimize workflows, balance cloud networks, and build complete enterprise simulations dynamically.</p>
+            <div class="hero-actions">
+              <a href="#pricing" class="btn btn-primary" id="hero-cta-primary">Calculate Your ROI</a>
+              <a href="#services" class="btn btn-secondary" id="hero-cta-secondary">Explore Services</a>
             </div>
-            <div class="hero-visual">
-              <div class="hero-mockup glass-card">
-                <div class="mockup-header">
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-dot"></div>
-                  <div class="mockup-title">Nexa Workspace Facilities Monitor</div>
-                </div>
-                <div class="mockup-body">
-                  <div class="mockup-stats">
-                    <div class="mockup-stat-card">
-                      <div class="mockup-stat-label">Occupancy Rate</div>
-                      <div class="mockup-stat-val">88.5%</div>
-                    </div>
-                    <div class="mockup-stat-card">
-                      <div class="mockup-stat-label">Energy Saved</div>
-                      <div class="mockup-stat-val">31.4%</div>
-                    </div>
-                  </div>
-                  <div class="mockup-chart-container">
-                    <div class="mockup-bar"></div>
-                    <div class="mockup-bar"></div>
-                    <div class="mockup-bar"></div>
-                    <div class="mockup-bar"></div>
-                    <div class="mockup-bar"></div>
-                    <div class="mockup-bar"></div>
-                    <div class="mockup-bar"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div class="hero-visual">
+            <!-- Simplified Hero Mockup -->
+            <img src="uploads/hero.png" alt="Hero Mockup" style="max-width: 100%; border-radius: var(--rounded-lg); box-shadow: var(--shadow-product); display: none;" id="hero-image" />
           </div>
         </section>
 

@@ -30,8 +30,8 @@ const App = {
     window.Router.init();
 
     // 8. Initialize premium visual upgrades and interactivity
-    this.initParticles();
-    this.initCursorGlow();
+    // this.initParticles();
+    // this.initCursorGlow();
     this.initHeroTyping();
     this.initMobileNav();
     this.initNavbarScroll();
@@ -283,8 +283,8 @@ const App = {
     const statsContainer = document.getElementById('stats-container');
     if (statsContainer) {
       statsContainer.innerHTML = this.config.stats.map((stat, i) => `
-        <div class="stat-item glass-card" data-delay="${i + 1}">
-          <div class="stat-num" id="stat-num-${i}" data-val="${stat.value}" data-suffix="${stat.suffix}">0</div>
+        <div class="stat-item" data-delay="${i + 1}">
+          <div class="stat-num" id="stat-num-${i}" data-val="${stat.value}" data-suffix="${stat.suffix}">${stat.value}${stat.suffix}</div>
           <div class="stat-label">${stat.label}</div>
         </div>
       `).join('');
@@ -298,7 +298,7 @@ const App = {
           ? `<img src="${srv.imageUrl}" alt="${srv.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />`
           : srv.icon;
         return `
-          <div class="showcase-card glass-card" data-delay="${i + 1}">
+          <div class="showcase-card utility-card" data-delay="${i + 1}">
             <div class="showcase-icon">${iconOrImage}</div>
             <h3>${srv.title}</h3>
             <p>${srv.shortDesc}</p>
@@ -317,7 +317,7 @@ const App = {
         const escQuote = window.Store.escapeHTML(t.quote);
         const escAvatar = window.Store.escapeHTML(t.avatarUrl);
         return `
-          <div class="testimonial-card glass-card">
+          <div class="testimonial-card utility-card">
             <div class="testimonial-header">
               <img class="testimonial-avatar" src="${escAvatar}" alt="${escName}" loading="lazy">
               <div class="testimonial-info">
@@ -353,37 +353,7 @@ const App = {
   },
 
   animateCountersOnce() {
-    if (this.countersAnimated) return;
-    this.countersAnimated = true;
-
-    this.config.stats.forEach((stat, i) => {
-      const el = document.getElementById(`stat-num-${i}`);
-      if (!el) return;
-      const targetVal = parseFloat(stat.value);
-      const isInt = Number.isInteger(targetVal);
-      const duration = 1200;
-      const startTime = performance.now();
-
-      const animate = (now) => {
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const easeProgress = progress * (2 - progress);
-        const currentVal = easeProgress * targetVal;
-
-        if (isInt) {
-          el.textContent = Math.floor(currentVal) + stat.suffix;
-        } else {
-          el.textContent = currentVal.toFixed(2) + stat.suffix;
-        }
-
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          el.textContent = targetVal + stat.suffix;
-        }
-      };
-      requestAnimationFrame(animate);
-    });
+    // Disabled to prefer immediate loading of large premium stats
   },
 
   initTestimonialsCarousel() {
