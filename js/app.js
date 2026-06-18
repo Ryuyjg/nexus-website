@@ -251,7 +251,7 @@ const App = {
               <div class="mockup-dot"></div>
               <div class="mockup-dot"></div>
               <div class="mockup-dot"></div>
-              <div class="mockup-title">Lumina Facilities Monitor</div>
+              <div class="mockup-title">Nexa Workspace Facilities Monitor</div>
             </div>
             <div class="mockup-body">
               <div class="mockup-stats">
@@ -1268,7 +1268,7 @@ const App = {
       const messageInput = document.getElementById('contact-message');
       
       if (subjectInput) subjectInput.value = `Booking Reservation: ${space.name}`;
-      if (messageInput) messageInput.value = `Hello, I would like to book the ${space.name} (${space.type}) at Lumina Kuttiady. Please verify its availability for my team.`;
+      if (messageInput) messageInput.value = `Hello, I would like to book the ${space.name} (${space.type}) at Nexa Workspace Kuttiady. Please verify its availability for my team.`;
 
       // Smooth scroll to contact
       const contactSection = document.getElementById('contact');

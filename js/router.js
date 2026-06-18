@@ -1,4 +1,4 @@
-// Client-side Router for Lumina SPA
+// Client-side Router for Nexa Workspace SPA
 const Router = {
   routes: ['home', 'services', 'portfolio', 'blog', 'careers', 'faq', 'about', 'pricing', 'status', 'contact', 'admin'],
   defaultRoute: 'home',

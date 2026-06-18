@@ -27,7 +27,7 @@ const AdminPanel = {
       if (res.ok) {
         const data = await res.json();
         if (data && data.pat) {
-          localStorage.setItem('lumina_github_pat', data.pat.trim());
+          localStorage.setItem('nexa_github_pat', data.pat.trim());
           console.log('GitHub Token auto-loaded from local configuration file.');
         }
       }
@@ -289,9 +289,9 @@ const AdminPanel = {
     const confirmPasswordInput = newForm.querySelector('#adm-confirm-password');
 
     // Set initial values
-    if (ghRepoInput) ghRepoInput.value = this.config.general.githubRepo || 'Ryuyjg/lumina-website';
+    if (ghRepoInput) ghRepoInput.value = this.config.general.githubRepo || 'Ryuyjg/nexa-workspace';
     if (ghBranchInput) ghBranchInput.value = this.config.general.githubBranch || 'main';
-    if (ghPatInput) ghPatInput.value = localStorage.getItem('lumina_github_pat') || '';
+    if (ghPatInput) ghPatInput.value = localStorage.getItem('nexa_github_pat') || '';
 
     if (companyInput) companyInput.value = this.config.general.companyName;
     if (logoTxtInput) logoTxtInput.value = this.config.general.logoText;
@@ -486,7 +486,7 @@ const AdminPanel = {
       }
 
       // Save Token locally
-      localStorage.setItem('lumina_github_pat', pat);
+      localStorage.setItem('nexa_github_pat', pat);
 
       // Build updated configuration structure
       this.config.general.githubRepo = repo;
@@ -726,8 +726,8 @@ const AdminPanel = {
         const reader = new FileReader();
         reader.onload = async (event) => {
           const base64 = event.target.result;
-          const pat = localStorage.getItem('lumina_github_pat') || '';
-          const repo = this.config.general.githubRepo || 'Ryuyjg/lumina-website';
+          const pat = localStorage.getItem('nexa_github_pat') || '';
+          const repo = this.config.general.githubRepo || 'Ryuyjg/nexa-workspace';
           const branch = this.config.general.githubBranch || 'main';
 
           if (pat && repo) {
@@ -788,7 +788,7 @@ const AdminPanel = {
       }
 
       // Handle GitHub sync
-      const pat = localStorage.getItem('lumina_github_pat') || '';
+      const pat = localStorage.getItem('nexa_github_pat') || '';
       const repo = this.config.general.githubRepo;
       const branch = this.config.general.githubBranch || 'main';
 

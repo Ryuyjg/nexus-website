@@ -1,12 +1,12 @@
-// Default Website Configuration for Lumina Workspaces
+// Default Website Configuration for Nexa Workspace
 const DEFAULT_CONFIG = {
   general: {
-    companyName: 'Lumina Workspaces',
-    logoText: 'LUMINA',
-    logoIcon: 'L',
+    companyName: 'Nexa Workspace',
+    logoText: 'NEXA',
+    logoIcon: 'N',
     logoType: 'text',
     logoImageUrl: '',
-    copyright: '© 2026 Lumina Workspaces. All rights reserved.',
+    copyright: '© 2026 Nexa Workspace. All rights reserved.',
     primaryColor: '#eab308', // Warm Gold/Yellow
     secondaryColor: '#fcd34d', // Lighter Amber
     accentColor: '#1e3a8a', // Deep Navy for contrast
@@ -16,7 +16,7 @@ const DEFAULT_CONFIG = {
   hero: {
     badge: 'Premium Workspaces',
     title: 'Work Better. Dream Bigger.',
-    subtitle: 'Lumina Workspaces provides premium, intelligently-designed physical offices and meeting rooms for teams that demand excellence.',
+    subtitle: 'Nexa Workspace provides premium, intelligently-designed physical offices and meeting rooms for teams that demand excellence.',
     ctaPrimaryText: 'Calculate Space Cost',
     ctaPrimaryLink: '#pricing',
     ctaSecondaryText: 'Explore Locations',
@@ -85,7 +85,7 @@ const DEFAULT_CONFIG = {
     {
       name: 'Eleanor Reed',
       role: 'Head of Global Real Estate',
-      bio: 'Former VP at a major commercial real estate firm, Eleanor oversees Lumina\'s global expansion and property acquisition.',
+      bio: 'Former VP at a major commercial real estate firm, Eleanor oversees Nexa Workspace\'s global expansion and property acquisition.',
       avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
       socials: { twitter: '#', linkedin: '#' }
     },
@@ -99,7 +99,7 @@ const DEFAULT_CONFIG = {
     {
       name: 'Sophia Martinez',
       role: 'VP of Member Experience',
-      bio: 'Dedicated to ensuring every Lumina member receives hospitality-grade service and community support.',
+      bio: 'Dedicated to ensuring every Nexa Workspace member receives hospitality-grade service and community support.',
       avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80',
       socials: { twitter: '#', linkedin: '#' }
     },
@@ -117,7 +117,7 @@ const DEFAULT_CONFIG = {
       position: 'CEO, TechNova Solutions',
       rating: 5,
       avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
-      quote: 'Moving our headquarters to a Lumina Enterprise Suite was the best decision we made. The space is gorgeous, and the on-site staff take care of everything.'
+      quote: 'Moving our headquarters to a Nexa Workspace Enterprise Suite was the best decision we made. The space is gorgeous, and the on-site staff take care of everything.'
     },
     {
       name: 'David Chen',
@@ -131,7 +131,7 @@ const DEFAULT_CONFIG = {
       position: 'VP Operations, Global Media',
       rating: 5,
       avatarUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80',
-      quote: 'We use Lumina\'s executive meeting rooms for all our board meetings. The technology works flawlessly every time, and the catering is top-tier.'
+      quote: 'We use Nexa Workspace\'s executive meeting rooms for all our board meetings. The technology works flawlessly every time, and the catering is top-tier.'
     }
   ],
   pricing: {
@@ -205,7 +205,7 @@ const DEFAULT_CONFIG = {
       company: 'TechNova Solutions',
       industry: 'Software Development',
       challenge: 'Needed a fully managed, branded 50-person office in downtown Kuttiady within 45 days without standard 5-year lease commitments.',
-      solution: 'Lumina designed and built an Enterprise Suite with custom glass partitioning and dedicated IT infrastructure in just 30 days.',
+      solution: 'Nexa Workspace designed and built an Enterprise Suite with custom glass partitioning and dedicated IT infrastructure in just 30 days.',
       efficiencyBoost: 'Zero Overhead',
       annualSavings: '₹20 Lakhs CapEx',
       logoChar: 'T'
@@ -244,7 +244,7 @@ const DEFAULT_CONFIG = {
       author: 'James Chen',
       category: 'Design',
       date: 'April 28, 2026',
-      summary: 'An exploration of how natural light, greenery, and organic materials in Lumina workspaces measurably reduce stress and boost creativity.'
+      summary: 'An exploration of how natural light, greenery, and organic materials in Nexa Workspace environments measurably reduce stress and boost creativity.'
     },
     {
       id: 'blog-post-3',
@@ -252,7 +252,7 @@ const DEFAULT_CONFIG = {
       author: 'Sophia Martinez',
       category: 'Productivity',
       date: 'March 15, 2026',
-      summary: 'Tips for running highly effective hybrid meetings using Lumina\'s integrated 4K Zoom Rooms and acoustic arrays.'
+      summary: 'Tips for running highly effective hybrid meetings using Nexa Workspace\'s integrated 4K Zoom Rooms and acoustic arrays.'
     }
   ],
   faqs: [
@@ -267,8 +267,8 @@ const DEFAULT_CONFIG = {
       category: 'Billing'
     },
     {
-      question: 'Can I use other Lumina locations when traveling?',
-      answer: 'Absolutely. Private Office and Dedicated Desk members get a "Global Pass" which allows up to 5 days of Hot Desk access per month at any Lumina location worldwide.',
+      question: 'Can I use other Nexa Workspace locations when traveling?',
+      answer: 'Absolutely. Private Office and Dedicated Desk members get a "Global Pass" which allows up to 5 days of Hot Desk access per month at any Nexa Workspace location worldwide.',
       category: 'Access & Amenities'
     },
     {
