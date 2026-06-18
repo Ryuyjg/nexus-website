@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nexaworkspace.com/sitemap.xml
+Sitemap: https://ryuyjg.github.io/nexus-website/sitemap.xml
