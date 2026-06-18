@@ -3,115 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexa Workspace</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Nexa Workspace — Premium Environments</title>
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <header class="top-nav">
-    <div class="container navbar-inner">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">N</div>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">N</div>
         <span>Nexa Workspace</span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Product</a></li>
-        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="nav-actions">
-        <a href="contact.html" class="btn btn-secondary">Sign in</a>
-        <a href="contact.html" class="btn btn-primary">Book Workspace</a>
+        <a href="contact.html" class="btn btn-secondary">Member Login</a>
+        <a href="contact.html" class="btn btn-primary">Book a Tour</a>
       </div>
-      <button class="mobile-hamburger">☰</button>
     </div>
-  </header>
+  </nav>
 
   <main>
+    <!-- Hero Section -->
     <section class="hero">
-      <div class="container">
-        <div class="hero-text">
-          <span class="eyebrow">Nexa Enterprise V2.0</span>
-          <h1 class="display-xl">Automate your physical operations.</h1>
-          <p class="body-lg">Linear-scale infrastructure for teams that demand excellence. Book premium private offices and dedicated desks with a single click.</p>
-          <div class="hero-actions">
-            <a href="contact.html" class="btn btn-primary">Start Building</a>
-            <a href="#pricing" class="btn btn-secondary">View Pricing</a>
-          </div>
-        </div>
-        
-        <div class="hero-visual-wrapper product-screenshot-card">
-          <img src="uploads/hero.png" alt="Nexa Dashboard UI" />
+      <div class="container hero-content">
+        <span class="eyebrow">The Future of Work</span>
+        <h1 class="display-lg">
+          Workspace designed for <br />
+          <span class="text-gradient">pure performance.</span>
+        </h1>
+        <p class="lead">
+          Premium private offices and dedicated desks built for teams that demand excellence. Plug into an infrastructure designed to accelerate your growth.
+        </p>
+        <div class="hero-actions">
+          <a href="#pricing" class="btn btn-primary">Explore Memberships</a>
+          <a href="contact.html" class="btn btn-secondary">Contact Sales</a>
         </div>
       </div>
     </section>
 
+    <!-- Features Section -->
     <section id="features">
       <div class="container">
-        <div class="section-header">
-          <h2>Engineered for Focus</h2>
-          <p class="body-lg">Everything you need to ship faster. No hidden fees, no utility bills.</p>
+        <div style="text-align: center; margin-bottom: 4rem;">
+          <span class="eyebrow">Enterprise Infrastructure</span>
+          <h2 class="display-md text-gradient-accent">Engineered for Focus</h2>
         </div>
+        
         <div class="grid-3">
-          <div class="feature-card">
-            <div class="feature-icon">❄️</div>
-            <h3 class="card-title">Full-Time AC</h3>
-            <p class="body-sm" style="color: var(--ink-muted); margin-top: 12px;">Whisper-quiet climate control across all zones to keep your team entirely focused on the work.</p>
+          <div class="card">
+            <div class="icon-wrapper">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <h3>Zero Utility Friction</h3>
+            <p>Power, water, and climate control are entirely abstracted away. You pay one flat rate, we handle the infrastructure.</p>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3 class="card-title">Zero Utility Bills</h3>
-            <p class="body-sm" style="color: var(--ink-muted); margin-top: 12px;">Power and water are entirely abstracted away. You pay one flat rate, we handle the infrastructure.</p>
+          
+          <div class="card">
+            <div class="icon-wrapper">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <h3>Gigabit Connectivity</h3>
+            <p>Dedicated symmetric fiber lines with 99.99% SLA uptime. Stay connected with speeds built for modern development teams.</p>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">🌐</div>
-            <h3 class="card-title">Gigabit Fiber</h3>
-            <p class="body-sm" style="color: var(--ink-muted); margin-top: 12px;">Dedicated symmetric fiber lines with 99.99% SLA uptime. Pings as low as 4ms to standard datacenters.</p>
+          
+          <div class="card">
+            <div class="icon-wrapper">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            </div>
+            <h3>24/7 Secure Access</h3>
+            <p>Biometric entry and continuous monitoring ensure your private workspace and hardware are always safe.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Pricing Section -->
     <section id="pricing">
       <div class="container">
-        <div class="section-header">
-          <h2>Predictable Pricing</h2>
-          <p class="body-lg">Scale your physical footprint without the overhead.</p>
+        <div style="text-align: center; margin-bottom: 4rem;">
+          <span class="eyebrow">Transparent Plans</span>
+          <h2 class="display-md text-gradient-accent">Scale Seamlessly</h2>
         </div>
+        
         <div class="grid-3">
-          <div class="pricing-card">
-            <h3 class="card-title">Hot Desk</h3>
-            <div class="price-amount">₹4,000<span>/mo</span></div>
-            <ul class="features-list">
-              <li>Open floor access</li>
-              <li>Gigabit WiFi</li>
-              <li>Free coffee & tea</li>
+          <div class="card pricing-card">
+            <div class="pricing-header">
+              <h3>Hot Desk</h3>
+              <div class="price">₹4,000<span>/mo</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Open floor access</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Gigabit WiFi</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Free premium coffee</li>
             </ul>
             <a href="contact.html" class="btn btn-secondary">Select Plan</a>
           </div>
-          <div class="pricing-card pricing-featured">
-            <h3 class="card-title">Dedicated Desk</h3>
-            <div class="price-amount">₹5,000<span>/mo</span></div>
-            <ul class="features-list">
-              <li>Reserved desk 24/7</li>
-              <li>Ethernet port access</li>
-              <li>Meeting room credits</li>
-              <li>Mailing address</li>
+          
+          <div class="card pricing-card featured">
+            <div class="pricing-header">
+              <h3>Dedicated Desk</h3>
+              <div class="price">₹5,000<span>/mo</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Reserved 24/7 access</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Wired ethernet port</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> 5 meeting room credits</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Mailing address</li>
             </ul>
             <a href="contact.html" class="btn btn-primary">Select Plan</a>
           </div>
-          <div class="pricing-card">
-            <h3 class="card-title">Private Cabin</h3>
-            <div class="price-amount">₹15,000<span>/mo</span></div>
-            <ul class="features-list">
-              <li>Enclosed secure room</li>
-              <li>Whiteboard walls</li>
-              <li>Unlimited meeting rooms</li>
-              <li>Custom branding</li>
+          
+          <div class="card pricing-card">
+            <div class="pricing-header">
+              <h3>Private Cabin</h3>
+              <div class="price">₹15,000<span>/mo</span></div>
+            </div>
+            <ul class="pricing-features">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Fully enclosed room</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Whiteboard walls</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg> Unlimited meeting rooms</li>
             </ul>
             <a href="contact.html" class="btn btn-secondary">Select Plan</a>
           </div>
@@ -120,36 +136,21 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo" style="color: var(--ink-subtle);">
-          <div class="logo-icon" style="background: var(--hairline-strong); color: var(--ink-subtle);">N</div>
-          <span>Nexa</span>
-        </div>
-        <span class="footer-copy">© 2026 Nexa Workspace. All rights reserved.</span>
-      </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <span class="footer-col-title">Product</span>
-          <a href="#">Features</a>
-          <a href="#">Integrations</a>
-          <a href="#">Pricing</a>
-          <a href="#">Changelog</a>
-        </div>
-        <div class="footer-col">
-          <span class="footer-col-title">Company</span>
-          <a href="#">About</a>
-          <a href="#">Blog</a>
-          <a href="#">Careers</a>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <a href="index.html" class="brand">
+          <div class="brand-icon">N</div>
+          <span>Nexa Workspace</span>
+        </a>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
           <a href="contact.html">Contact</a>
         </div>
-        <div class="footer-col">
-          <span class="footer-col-title">Legal</span>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">Security</a>
-        </div>
+      </div>
+      <div class="footer-copy">
+        © 2026 Nexa Workspace. Designed for excellence.
       </div>
     </div>
   </footer>

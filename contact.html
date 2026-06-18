@@ -3,122 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Nexa Workspace</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Contact — Nexa Workspace</title>
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <header class="top-nav">
-    <div class="container navbar-inner">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">N</div>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">N</div>
         <span>Nexa Workspace</span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html">Product</a></li>
+        <li><a href="index.html#features">Features</a></li>
         <li><a href="index.html#pricing">Pricing</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
       <div class="nav-actions">
-        <a href="contact.html" class="btn btn-secondary">Sign in</a>
-        <a href="contact.html" class="btn btn-primary">Book Workspace</a>
+        <a href="contact.html" class="btn btn-secondary">Member Login</a>
+        <a href="index.html#pricing" class="btn btn-primary">Book a Tour</a>
       </div>
-      <button class="mobile-hamburger">☰</button>
     </div>
-  </header>
+  </nav>
 
-  <main>
-    <section class="contact-layout">
-      <div class="contact-info-panel">
-        <span class="eyebrow">Contact Sales</span>
-        <h1 class="display-md">Let's build your workspace.</h1>
-        <p class="body-lg">Get in touch to schedule a tour, request a custom enterprise build-out, or ask about our current availability.</p>
-        
-        <div style="margin-top: 48px;">
-          <h3 class="card-title" style="margin-bottom: 8px;">Kuttiady HQ</h3>
-          <p class="body-sm" style="color: var(--ink-muted);">Level 3, Nexa Tower<br>Kuttiady, Kerala 673508<br>India</p>
+  <main style="padding-top: 140px;">
+    <section>
+      <div class="container contact-grid">
+        <div>
+          <span class="eyebrow">Get in touch</span>
+          <h1 class="display-md text-gradient-accent" style="margin-bottom: 1.5rem;">Let's build your workspace.</h1>
+          <p class="lead" style="margin-bottom: 3rem;">
+            Whether you need a single desk or an entire custom-branded floor, our team is ready to set up your infrastructure.
+          </p>
+
+          <div style="margin-bottom: 2rem;">
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.125rem;">Nexa HQ — Kuttiady</h3>
+            <p style="color: var(--text-secondary);">
+              Level 3, Nexa Tower<br>
+              Kuttiady, Kerala 673508<br>
+              India
+            </p>
+          </div>
+
+          <div>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.125rem;">Direct Sales</h3>
+            <p style="color: var(--text-secondary);">
+              +91 85906 91894<br>
+              sales@nexaworkspace.com
+            </p>
+          </div>
         </div>
-        
-        <div style="margin-top: 32px;">
-          <h3 class="card-title" style="margin-bottom: 8px;">Direct Line</h3>
-          <p class="body-sm" style="color: var(--ink-muted);">+91 85906 91894<br>sales@nexaworkspace.com</p>
+
+        <div class="card">
+          <form action="#" method="POST">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label>First name</label>
+                <input type="text" class="form-control" placeholder="Jane" required>
+              </div>
+              <div class="form-group">
+                <label>Last name</label>
+                <input type="text" class="form-control" placeholder="Doe" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Work email</label>
+              <input type="email" class="form-control" placeholder="jane@company.com" required>
+            </div>
+
+            <div class="form-group">
+              <label>What are you looking for?</label>
+              <select class="form-control" required style="appearance: none;">
+                <option value="" disabled selected>Select an option...</option>
+                <option value="hot-desk">Hot Desk (₹4,000/mo)</option>
+                <option value="dedicated-desk">Dedicated Desk (₹5,000/mo)</option>
+                <option value="private-cabin">Private Cabin (₹15,000/mo)</option>
+                <option value="enterprise">Enterprise Custom Floor</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Additional details</label>
+              <textarea class="form-control" placeholder="Tell us about your team size and timeline..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1rem;">Send Request</button>
+          </form>
         </div>
-      </div>
-      
-      <div class="contact-form-panel">
-        <form action="#" method="POST">
-          <div class="grid-2" style="gap: 16px; margin-bottom: 16px;">
-            <div class="form-group" style="margin-bottom: 0;">
-              <label class="form-label">First name</label>
-              <input type="text" class="form-input" placeholder="Jane" required>
-            </div>
-            <div class="form-group" style="margin-bottom: 0;">
-              <label class="form-label">Last name</label>
-              <input type="text" class="form-input" placeholder="Smith" required>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label">Work email</label>
-            <input type="email" class="form-input" placeholder="jane@company.com" required>
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label">Workspace requirement</label>
-            <select class="form-input" required>
-              <option value="" disabled selected>Select a plan...</option>
-              <option value="hot-desk">Hot Desk</option>
-              <option value="dedicated">Dedicated Desk</option>
-              <option value="cabin">Private Cabin</option>
-              <option value="enterprise">Enterprise Custom</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label">Additional details</label>
-            <textarea class="form-input" placeholder="Tell us about your team size and requirements..."></textarea>
-          </div>
-          
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 12px;">Submit Request</button>
-        </form>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo" style="color: var(--ink-subtle);">
-          <div class="logo-icon" style="background: var(--hairline-strong); color: var(--ink-subtle);">N</div>
-          <span>Nexa</span>
-        </div>
-        <span class="footer-copy">© 2026 Nexa Workspace. All rights reserved.</span>
-      </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <span class="footer-col-title">Product</span>
-          <a href="#">Features</a>
-          <a href="#">Integrations</a>
-          <a href="#">Pricing</a>
-          <a href="#">Changelog</a>
-        </div>
-        <div class="footer-col">
-          <span class="footer-col-title">Company</span>
-          <a href="#">About</a>
-          <a href="#">Blog</a>
-          <a href="#">Careers</a>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <a href="index.html" class="brand">
+          <div class="brand-icon">N</div>
+          <span>Nexa Workspace</span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html#features">Features</a>
+          <a href="index.html#pricing">Pricing</a>
           <a href="contact.html">Contact</a>
         </div>
-        <div class="footer-col">
-          <span class="footer-col-title">Legal</span>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">Security</a>
-        </div>
+      </div>
+      <div class="footer-copy">
+        © 2026 Nexa Workspace. Designed for excellence.
       </div>
     </div>
   </footer>
