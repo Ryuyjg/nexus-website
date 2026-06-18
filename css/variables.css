@@ -1,122 +1,55 @@
-/* Design Tokens & Theme Variables — Apple / iOS Premium Style */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+/* 
+ * Linear.app Inspired Design Tokens 
+ * A dark-canvas marketing system with a single lavender accent and hairline borders.
+ */
 
 :root {
-  /* Typography */
-  /* Fallback to system-ui to hit native SF Pro on Apple devices, Inter on others */
-  --font-heading: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
-  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  /* Brand & Accent */
+  --primary-color: #5e6ad2;
+  --on-primary: #ffffff;
+  --primary-hover: #828fff;
+  --primary-focus: #5e69d1;
+  --semantic-success: #27a644;
 
-  /* Brand Palette — Action Blue & Grayscale */
-  --primary-color: #0066cc; /* Action Blue */
-  --primary-focus: #0071e3;
-  --primary-on-dark: #2997ff; /* Sky Link Blue */
-
-  /* Text & Inks */
-  --ink: #1d1d1f;
-  --ink-muted: #7a7a7a;
-  --ink-muted-80: #333333;
-  
-  --text-color: var(--ink);
-  --text-muted: var(--ink-muted);
-  --text-on-dark: #ffffff;
-  
   /* Surfaces */
-  --canvas: #ffffff;
-  --canvas-parchment: #f5f5f7;
-  --surface-pearl: #fafafc;
-  --surface-tile-1: #272729;
-  --surface-tile-2: #2a2a2c;
-  --surface-tile-3: #252527;
-  --surface-black: #000000;
-  --surface-chip-translucent: rgba(210, 210, 215, 0.64);
+  --canvas: #010102; /* Deepest black with faint blue tint */
+  --surface-1: #0f1011; /* Default card surface */
+  --surface-2: #141516; /* Featured card surface */
+  --surface-3: #18191a;
+  --surface-4: #191a1b;
 
-  /* Theme Defaults (Light mode is base) */
-  --bg-color: var(--canvas);
-  --nav-bg: rgba(0, 0, 0, 0.95);
-  --nav-text: var(--text-on-dark);
+  /* Borders / Hairlines */
+  --hairline: #23252a; /* Default 1px card border */
+  --hairline-strong: #34343a; /* Stronger borders, input rings */
   
-  --card-bg: var(--canvas);
-  --card-border: #e0e0e0; /* Hairline */
-  --divider-soft: rgba(0, 0, 0, 0.04);
-  
+  /* Typography Colors */
+  --ink: #f7f8f8; /* Headlines and body */
+  --ink-muted: #d0d6e0; /* Secondary type */
+  --ink-subtle: #8a8f98; /* Tertiary type */
+  --ink-tertiary: #62666d; /* Disabled, footnotes */
+
+  /* Typography Families */
+  --font-display: "Inter", -apple-system, system-ui, sans-serif;
+  --font-text: "Inter", -apple-system, system-ui, sans-serif;
+
   /* Radii */
-  --rounded-none: 0px;
-  --rounded-sm: 8px;
-  --rounded-md: 11px;
-  --rounded-lg: 18px;
+  --rounded-xs: 4px;
+  --rounded-sm: 6px;
+  --rounded-md: 8px; /* Buttons, inputs */
+  --rounded-lg: 12px; /* Standard cards */
+  --rounded-xl: 16px; /* Feature/Product panels */
   --rounded-pill: 9999px;
 
-  /* Transitions */
-  --transition-smooth: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease, background-color 0.2s ease;
-  --transition-fast: all 0.15s ease;
+  /* Spacing */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  --spacing-section: 96px;
 
-  /* Shadows — Only ONE shadow in the entire system, for product imagery */
-  --shadow-product: rgba(0, 0, 0, 0.22) 3px 5px 30px 0;
-  
-  /* No UI shadows */
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
-
-  /* Form & Inputs */
-  --input-bg: var(--canvas-parchment);
-  --input-border: #d2d2d7;
-
-  /* Buttons */
-  --btn-primary-text: #ffffff;
-}
-
-/* Dark Theme Overrides (For system toggle, though Apple relies mostly on tile-alternation) */
-body.dark-mode {
-  --text-color: var(--text-on-dark);
-  --text-muted: #cccccc;
-  
-  --bg-color: var(--surface-tile-1);
-  --canvas: var(--surface-tile-1);
-  --canvas-parchment: var(--surface-tile-2);
-  --surface-pearl: var(--surface-tile-3);
-  
-  --card-bg: var(--surface-tile-2);
-  --card-border: #333333;
-  --divider-soft: rgba(255, 255, 255, 0.04);
-
-  --input-bg: var(--surface-tile-3);
-  --input-border: #444444;
-
-  --primary-color: var(--primary-on-dark);
-  --btn-primary-text: var(--ink);
-  
-  --nav-bg: rgba(29, 29, 31, 0.95);
-  --nav-text: var(--text-on-dark);
-}
-
-/* ==================== KEYFRAMES ==================== */
-
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes spinner {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes page-enter {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slide-in-right {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes slide-out-right {
-  from { transform: translateX(0); }
-  to { transform: translateX(100%); }
-}
-
-@keyframes scrollEvents {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-50% - 12px)); }
+  /* Layout */
+  --max-width: 1280px;
 }

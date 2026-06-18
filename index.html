@@ -3,1330 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexa Workspace - Premium Professional Environments</title>
-  <meta name="description" content="Nexa Workspace provides premium, intelligently-designed physical offices and meeting rooms for teams that demand excellence.">
-  <meta name="theme-color" content="#00f2fe">
-  <link rel="canonical" href="https://ryuyjg.github.io/nexus-website/">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2300f2fe'/><text x='50%25' y='50%25' text-anchor='middle' dy='.35em' font-size='18' font-weight='bold' fill='%230b0f19'>N</text></svg>">
-
-  <!-- Performance: Preconnect -->
+  <title>Nexa Workspace</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://images.unsplash.com">
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Nexa Workspace - Premium Professional Environments">
-  <meta property="og:description" content="Nexa Workspace provides premium, intelligently-designed physical offices and meeting rooms.">
-  <meta property="og:url" content="https://ryuyjg.github.io/nexus-website/">
-  <meta property="og:image" content="https://ryuyjg.github.io/nexus-website/og-image.png">
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Nexa Workspace - Premium Professional Environments">
-  <meta name="twitter:description" content="Premium physical offices and meeting rooms for teams that demand excellence.">
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Nexa Workspace",
-    "url": "https://ryuyjg.github.io/nexus-website",
-    "logo": "https://ryuyjg.github.io/nexus-website/logo.png",
-    "description": "Premium professional workspaces, dedicated desks, and meeting rooms.",
-    "sameAs": [],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91-85906-91894",
-      "contactType": "sales",
-      "availableLanguage": "English"
-    }
-  }
-  </script>
-
-  <link rel="stylesheet" href="css/variables.css?v=11">
-  <link rel="stylesheet" href="css/styles.css?v=11">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Skip-to-Content Link (Accessibility) -->
-  <a href="#app-content" class="skip-link">Skip to Content</a>
 
-  <!-- Ambient Backdrops Removed for Apple Style -->
-  <!-- Cursor Glow Tracker Removed for Apple Style -->
-
-  <!-- Navigation Header -->
-  <header>
-    <div class="container navbar">
-      <a href="#home" class="logo">
+  <header class="top-nav">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">
         <div class="logo-icon">N</div>
-        <span id="logo-text">NEXA</span>
+        <span>Nexa Workspace</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="index.html">Product</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="nav-right">
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark and light theme">
-          <!-- SVG injected via App.js -->
-        </button>
-        <a href="#contact" class="btn btn-primary">Book Consultation</a>
-        <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-secondary">Sign in</a>
+        <a href="contact.html" class="btn btn-primary">Book Workspace</a>
       </div>
+      <button class="mobile-hamburger">☰</button>
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer -->
-  <div class="mobile-nav-overlay" id="mobile-nav-overlay">
-    <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
-    <nav class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile navigation">
-      <a href="#home" class="mobile-nav-link">Home</a>
-      <a href="#services" class="mobile-nav-link">Services</a>
-      <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
-      <a href="#blog" class="mobile-nav-link">Blog</a>
-      <a href="#careers" class="mobile-nav-link">Careers</a>
-      <a href="#faq" class="mobile-nav-link">FAQ</a>
-      <a href="#about" class="mobile-nav-link">About Us</a>
-      <a href="#pricing" class="mobile-nav-link">Pricing</a>
-      <a href="#status" class="mobile-nav-link">Status</a>
-      <a href="#contact" class="mobile-nav-link">Contact Us</a>
-    </nav>
-  </div>
-
-  <!-- Viewport Content Area -->
-  <main id="app-content">
-
-    <!-- ==================== PUBLIC WRAPPER FOR SCROLLING ==================== -->
-    <div id="public-view-wrapper">
-
-      <!-- 1. HOME SECTION -->
-      <div id="home" class="scroll-reveal">
-        <section class="product-tile tile-parchment" id="hero-tile">
-          <div class="hero-text">
-            <h1 class="hero-display" id="hero-title">Automate Decisions. Maximize ROI.</h1>
-            <p class="lead" id="hero-subtitle">Optimize workflows, balance cloud networks, and build complete enterprise simulations dynamically.</p>
-            <div class="hero-actions">
-              <a href="#pricing" class="btn btn-primary" id="hero-cta-primary">Calculate Your ROI</a>
-              <a href="#services" class="btn btn-secondary" id="hero-cta-secondary">Explore Services</a>
-            </div>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-text">
+          <span class="eyebrow">Nexa Enterprise V2.0</span>
+          <h1 class="display-xl">Automate your physical operations.</h1>
+          <p class="body-lg">Linear-scale infrastructure for teams that demand excellence. Book premium private offices and dedicated desks with a single click.</p>
+          <div class="hero-actions">
+            <a href="contact.html" class="btn btn-primary">Start Building</a>
+            <a href="#pricing" class="btn btn-secondary">View Pricing</a>
           </div>
-          <div class="hero-visual">
-            <!-- Simplified Hero Mockup -->
-            <img src="uploads/hero.png" alt="Hero Mockup" style="max-width: 100%; border-radius: var(--rounded-lg); box-shadow: var(--shadow-product); display: none;" id="hero-image" />
-          </div>
-        </section>
-
-        <!-- Stats section -->
-        <section class="stats-section">
-          <div class="container stats-grid" id="stats-container">
-            <!-- Dynamic Home Stats Injected here -->
-          </div>
-        </section>
-
-        <!-- Benefits section -->
-        <section class="benefits-section scroll-reveal" id="benefits">
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Workspace Benefits</span>
-              <h2>Designed for Your Comfort & Growth</h2>
-              <p>Everything your team needs to thrive, included in one simple, low-cost membership.</p>
-            </div>
-            <div class="benefits-grid">
-              <div class="benefit-card glass-card">
-                <div class="benefit-icon">❄️</div>
-                <h3>Full-Time AC</h3>
-                <p>Enjoy continuous, whisper-quiet air conditioning across all private cabins and open workspace floors.</p>
-              </div>
-              <div class="benefit-card glass-card">
-                <div class="benefit-icon">💸</div>
-                <h3>Low Rent</h3>
-                <p>Premium physical workspaces at Kuttiady's most affordable rates, with flexible month-to-month contracts.</p>
-              </div>
-              <div class="benefit-card glass-card">
-                <div class="benefit-icon">🌐</div>
-                <h3>Free Highspeed Internet</h3>
-                <p>Blazing fast gigabit fiber-optic connection with 99.9% uptime to keep you connected to your clients.</p>
-              </div>
-              <div class="benefit-card glass-card">
-                <div class="benefit-icon">⚡</div>
-                <h3>Free Electricity</h3>
-                <p>Enjoy free electricity across all cabins and desks, with zero utility bills or extra charges.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Highlights section -->
-        <section class="showcase-section">
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Highlights</span>
-              <h2>Premium Workspace Solutions</h2>
-              <p>Intelligently designed office services to optimize your team's focus and operational footprint.</p>
-            </div>
-            <div class="showcase-slider" id="showcase-container">
-              <!-- Dynamic Highlight Cards Injected here -->
-            </div>
-          </div>
-        </section>
-
-
-      </div>
-
-      <!-- 2. SERVICES SECTION -->
-      <div id="services" class="scroll-reveal">
-        <section>
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Enterprise Capabilities</span>
-              <h2>Our Operational Portfolio</h2>
-              <p>Explore our premium private offices, dedicated desks, and state-of-the-art meeting rooms designed to elevate your daily operations.</p>
-            </div>
-            
-            <div class="services-filters" id="services-filters">
-              <!-- Categories Filters Injected here -->
-            </div>
-
-            <div class="services-grid" id="services-grid">
-              <!-- Services Grid Injected here -->
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- 2.5 FLOOR MAP SECTION -->
-      <div id="floor-map-section" class="scroll-reveal">
-        <section>
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Interactive Seat Map</span>
-              <h2>Explore Our Floor Layout</h2>
-              <p>Click on any available desk, cabin, or meeting room to reserve your spot instantly.</p>
-            </div>
-            
-            <div class="map-layout-grid">
-              <!-- Map Visualization -->
-              <div class="map-visual-panel glass-card">
-                <div class="map-header">
-                  <div class="map-title-row">
-                    <span class="map-office-label">Nexa Workspace Kuttiady Floor Plan</span>
-                    <div class="map-legends">
-                      <span class="legend-item"><span class="legend-dot available"></span> Available</span>
-                      <span class="legend-item"><span class="legend-dot occupied"></span> Occupied</span>
-                      <span class="legend-item"><span class="legend-dot selected"></span> Selected</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="map-svg-container">
-                  <svg id="floor-map-svg" viewBox="0 0 800 500" width="100%" height="100%">
-                    <!-- Walls & Rooms Outline -->
-                    <rect x="10" y="10" width="780" height="480" rx="12" fill="none" stroke="var(--card-border)" stroke-width="3" />
-                    
-                    <!-- Reception Area -->
-                    <rect x="30" y="30" width="180" height="120" rx="8" fill="rgba(var(--primary-color-rgb), 0.05)" stroke="var(--card-border)" stroke-width="2" />
-                    <text x="120" y="90" text-anchor="middle" font-weight="700" fill="var(--text-color)" font-size="14">Reception / Lounge</text>
-                    
-                    <!-- Café & Lounge Area -->
-                    <rect x="30" y="180" width="220" height="290" rx="8" fill="rgba(var(--primary-color-rgb), 0.03)" stroke="var(--card-border)" stroke-width="2" />
-                    <text x="140" y="330" text-anchor="middle" font-weight="700" fill="var(--text-color)" font-size="14">Nexa Social Café</text>
-                    
-                    <!-- Executive Meeting Room -->
-                    <g class="map-room" data-room="Executive Meeting Room" data-id="meeting-room">
-                      <rect x="520" y="30" width="250" height="160" rx="8" class="map-room-rect available" />
-                      <text x="645" y="115" text-anchor="middle" font-weight="700" class="map-room-text">Executive Meeting Room</text>
-                    </g>
-                    
-                    <!-- Private Cabins -->
-                    <g class="map-room" data-room="Private Cabin 1" data-id="cabin-1">
-                      <rect x="240" y="30" width="120" height="120" rx="8" class="map-room-rect available" />
-                      <text x="300" y="95" text-anchor="middle" font-weight="700" class="map-room-text">Cabin 1</text>
-                    </g>
-                    <g class="map-room" data-room="Private Cabin 2" data-id="cabin-2">
-                      <rect x="380" y="30" width="120" height="120" rx="8" class="map-room-rect occupied" />
-                      <text x="440" y="95" text-anchor="middle" font-weight="700" class="map-room-text">Cabin 2 (Occupied)</text>
-                    </g>
-                    
-                    <!-- Dedicated Desks Rows -->
-                    <g class="map-desk" data-desk="Desk D1" data-id="desk-d1">
-                      <rect x="300" y="220" width="50" height="40" rx="4" class="map-desk-rect available" />
-                      <text x="325" y="245" text-anchor="middle" font-size="11" class="map-desk-text">D1</text>
-                    </g>
-                    <g class="map-desk" data-desk="Desk D2" data-id="desk-d2">
-                      <rect x="360" y="220" width="50" height="40" rx="4" class="map-desk-rect occupied" />
-                      <text x="385" y="245" text-anchor="middle" font-size="11" class="map-desk-text">D2</text>
-                    </g>
-                    <g class="map-desk" data-desk="Desk D3" data-id="desk-d3">
-                      <rect x="420" y="220" width="50" height="40" rx="4" class="map-desk-rect available" />
-                      <text x="445" y="245" text-anchor="middle" font-size="11" class="map-desk-text">D3</text>
-                    </g>
-                    <g class="map-desk" data-desk="Desk D4" data-id="desk-d4">
-                      <rect x="480" y="220" width="50" height="40" rx="4" class="map-desk-rect available" />
-                      <text x="505" y="245" text-anchor="middle" font-size="11" class="map-desk-text">D4</text>
-                    </g>
-                    
-                    <g class="map-desk" data-desk="Desk D5" data-id="desk-d5">
-                      <rect x="300" y="280" width="50" height="40" rx="4" class="map-desk-rect available" />
-                      <text x="325" y="305" text-anchor="middle" font-size="11" class="map-desk-text">D5</text>
-                    </g>
-                    <g class="map-desk" data-desk="Desk D6" data-id="desk-d6">
-                      <rect x="360" y="280" width="50" height="40" rx="4" class="map-desk-rect available" />
-                      <text x="385" y="305" text-anchor="middle" font-size="11" class="map-desk-text">D6</text>
-                    </g>
-                    <g class="map-desk" data-desk="Desk D7" data-id="desk-d7">
-                      <rect x="420" y="280" width="50" height="40" rx="4" class="map-desk-rect occupied" />
-                      <text x="445" y="305" text-anchor="middle" font-size="11" class="map-desk-text">D7</text>
-                    </g>
-                    <g class="map-desk" data-desk="Desk D8" data-id="desk-d8">
-                      <rect x="480" y="280" width="50" height="40" rx="4" class="map-desk-rect available" />
-                      <text x="505" y="305" text-anchor="middle" font-size="11" class="map-desk-text">D8</text>
-                    </g>
-                    
-                    <g class="map-desk" data-desk="Desk D9" data-id="desk-d9">
-                      <rect x="330" y="380" width="50" height="40" rx="4" class="map-desk-rect available" />
-                      <text x="355" y="405" text-anchor="middle" font-size="11" class="map-desk-text">D9</text>
-                    </g>
-                    <g class="map-desk" data-desk="Desk D10" data-id="desk-d10">
-                      <rect x="390" y="380" width="50" height="40" rx="4" class="map-desk-rect available" />
-                      <text x="415" y="405" text-anchor="middle" font-size="11" class="map-desk-text">D10</text>
-                    </g>
-                    
-                    <g class="map-desk" data-desk="Mini Lounge A" data-id="desk-d11">
-                      <rect x="480" y="380" width="110" height="80" rx="6" class="map-desk-rect available" />
-                      <text x="535" y="425" text-anchor="middle" font-size="12" font-weight="700" class="map-desk-text">Mini Lounge A</text>
-                    </g>
-                  </svg>
-                </div>
-              </div>
-              
-              <!-- Map Selection Widget Panel -->
-              <div class="map-info-panel glass-card">
-                <h3>Space Details</h3>
-                <div id="map-selection-default">
-                  <p class="text-muted">Click any active area or desk on the map to display its rates, availability, and to book instantly.</p>
-                  <div style="text-align: center; margin-top: 40px; font-size: 48px;">🗺️</div>
-                </div>
-                <div id="map-selection-details" style="display: none;">
-                  <div class="selected-details-row">
-                    <span class="details-label">Selected Space:</span>
-                    <span class="details-value" id="selected-space-name">-</span>
-                  </div>
-                  <div class="selected-details-row">
-                    <span class="details-label">Type:</span>
-                    <span class="details-value" id="selected-space-type">-</span>
-                  </div>
-                  <div class="selected-details-row">
-                    <span class="details-label">Monthly Rate:</span>
-                    <span class="details-value" id="selected-space-rate">-</span>
-                  </div>
-                  <div class="selected-details-row">
-                    <span class="details-label">Status:</span>
-                    <span class="details-value" id="selected-space-status">-</span>
-                  </div>
-                  <div class="details-desc-box" id="selected-space-desc">
-                    -
-                  </div>
-                  
-                  <button id="book-selected-space-btn" class="btn btn-primary" style="width: 100%; margin-top: 24px;">
-                    Reserve Selected Spot
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- 3. PORTFOLIO SECTION -->
-      <div id="portfolio" class="scroll-reveal">
-        <section>
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Case Studies</span>
-              <h2>Quantifiable Enterprise Savings</h2>
-              <p>Analyze how fast-growing startups and established enterprise teams design and scale their custom physical workspace operations.</p>
-            </div>
-            
-            <div class="admin-list-container portfolio-grid" id="portfolio-grid">
-              <!-- Portfolio case studies injected dynamically -->
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- 4. BLOG SECTION -->
-      <div id="blog" class="scroll-reveal">
-        <section>
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Insights</span>
-              <h2>The Nexa Workspace Community Blog</h2>
-              <p>Articles written by our workspace designers, community leads, and productivity experts mapping design trends, hybrid work, and ergonomics.</p>
-            </div>
-            
-            <div class="services-grid" id="blog-grid">
-              <!-- Blog posts injected dynamically -->
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- 5. CAREERS SECTION -->
-      <div id="careers" class="scroll-reveal">
-        <section>
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Careers</span>
-              <h2>Join the Nexa Workspace Team</h2>
-              <p>Build premium professional spaces and deliver high-hospitality member experiences alongside our operations, sales, and design teams.</p>
-            </div>
-            
-            <div class="services-grid" id="careers-jobs-grid">
-              <!-- Job openings rendered dynamically -->
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- 6. FAQ SECTION -->
-      <div id="faq" class="scroll-reveal">
-        <section>
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Support Hub</span>
-              <h2>Frequently Asked Questions</h2>
-              <p>Search standard queries regarding systems operations or submit a direct technical support ticket.</p>
-            </div>
-            
-            <div class="contact-grid">
-              <!-- FAQ Search & Accordion -->
-              <div>
-                <div class="form-group faq-search-group">
-                  <input type="text" id="faq-search-input" class="form-control" placeholder="🔍 Search FAQs (e.g. cloud, security, speed)...">
-                </div>
-                <div id="faq-accordions-container" class="faq-accordion-wrapper">
-                  <!-- FAQs injected dynamically -->
-                </div>
-              </div>
-              
-              <!-- Support Ticket Form -->
-              <div class="contact-form-panel glass-card">
-                <h3 class="panel-title">Submit Support Ticket</h3>
-                <form id="faq-ticket-form">
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="ticket-name">Your Name</label>
-                      <input type="text" id="ticket-name" name="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="ticket-email">Email Address</label>
-                      <input type="email" id="ticket-email" name="email" class="form-control" required>
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="ticket-category">Category</label>
-                      <select id="ticket-category" name="category" class="form-select">
-                        <option value="Technical">Facilities & Maintenance</option>
-                        <option value="Billing">Billing & Memberships</option>
-                        <option value="Security">Event Hosting</option>
-                        <option value="Integration">Mail & Deliveries</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="ticket-priority">Priority</label>
-                      <select id="ticket-priority" name="priority" class="form-select">
-                        <option value="Low">Low (Next Business Day)</option>
-                        <option value="Medium" selected>Medium (Under 8 Hours)</option>
-                        <option value="High">High (Under 2 Hours)</option>
-                        <option value="Emergency">Emergency (Under 15 Mins)</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="ticket-subject">Subject</label>
-                    <input type="text" id="ticket-subject" name="subject" class="form-control" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="ticket-message">Problem Description</label>
-                    <textarea id="ticket-message" name="message" class="form-control" required></textarea>
-                  </div>
-                  
-                  <div class="form-submit-wrapper">
-                    <button type="submit" class="btn btn-primary">Submit Ticket</button>
-                    <div class="form-spinner" id="ticket-spinner"></div>
-                  </div>
-                </form>
-                
-                <!-- Support ticket success panel -->
-                <div id="ticket-success-panel" class="ticket-success" style="display: none;">
-                  <div class="success-icon">✓</div>
-                  <h3>Support Ticket Lodged</h3>
-                  <p class="careers-success-text">Your ticket was logged. Live SLA response trackers are initialized.</p>
-                  <button type="button" class="btn btn-secondary" id="btn-ticket-done">Submit Another Ticket</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- 6.5 GALLERY SECTION -->
-      <div id="gallery" class="scroll-reveal">
-        <section>
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Virtual Tour</span>
-              <h2>Nexa Workspace Gallery</h2>
-              <p>Browse through high-resolution captures of our premium workspaces, cafe, and lounge zones.</p>
-            </div>
-            
-            <div class="gallery-filter-bar">
-              <button class="gallery-filter-btn active" data-filter="all">All Spaces</button>
-              <button class="gallery-filter-btn" data-filter="cabins">Cabins</button>
-              <button class="gallery-filter-btn" data-filter="desks">Dedicated Desks</button>
-              <button class="gallery-filter-btn" data-filter="cafe">Cafe & Social</button>
-              <button class="gallery-filter-btn" data-filter="lounge">Lounge</button>
-            </div>
-            
-            <div class="gallery-grid">
-              <div class="gallery-item glass-card" data-category="lounge">
-                <img src="uploads/gallery_lounge.png" alt="Nexa Workspace Premium Lounge" loading="lazy">
-                <div class="gallery-overlay">
-                  <h4>Nexa Premium Lounge</h4>
-                  <p>Biophilic design social lounge for relaxed discussions.</p>
-                </div>
-              </div>
-              <div class="gallery-item glass-card" data-category="cabins">
-                <img src="uploads/private_office.png" alt="Private Cabin Suites" loading="lazy">
-                <div class="gallery-overlay">
-                  <h4>Private Cabin Suites</h4>
-                  <p>Acoustically isolated private offices for small teams.</p>
-                </div>
-              </div>
-              <div class="gallery-item glass-card" data-category="desks">
-                <img src="uploads/hero.png" alt="Minimalist Dedicated Desks" loading="lazy">
-                <div class="gallery-overlay">
-                  <h4>Minimalist Dedicated Desks</h4>
-                  <p>Ergonomic personal desks with custom storage.</p>
-                </div>
-              </div>
-              <div class="gallery-item glass-card" data-category="cafe">
-                <img src="uploads/gallery_cafe.png" alt="Nexa Social Café" loading="lazy">
-                <div class="gallery-overlay">
-                  <h4>Nexa Social Café</h4>
-                  <p>Chic bar serving premium hand-crafted espresso.</p>
-                </div>
-              </div>
-              <div class="gallery-item glass-card" data-category="lounge">
-                <img src="uploads/gallery_meeting.png" alt="Executive Conference Room" loading="lazy">
-                <div class="gallery-overlay">
-                  <h4>Executive Conference Room</h4>
-                  <p>4K displays, high-fidelity acoustics, and Zoom Rooms.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- Lightbox Modal -->
-      <div id="gallery-lightbox" class="lightbox-modal">
-        <span class="lightbox-close">&times;</span>
-        <span class="lightbox-prev">&#10094;</span>
-        <span class="lightbox-next">&#10095;</span>
-        <div class="lightbox-content">
-          <img id="lightbox-img" src="" alt="Expanded Workspace Capture">
-          <div id="lightbox-caption"></div>
+        </div>
+        
+        <div class="hero-visual-wrapper product-screenshot-card">
+          <img src="uploads/hero.png" alt="Nexa Dashboard UI" />
         </div>
       </div>
+    </section>
 
-      <!-- 7. ABOUT US SECTION -->
-      <div id="about" class="scroll-reveal">
-        <section>
-          <div class="container">
-            <div class="about-intro-grid">
-              <div>
-                <span class="badge">Company Profile</span>
-                <h2 class="about-heading">Re-inventing Corporate Operational Math</h2>
-                <p class="about-text">
-                  Nexa Workspace was founded by leading commercial real estate experts and architects to solve a structural business reality: modern businesses need flexible, premium environments without 10-year lease commitments.
-                </p>
-                <p class="about-text" style="margin-bottom: 0;">
-                  By deploying biophilic design and hospitality-driven operations, we provide teams with a workspace that actually enhances productivity and well-being.
-                </p>
-              </div>
-              <div class="glass-card about-standards">
-                <h3 class="about-standards-title">Global Standards</h3>
-                <p class="about-standards-desc">Adhering strictly to modern architectural standards, sustainable building codes, and biophilic wellness directives.</p>
-                <div class="about-standards-icon">🏅</div>
-              </div>
-            </div>
-
-            <div class="section-header">
-              <span class="badge">Milestones</span>
-              <h2>Our Innovation Timeline</h2>
-            </div>
-
-            <div class="timeline">
-              <div class="timeline-item">
-                <div class="timeline-date">2023</div>
-                <div class="timeline-title">Foundation & Academic Spinoff</div>
-                <div class="timeline-desc">Founded as a boutique spatial planning consulting firm, applying architectural algorithms to workspace optimization.</div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-date">2024</div>
-                <div class="timeline-title">Series A Capitalization</div>
-                <div class="timeline-desc">Secured $14M in funding from tier-1 enterprise venture groups. Expanded our workspace portfolio to 25 prime metropolitan locations.</div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-date">2025</div>
-                <div class="timeline-title">First $1B Portfolio Optimizations</div>
-                <div class="timeline-desc">Optimized over 1 million square feet of premium workspace, serving major enterprise clients across the globe.</div>
-              </div>
-            </div>
-
-
-          </div>
-        </section>
-      </div>
-
-      <!-- 7.5 EVENTS TICKER SECTION -->
-      <div id="community-events" class="scroll-reveal">
-        <section style="padding: 60px 0; background: rgba(var(--primary-color-rgb), 0.02); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);">
-          <div class="container">
-            <div class="section-header" style="margin-bottom: 30px;">
-              <span class="badge">Events & Networking</span>
-              <h2>Upcoming Community Events</h2>
-              <p>Connect and learn with local innovators and startup founders at Nexa Workspace Kuttiady.</p>
-            </div>
-            
-            <div class="events-ticker-container">
-              <div class="events-ticker-track">
-                <div class="event-ticker-card glass-card">
-                  <div class="event-ticker-date">June 04</div>
-                  <div class="event-ticker-info">
-                    <h4>Kuttiady Founder Meetup</h4>
-                    <p>Networking and panel discussion with local startup founders.</p>
-                  </div>
-                </div>
-                <div class="event-ticker-card glass-card">
-                  <div class="event-ticker-date">June 10</div>
-                  <div class="event-ticker-info">
-                    <h4>UI/UX Masterclass</h4>
-                    <p>Learn premium design heuristics and modern spacing practices.</p>
-                  </div>
-                </div>
-                <div class="event-ticker-card glass-card">
-                  <div class="event-ticker-date">June 18</div>
-                  <div class="event-ticker-info">
-                    <h4>Freelancer Huddle</h4>
-                    <p>Coffee and social sessions for local independent remote builders.</p>
-                  </div>
-                </div>
-                <div class="event-ticker-card glass-card">
-                  <div class="event-ticker-date">June 25</div>
-                  <div class="event-ticker-info">
-                    <h4>Digital Marketing Boot</h4>
-                    <p>Strategies for scaling e-commerce brands in Kerala.</p>
-                  </div>
-                </div>
-                
-                <div class="event-ticker-card glass-card">
-                  <div class="event-ticker-date">June 04</div>
-                  <div class="event-ticker-info">
-                    <h4>Kuttiady Founder Meetup</h4>
-                    <p>Networking and panel discussion with local startup founders.</p>
-                  </div>
-                </div>
-                <div class="event-ticker-card glass-card">
-                  <div class="event-ticker-date">June 10</div>
-                  <div class="event-ticker-info">
-                    <h4>UI/UX Masterclass</h4>
-                    <p>Learn premium design heuristics and modern spacing practices.</p>
-                  </div>
-                </div>
-                <div class="event-ticker-card glass-card">
-                  <div class="event-ticker-date">June 18</div>
-                  <div class="event-ticker-info">
-                    <h4>Freelancer Huddle</h4>
-                    <p>Coffee and social sessions for local independent remote builders.</p>
-                  </div>
-                </div>
-                <div class="event-ticker-card glass-card">
-                  <div class="event-ticker-date">June 25</div>
-                  <div class="event-ticker-info">
-                    <h4>Digital Marketing Boot</h4>
-                    <p>Strategies for scaling e-commerce brands in Kerala.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- 8. PRICING SECTION -->
-      <div id="pricing" class="scroll-reveal">
-        <section>
-          <div class="container">
-
-
-            <div class="section-header">
-              <span class="badge">Pricing Plans</span>
-              <h2>Select Your Enterprise Tier</h2>
-              <p>All subscription plans are backed by our 99.9% uptime SLA guarantee.</p>
-            </div>
-
-            <div class="pricing-grid" id="pricing-grid">
-              <!-- Dynamic Pricing Grid Injected here -->
-            </div>
-          </div>
-        </section>
-      </div>
-
-
-
-      <!-- 9.5 FAQ SECTION -->
-      <div id="faq" class="scroll-reveal">
-        <section>
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">FAQ & Support</span>
-              <h2>Frequently Asked Questions</h2>
-              <p>Everything you need to know about access, utility billing, and rules at Nexa Workspace Kuttiady.</p>
-            </div>
-            
-            <div class="faq-search-wrapper">
-              <input type="text" id="faq-search-input" placeholder="Search FAQ topics... (e.g. access, printing, keys)">
-            </div>
-            
-            <div class="faq-accordion-list">
-              <div class="faq-card glass-card">
-                <div class="faq-header">
-                  <h3>When can I access my workspace?</h3>
-                  <span class="faq-icon">&#43;</span>
-                </div>
-                <div class="faq-body">
-                  <p>Dedicated Desk and Private Cabin members have 24/7 biometric building access. Hot Desk members can access the workspace during business hours (8:00 AM - 7:00 PM, Monday to Saturday).</p>
-                </div>
-              </div>
-              <div class="faq-card glass-card">
-                <div class="faq-header">
-                  <h3>Are there utility charges or electricity bills?</h3>
-                  <span class="faq-icon">&#43;</span>
-                </div>
-                <div class="faq-body">
-                  <p>No. All utility costs, including premium air conditioning, backup power, water, and cleaning services are 100% included in your monthly membership fee.</p>
-                </div>
-              </div>
-              <div class="faq-card glass-card">
-                <div class="faq-header">
-                  <h3>Are meeting room credits included?</h3>
-                  <span class="faq-icon">&#43;</span>
-                </div>
-                <div class="faq-body">
-                  <p>Yes. Hot Desk members receive 2 hours of meeting room bookings per month. Dedicated Desks get 5 hours, and Private Cabins receive 15+ hours. Additional credits can be purchased at discounted rates.</p>
-                </div>
-              </div>
-              <div class="faq-card glass-card">
-                <div class="faq-header">
-                  <h3>Is there a lock-in period or contract?</h3>
-                  <span class="faq-icon">&#43;</span>
-                </div>
-                <div class="faq-body">
-                  <p>No, we keep it simple. All plans run on flexible month-to-month terms. You can upgrade, downgrade, or cancel your subscription by giving a 15-day notice before your next renewal.</p>
-                </div>
-              </div>
-              <div class="faq-card glass-card">
-                <div class="faq-header">
-                  <h3>Can I receive packages and mail?</h3>
-                  <span class="faq-icon">&#43;</span>
-                </div>
-                <div class="faq-body">
-                  <p>Yes. Private Cabin and Dedicated Desk plans include mail handling and receptionist sign-off. We notify you via WhatsApp/Email as soon as your package arrives.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- 10. CONTACT US SECTION -->
-      <div id="contact" class="scroll-reveal">
-        <section>
-          <div class="container">
-            <div class="section-header">
-              <span class="badge">Connect</span>
-              <h2>Book a Workspace Tour</h2>
-              <p>Request an introductory consultation or contact our workspace leasing team directly.</p>
-            </div>
-
-            <div class="contact-grid">
-              <div class="contact-info">
-                <div class="contact-item">
-                  <div class="contact-item-icon">📍</div>
-                  <div>
-                    <h4>Primary HQ</h4>
-                    <p>Nexa Workspace Tower, Main Road<br>Kuttiady, Kerala 673508</p>
-                  </div>
-                </div>
-
-                <div class="contact-item">
-                  <div class="contact-item-icon">✉️</div>
-                  <div>
-                    <h4>Direct Inquiries</h4>
-                    <p>integrations@nexaworkspace.com<br>sales@nexaworkspace.com</p>
-                  </div>
-                </div>
-
-                <div class="contact-item">
-                  <div class="contact-item-icon">📞</div>
-                  <div>
-                    <h4>Inquiry Hotline</h4>
-                    <p><a href="tel:+918590691894" style="color: inherit; text-decoration: none;">+91 85906 91894</a><br>Mon-Sat, 9am - 7pm IST</p>
-                  </div>
-                </div>
-
-                <div class="contact-item">
-                  <div class="contact-item-icon">💬</div>
-                  <div>
-                    <h4>WhatsApp Chat</h4>
-                    <p><a href="https://wa.me/918590691894" target="_blank" rel="noopener noreferrer" style="color: #25d366; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">Chat Now ↗</a><br>Instant response during business hours</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Validation-enabled submission form -->
-              <div class="contact-form-panel glass-card">
-                <form id="contact-form">
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="contact-name">Full Name</label>
-                      <input type="text" id="contact-name" name="name" class="form-control" placeholder="Evelyn Vance" required>
-                      <div class="validation-msg">Please provide your name.</div>
-                    </div>
-                    <div class="form-group">
-                      <label for="contact-email">Email Address</label>
-                      <input type="email" id="contact-email" name="email" class="form-control" placeholder="evelyn@mit.edu" required>
-                      <div class="validation-msg">Please provide a valid corporate email.</div>
-                    </div>
-                  </div>
-                  
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="contact-company">Company Name</label>
-                      <input type="text" id="contact-company" name="company" class="form-control" placeholder="Acme Logistics">
-                    </div>
-                    <div class="form-group">
-                      <label for="contact-budget">Estimated Monthly Budget</label>
-                      <select id="contact-budget" name="budget" class="form-control" style="background: var(--input-bg); height: 48px; border: 1px solid var(--input-border); color: var(--text-color); border-radius: 8px; width: 100%; outline: none; padding: 12px 16px;">
-                        <option value="Under ₹10k">Under ₹10,000</option>
-                        <option value="₹10k - ₹50k">₹10,000 - ₹50,000</option>
-                        <option value="₹50k - ₹2L">₹50,000 - ₹2,00,000</option>
-                        <option value="₹2L+">₹2,00,000 +</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="contact-tour-date">Preferred Tour Date</label>
-                      <input type="date" id="contact-tour-date" name="tour_date" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label for="contact-tour-slot">Preferred Time Slot</label>
-                      <select id="contact-tour-slot" name="tour_slot" class="form-control" style="background: var(--input-bg); height: 48px; border: 1px solid var(--input-border); color: var(--text-color); border-radius: 8px; width: 100%; outline: none; padding: 12px 16px;">
-                        <option value="">Select a Slot...</option>
-                        <option value="09:00 - 11:00">09:00 AM - 11:00 AM</option>
-                        <option value="11:00 - 13:00">11:00 AM - 01:00 PM</option>
-                        <option value="14:00 - 16:00">02:00 PM - 04:00 PM</option>
-                        <option value="16:00 - 18:00">04:00 PM - 06:00 PM</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="contact-subject">Subject</label>
-                    <input type="text" id="contact-subject" name="subject" class="form-control" placeholder="Workspace Tour Request" required>
-                    <div class="validation-msg">Subject header is required.</div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="contact-message">Detailed Requirements</label>
-                    <textarea id="contact-message" name="message" class="form-control" placeholder="Provide information regarding your team size and moving timeline..." required></textarea>
-                    <div class="validation-msg">Message body cannot be empty.</div>
-                  </div>
-
-                  <div class="form-submit-wrapper">
-                    <button type="submit" class="btn btn-primary">Transmit Request</button>
-                    <div class="form-spinner"></div>
-                  </div>
-                </form>
-
-                <!-- SUCCESS PANEL -->
-                <div class="contact-success" id="contact-success">
-                  <div class="success-icon">✓</div>
-                  <h3>Tour Request Received</h3>
-                  <p>Your tour request has been received. Our community team will contact you in under 4 business hours.</p>
-                  <button type="button" class="btn btn-secondary" onclick="window.location.hash='#home'">Return to Home</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-    </div>
-    <!-- ==================== END PUBLIC WRAPPER ==================== -->
-
-
-    <!-- ==================== 10. ADMIN VIEW ==================== -->
-    <div id="view-admin" class="page-view" style="display: none;">
-      <section>
-        <div class="container">
-          
-          <!-- ADMIN LOGIN -->
-          <div class="admin-login-card glass-card" id="admin-login-section">
-            <div style="font-size: 40px; margin-bottom: 16px;">🔑</div>
-            <h3>Admin Authorization</h3>
-            <p>Accessing the core site CMS content engine.</p>
-            <form id="admin-login-form">
-              <div class="form-group" style="margin-bottom: 24px;">
-                <input type="password" id="admin-password" class="form-control" placeholder="Enter administrator password" required>
-                <div id="admin-login-error" style="color: #ff5f56; font-size: 12px; margin-top: 8px; opacity: 0; transition: opacity 0.2s;">Invalid password.</div>
-              </div>
-              <button type="submit" class="btn btn-primary" style="width: 100%;">Authorize Access</button>
-            </form>
-          </div>
-
-          <!-- ADMIN WORKSPACE -->
-          <div class="admin-layout glass-card" id="admin-workspace-section" style="display: none;">
-            <aside class="admin-sidebar" style="border-right: 1px solid var(--card-border);">
-              <h3 style="font-family: var(--font-heading); font-size: 16px; margin-bottom: 32px; padding: 0 16px; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-color);">CMS Workspace</h3>
-              <ul class="admin-menu">
-                <li class="admin-menu-item active" data-tab="general">⚙️ General Settings</li>
-                <li class="admin-menu-item" data-tab="services">💡 Edit Services</li>
-                <li class="admin-menu-item" data-tab="blog-admin">✍️ Manage Blog</li>
-                <li class="admin-menu-item" data-tab="inbox">✉️ Inbox Submissions</li>
-                <li class="admin-menu-item" data-tab="apps">📂 Job Applications</li>
-                <li class="admin-menu-item" data-tab="tickets">🛡️ Support Tickets</li>
-                <li class="admin-menu-item" data-tab="logout" style="color: #ff5f56; border-top: 1px solid var(--card-border); margin-top: 24px; padding-top: 20px;">🔓 Log Out</li>
-              </ul>
-            </aside>
-
-            <main class="admin-content">
-              <!-- GENERAL SETTINGS PANE -->
-              <div class="admin-section-content active" id="admin-pane-general">
-                <div class="admin-section-title">
-                  <span>General website configurations</span>
-                </div>
-                <form id="admin-general-form">
-                  <h4 style="margin-bottom: 16px; font-family: var(--font-heading); font-size: 16px; color: var(--primary-color);">GitHub Sync Engine (CMS Mode)</h4>
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="adm-github-repo">GitHub Repository (Owner/Name)</label>
-                      <input type="text" id="adm-github-repo" class="form-control" placeholder="Ryuyjg/nexa-workspace" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="adm-github-branch">Deploy Branch</label>
-                      <input type="text" id="adm-github-branch" class="form-control" placeholder="main" required>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="adm-github-pat">GitHub Personal Access Token (PAT)</label>
-                    <input type="password" id="adm-github-pat" class="form-control" placeholder="Paste ghp_... token (stored locally in browser)">
-                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
-                      Required to save configuration and upload images directly to GitHub. 
-                      <a href="https://github.com/settings/tokens/new?scopes=repo" target="_blank" style="color: var(--primary-color);">Generate one with 'repo' scope</a>.
-                    </div>
-                  </div>
-
-                  <h4 style="margin-top: 32px; margin-bottom: 16px; font-family: var(--font-heading); font-size: 16px; color: var(--primary-color);">Site Identity & Logo</h4>
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="adm-company-name">Company Name</label>
-                      <input type="text" id="adm-company-name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="adm-logo-text">Navbar Logo Text</label>
-                      <input type="text" id="adm-logo-text" class="form-control" required>
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="adm-logo-icon">Navbar Logo Icon (1 Char)</label>
-                      <input type="text" id="adm-logo-icon" class="form-control" maxlength="1" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="adm-footer-copyright">Footer Copyright Label</label>
-                      <input type="text" id="adm-footer-copyright" class="form-control" required>
-                    </div>
-                  </div>
-                  <div class="form-row" style="margin-top: 16px;">
-                    <div class="form-group">
-                      <label for="adm-logo-type">Logo Display Type</label>
-                      <select id="adm-logo-type" class="form-control" style="background: var(--input-bg); height: 48px; border: 1px solid var(--input-border); color: var(--text-color); border-radius: 8px; width: 100%; outline: none; padding: 12px 16px;">
-                        <option value="text">Character Icon & Text</option>
-                        <option value="image">Custom Logo Image</option>
-                      </select>
-                    </div>
-                    <div class="form-group" id="adm-logo-image-group" style="display: none;">
-                      <label for="adm-logo-image-url">Logo Image Source</label>
-                      <div style="display: flex; gap: 8px; align-items: center;">
-                        <input type="file" id="adm-logo-file" accept="image/*" style="display: none;">
-                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('adm-logo-file').click()" style="padding: 12px; height: 48px; font-size: 13px; white-space: nowrap;">Upload File</button>
-                        <input type="text" id="adm-logo-image-url" class="form-control" placeholder="Or paste image URL">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-row" id="adm-logo-preview-row" style="display: none; margin-top: 12px;">
-                    <div class="form-group">
-                      <label>Logo Preview</label>
-                      <div id="adm-logo-preview-container" style="width: 60px; height: 60px; border: 1px dashed var(--card-border); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px; background: rgba(0,0,0,0.15);">
-                        <span style="color: var(--text-muted); font-size: 11px;">Empty</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <h4 style="margin-top: 32px; margin-bottom: 16px; font-family: var(--font-heading); font-size: 16px; color: var(--primary-color);">Hero Copywriting & Visual</h4>
-                  <div class="form-group">
-                    <label for="adm-hero-badge">Hero Upper Tag</label>
-                    <input type="text" id="adm-hero-badge" class="form-control" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="adm-hero-title">Hero Core Headline</label>
-                    <input type="text" id="adm-hero-title" class="form-control" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="adm-hero-desc">Hero Description Paragraph</label>
-                    <textarea id="adm-hero-desc" class="form-control" style="min-height: 80px;" required></textarea>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="adm-hero-cta1">Primary Button Text</label>
-                      <input type="text" id="adm-hero-cta1" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="adm-hero-cta2">Secondary Button Text</label>
-                      <input type="text" id="adm-hero-cta2" class="form-control" required>
-                    </div>
-                  </div>
-                  <div class="form-row" style="margin-top: 16px;">
-                    <div class="form-group">
-                      <label for="adm-hero-type">Hero Right Visual</label>
-                      <select id="adm-hero-type" class="form-control" style="background: var(--input-bg); height: 48px; border: 1px solid var(--input-border); color: var(--text-color); border-radius: 8px; width: 100%; outline: none; padding: 12px 16px;">
-                        <option value="mockup">Interactive Analytics Dashboard</option>
-                        <option value="image">Custom Hero Image</option>
-                      </select>
-                    </div>
-                    <div class="form-group" id="adm-hero-image-group" style="display: none;">
-                      <label for="adm-hero-image-url">Hero Image Source</label>
-                      <div style="display: flex; gap: 8px; align-items: center;">
-                        <input type="file" id="adm-hero-file" accept="image/*" style="display: none;">
-                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('adm-hero-file').click()" style="padding: 12px; height: 48px; font-size: 13px; white-space: nowrap;">Upload File</button>
-                        <input type="text" id="adm-hero-image-url" class="form-control" placeholder="Or paste image URL">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-row" id="adm-hero-preview-row" style="display: none; margin-top: 12px;">
-                    <div class="form-group">
-                      <label>Hero Image Preview</label>
-                      <div id="adm-hero-preview-container" style="max-width: 200px; height: 100px; border: 1px dashed var(--card-border); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px; background: rgba(0,0,0,0.15);">
-                        <span style="color: var(--text-muted); font-size: 11px;">Empty</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <h4 style="margin-top: 32px; margin-bottom: 16px; font-family: var(--font-heading); font-size: 16px; color: var(--primary-color);">Live Accent Palettes</h4>
-                  <div class="color-swatches-grid">
-                    <div class="color-swatch-box">
-                      <div class="color-input-container">
-                        <input type="color" id="color-primary" class="color-picker">
-                      </div>
-                      <div>
-                        <div style="font-size: 13px; font-weight: 600;">Primary Color</div>
-                        <div style="font-size: 11px; color: var(--text-muted);">Borders, Glows</div>
-                      </div>
-                    </div>
-                    <div class="color-swatch-box">
-                      <div class="color-input-container">
-                        <input type="color" id="color-secondary" class="color-picker">
-                      </div>
-                      <div>
-                        <div style="font-size: 13px; font-weight: 600;">Secondary Color</div>
-                        <div style="font-size: 11px; color: var(--text-muted);">Gradient Buttons</div>
-                      </div>
-                    </div>
-                    <div class="color-swatch-box">
-                      <div class="color-input-container">
-                        <input type="color" id="color-accent" class="color-picker">
-                      </div>
-                      <div>
-                        <div style="font-size: 13px; font-weight: 600;">Accent Glow Color</div>
-                        <div style="font-size: 11px; color: var(--text-muted);">Secondary Elements</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <h4 style="margin-top: 32px; margin-bottom: 16px; font-family: var(--font-heading); font-size: 16px; color: var(--primary-color);">Change Administrator Password</h4>
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label for="adm-new-password">New Password</label>
-                      <input type="password" id="adm-new-password" class="form-control" placeholder="Enter new password (optional)">
-                    </div>
-                    <div class="form-group">
-                      <label for="adm-confirm-password">Confirm Password</label>
-                      <input type="password" id="adm-confirm-password" class="form-control" placeholder="Confirm new password">
-                    </div>
-                  </div>
-
-                  <div class="admin-footer-actions">
-                    <button type="submit" class="btn btn-primary">Save General Settings</button>
-                  </div>
-                </form>
-              </div>
-
-              <!-- EDIT SERVICES PANE -->
-              <div class="admin-section-content" id="admin-pane-services">
-                <div class="admin-section-title">
-                  <span>Manage Website Services</span>
-                </div>
-                <!-- Services management lists & edits loaded dynamically -->
-                <div id="admin-services-list"></div>
-                <div id="admin-services-editor" style="display: none;"></div>
-              </div>
-
-              <!-- INQUIRIES INBOX PANE -->
-              <div class="admin-section-content" id="admin-pane-inbox">
-                <div class="admin-section-title">
-                  <span>Inbound Integration Audits Inbox</span>
-                </div>
-                <!-- Customer form inquiries loaded dynamically -->
-                <div id="admin-inbox-list"></div>
-              </div>
-
-              <!-- ADMIN MANAGE BLOG PANE -->
-              <div class="admin-section-content" id="admin-pane-blog-admin">
-                <div class="admin-section-title">
-                  <span>Manage Website Blog Posts</span>
-                </div>
-                <div id="admin-blog-list-view">
-                  <button class="btn btn-primary" id="btn-add-blog" style="margin-bottom: 24px;">+ Create Blog Article</button>
-                  <div class="admin-list-container" id="admin-blog-list">
-                    <!-- List of blogs rendered dynamically -->
-                  </div>
-                </div>
-                <div id="admin-blog-editor-view" style="display: none;">
-                  <h4 style="margin-bottom: 24px; font-family: var(--font-heading); font-size: 20px;" id="blog-editor-header">Create Blog Post</h4>
-                  <form id="admin-blog-form">
-                    <input type="hidden" id="blog-post-id">
-                    <div class="form-row">
-                      <div class="form-group">
-                        <label for="blog-title">Article Title</label>
-                        <input type="text" id="blog-title" class="form-control" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="blog-category">Category</label>
-                        <input type="text" id="blog-category" class="form-control" placeholder="Research" required>
-                      </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group">
-                        <label for="blog-author">Author Name</label>
-                        <input type="text" id="blog-author" class="form-control" required>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="blog-summary">Summary Intro Text</label>
-                      <input type="text" id="blog-summary" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="blog-content">Full Content Body</label>
-                      <textarea id="blog-content" class="form-control" style="min-height: 200px;" required></textarea>
-                    </div>
-                    <div class="admin-footer-actions">
-                      <button type="button" class="btn btn-secondary" id="btn-blog-cancel">Cancel</button>
-                      <button type="submit" class="btn btn-primary">Save Blog Post</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-              <!-- ADMIN JOB APPLICATIONS PANE -->
-              <div class="admin-section-content" id="admin-pane-apps">
-                <div class="admin-section-title">
-                  <span>Job Candidate Applications Inbox</span>
-                </div>
-                <div id="admin-apps-list">
-                  <!-- Inbound applications list -->
-                </div>
-              </div>
-
-              <!-- ADMIN SUPPORT TICKETS PANE -->
-              <div class="admin-section-content" id="admin-pane-tickets">
-                <div class="admin-section-title">
-                  <span>Active Technical Support Tickets</span>
-                </div>
-                <div id="admin-tickets-list">
-                  <!-- Inbound tickets list -->
-                </div>
-              </div>
-            </main>
-          </div>
-
+    <section id="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Engineered for Focus</h2>
+          <p class="body-lg">Everything you need to ship faster. No hidden fees, no utility bills.</p>
         </div>
-      </section>
-    </div>
+        <div class="grid-3">
+          <div class="feature-card">
+            <div class="feature-icon">❄️</div>
+            <h3 class="card-title">Full-Time AC</h3>
+            <p class="body-sm" style="color: var(--ink-muted); margin-top: 12px;">Whisper-quiet climate control across all zones to keep your team entirely focused on the work.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3 class="card-title">Zero Utility Bills</h3>
+            <p class="body-sm" style="color: var(--ink-muted); margin-top: 12px;">Power and water are entirely abstracted away. You pay one flat rate, we handle the infrastructure.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <h3 class="card-title">Gigabit Fiber</h3>
+            <p class="body-sm" style="color: var(--ink-muted); margin-top: 12px;">Dedicated symmetric fiber lines with 99.99% SLA uptime. Pings as low as 4ms to standard datacenters.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <h2>Predictable Pricing</h2>
+          <p class="body-lg">Scale your physical footprint without the overhead.</p>
+        </div>
+        <div class="grid-3">
+          <div class="pricing-card">
+            <h3 class="card-title">Hot Desk</h3>
+            <div class="price-amount">₹4,000<span>/mo</span></div>
+            <ul class="features-list">
+              <li>Open floor access</li>
+              <li>Gigabit WiFi</li>
+              <li>Free coffee & tea</li>
+            </ul>
+            <a href="contact.html" class="btn btn-secondary">Select Plan</a>
+          </div>
+          <div class="pricing-card pricing-featured">
+            <h3 class="card-title">Dedicated Desk</h3>
+            <div class="price-amount">₹5,000<span>/mo</span></div>
+            <ul class="features-list">
+              <li>Reserved desk 24/7</li>
+              <li>Ethernet port access</li>
+              <li>Meeting room credits</li>
+              <li>Mailing address</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary">Select Plan</a>
+          </div>
+          <div class="pricing-card">
+            <h3 class="card-title">Private Cabin</h3>
+            <div class="price-amount">₹15,000<span>/mo</span></div>
+            <ul class="features-list">
+              <li>Enclosed secure room</li>
+              <li>Whiteboard walls</li>
+              <li>Unlimited meeting rooms</li>
+              <li>Custom branding</li>
+            </ul>
+            <a href="contact.html" class="btn btn-secondary">Select Plan</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Modal overlays (service/careers/blog) outside scrolling content -->
-  <!-- Service Modal -->
-  <div class="modal-overlay" id="service-modal" role="dialog" aria-modal="true" aria-label="Service details">
-    <div class="modal-card glass-card">
-      <button class="modal-close" id="modal-close" aria-label="Close service details">&times;</button>
-      <div class="modal-icon">⚙️</div>
-      <span class="badge modal-category">AI</span>
-      <h3 class="modal-title">Service Details</h3>
-      <p class="modal-desc">Details loading...</p>
-    </div>
-  </div>
-
-  <!-- Careers Application Modal -->
-  <div class="modal-overlay" id="careers-modal" role="dialog" aria-modal="true" aria-label="Job application">
-    <div class="modal-card modal-careers-card glass-card">
-      <button class="modal-close" id="careers-modal-close" aria-label="Close application form">&times;</button>
-      <h3 id="careers-job-title" class="modal-careers-title">Apply for: Role</h3>
-      <input type="hidden" id="careers-job-id">
-      <form id="careers-apply-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="careers-name">Full Name</label>
-            <input type="text" id="careers-name" name="name" class="form-control" placeholder="John Doe" required>
-            <div class="validation-msg">Name is required.</div>
-          </div>
-          <div class="form-group">
-            <label for="careers-email">Email Address</label>
-            <input type="email" id="careers-email" name="email" class="form-control" placeholder="john@company.com" required>
-            <div class="validation-msg">Valid email is required.</div>
-          </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo" style="color: var(--ink-subtle);">
+          <div class="logo-icon" style="background: var(--hairline-strong); color: var(--ink-subtle);">N</div>
+          <span>Nexa</span>
         </div>
-        <div class="form-group">
-          <label for="careers-linkedin">LinkedIn Profile URL</label>
-          <input type="url" id="careers-linkedin" name="linkedin" class="form-control" placeholder="https://linkedin.com/in/johndoe">
+        <span class="footer-copy">© 2026 Nexa Workspace. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <span class="footer-col-title">Product</span>
+          <a href="#">Features</a>
+          <a href="#">Integrations</a>
+          <a href="#">Pricing</a>
+          <a href="#">Changelog</a>
         </div>
-        <div class="form-group">
-          <label for="careers-cover">Cover Letter / Motivation</label>
-          <textarea id="careers-cover" name="cover" class="form-control" placeholder="Tell us why you'd be a great fit..." required></textarea>
-          <div class="validation-msg">Cover letter is required.</div>
+        <div class="footer-col">
+          <span class="footer-col-title">Company</span>
+          <a href="#">About</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="contact.html">Contact</a>
         </div>
-        <div class="form-submit-wrapper">
-          <button type="submit" class="btn btn-primary">Submit Application</button>
-          <div class="form-spinner" id="careers-spinner"></div>
+        <div class="footer-col">
+          <span class="footer-col-title">Legal</span>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Security</a>
         </div>
-      </form>
-      <!-- Career Application Success -->
-      <div id="careers-success-panel" class="careers-success" style="display: none;" aria-live="polite">
-        <div class="success-icon">✓</div>
-        <h3>Application Submitted</h3>
-        <p class="careers-success-text">Your application has been received. Our talent team will review and respond within 48 hours.</p>
-        <button type="button" class="btn btn-secondary" id="btn-careers-done">Close</button>
       </div>
-    </div>
-  </div>
-
-  <!-- Blog Post Reader Modal -->
-  <div class="modal-overlay" id="blog-modal" role="dialog" aria-modal="true" aria-label="Blog article">
-    <div class="modal-card modal-blog-card glass-card">
-      <button class="modal-close" id="blog-modal-close" aria-label="Close article">&times;</button>
-      <span class="badge" id="blog-modal-category">Category</span>
-      <h3 id="blog-modal-title" class="modal-blog-title">Article Title</h3>
-      <p id="blog-modal-meta" class="modal-blog-meta">By Author | Date</p>
-      <div id="blog-modal-content" class="modal-blog-content">
-        Content loading...
-      </div>
-      <!-- Comments Section -->
-      <div class="modal-comments-section">
-        <h4 class="modal-comments-heading">💬 Discussion</h4>
-        <div id="blog-comments-list" class="modal-comments-list">
-          <!-- Comments rendered dynamically -->
-        </div>
-        <form id="blog-comment-form">
-          <div class="form-row">
-            <div class="form-group">
-              <input type="text" id="comment-author" class="form-control" placeholder="Your name" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <textarea id="comment-text" class="form-control" placeholder="Write a comment..." style="min-height: 60px;" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-secondary" style="margin-top: 8px;">Post Comment</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer Section -->
-  <footer>
-    <div class="container footer-grid">
-      <div class="footer-logo-col">
-        <a href="#home" class="logo" style="margin-bottom: 24px;">
-          <div class="logo-icon" style="width: 40px; height: 40px; font-size: 16px;">N</div>
-          <span id="footer-logo-text">NEXA</span>
-        </a>
-        <p>Nexa Workspace provides premium, intelligently-designed physical offices and meeting rooms for teams that demand excellence.</p>
-      </div>
-      <div>
-        <h4 class="footer-col-title">Navigation</h4>
-        <ul class="footer-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#floor-map-section">Floor Map</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#careers">Careers</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="footer-col-title">Support & Info</h4>
-        <ul class="footer-links">
-          <li><a href="#faq">FAQ & Support</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#pricing">Pricing & Calculator</a></li>
-          <li><a href="#contact">Audit Inquiry</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div id="footer-copyright">© 2026 Nexa Workspace. All rights reserved.</div>
-      <div id="footer-company-name">Nexa Workspace</div>
     </div>
   </footer>
 
-  <!-- JS Modules -->
-  <script src="js/config.js"></script>
-  <script src="js/store.js"></script>
-  <script src="js/router.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/admin.js"></script>
-
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/918590691894" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
-    <svg viewBox="0 0 24 24">
-      <path d="M12.012 2C6.48 2 2 6.48 2 12.012c0 1.764.462 3.48 1.344 5L2 22l5.124-1.332c1.476.804 3.132 1.236 4.884 1.236 5.532 0 10-4.482 10-10C22.008 6.48 17.532 2 12.012 2zm6.276 14.322c-.258.726-1.506 1.338-2.076 1.41-.57.072-1.128.324-3.612-.702-3.186-1.314-5.226-4.56-5.388-4.776-.162-.216-1.302-1.734-1.302-3.306 0-1.572.822-2.346 1.116-2.652.294-.306.642-.384.858-.384.216 0 .432.006.618.012.198.006.462-.078.726.558.27.654.918 2.25.996 2.412.078.162.132.354.024.57-.108.216-.246.348-.39.522-.144.174-.306.366-.132.666.174.3.774 1.278 1.662 2.07.15.132.312.27.48.408.498.414.882.528 1.2.36.318-.168 1.374-.792 1.722-.996.348-.204.696-.168.972-.066.276.102 1.758.828 2.064.984.306.156.51.234.582.36.072.126.072.726-.186 1.452z"/>
-    </svg>
-    <span>Chat with Us</span>
-  </a>
 </body>
 </html>
