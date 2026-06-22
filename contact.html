@@ -33,9 +33,9 @@
       <div class="container contact-grid">
         <div>
           <span class="eyebrow">Get in touch</span>
-          <h1 class="display-md text-gradient-accent" style="margin-bottom: 1.5rem;">Let's build your workspace.</h1>
+          <h1 class="display-md text-gradient-accent" style="margin-bottom: 1.5rem;">Schedule Your Free Visit</h1>
           <p class="lead" style="margin-bottom: 3rem;">
-            Whether you need a single desk or an entire custom-branded floor, our team is ready to set up your infrastructure.
+            Experience our workspace in person. Schedule a complimentary visit to explore the facilities, discuss your requirements, and find the perfect solution for your team or business.
           </p>
 
           <div style="margin-bottom: 2rem;">
@@ -59,37 +59,66 @@
         <div class="card">
           <form action="#" method="POST">
             <div class="form-group">
-              <label>Name</label>
-              <input type="text" class="form-control" placeholder="Your Name" required>
+              <label>Full Name</label>
+              <input type="text" class="form-control" placeholder="Enter your full name" required>
             </div>
 
             <div class="form-group">
               <label>Profession</label>
-              <input type="text" class="form-control" placeholder="Your Profession" required>
+              <select class="form-control" required style="appearance: none;">
+                <option value="" disabled selected>Select your profession</option>
+                <option value="Business Owner">Business Owner</option>
+                <option value="Entrepreneur">Entrepreneur</option>
+                <option value="Startup Founder">Startup Founder</option>
+                <option value="Freelancer">Freelancer</option>
+                <option value="Remote Professional">Remote Professional</option>
+                <option value="Corporate Employee">Corporate Employee</option>
+                <option value="Consultant">Consultant</option>
+                <option value="Creative Professional">Creative Professional</option>
+                <option value="Agency Owner">Agency Owner</option>
+                <option value="Student">Student</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
 
             <div class="form-group">
-              <label>How much seats looking</label>
-              <input type="number" class="form-control" placeholder="Number of seats" min="1" required>
+              <label>How many seats are you looking for?</label>
+              <select class="form-control" required style="appearance: none;">
+                <option value="" disabled selected>Select seat requirement</option>
+                <option value="1-2">1–2 Seats</option>
+                <option value="3-5">3–5 Seats</option>
+                <option value="6-10">6–10 Seats</option>
+                <option value="11-20">11–20 Seats</option>
+                <option value="21-50">21–50 Seats</option>
+                <option value="50+">50+ Seats</option>
+              </select>
             </div>
             
             <div class="form-group">
-              <label>When u wanna visit</label>
+              <label>When would you like to visit?</label>
               <input type="date" class="form-control" required>
             </div>
 
             <div class="form-group">
-              <label>Contact number</label>
-              <input type="tel" class="form-control" placeholder="+91 00000 00000" required>
+              <label>Contact Number</label>
+              <input type="tel" class="form-control" placeholder="Enter your phone number" required>
             </div>
 
             <div class="form-group">
-              <label>Contact email</label>
-              <input type="email" class="form-control" placeholder="you@example.com" required>
+              <label>Email Address</label>
+              <input type="email" class="form-control" placeholder="Enter your email address" required>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1rem;">Send Request</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1rem; margin-top: 1rem;">Schedule My Free Visit</button>
           </form>
+          
+          <div id="success-message" style="display: none; text-align: center; padding: 2rem 1rem;">
+            <div style="color: var(--accent-1); margin-bottom: 1rem;">
+              <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Thank you for your interest.</h3>
+            <p style="color: var(--text-secondary);">Our team will contact you shortly to confirm your visit.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -114,5 +143,25 @@
     </div>
   </footer>
 
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Basic elegant transition
+      const form = this;
+      const btn = form.querySelector('button');
+      btn.innerHTML = 'Sending...';
+      btn.style.opacity = '0.7';
+      
+      setTimeout(() => {
+        form.style.display = 'none';
+        const successMsg = document.getElementById('success-message');
+        successMsg.style.display = 'block';
+        successMsg.animate([
+          { opacity: 0, transform: 'translateY(10px)' },
+          { opacity: 1, transform: 'translateY(0)' }
+        ], { duration: 400, easing: 'ease-out' });
+      }, 800);
+    });
+  </script>
 </body>
 </html>
