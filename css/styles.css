@@ -46,8 +46,18 @@ h1, h2, h3, h4 {
 
 .text-gradient,
 .text-gradient-accent {
-  /* Removed gradients for a cleaner corporate look */
-  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 50%, var(--accent-1) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: gradientFlow 6s linear infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
 .text-gradient-accent {
@@ -394,6 +404,10 @@ textarea.form-control {
   opacity: 1;
   transform: translateY(0);
 }
+
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+
 .ken-burns {
   animation: kenBurns 20s infinite alternate linear;
 }
