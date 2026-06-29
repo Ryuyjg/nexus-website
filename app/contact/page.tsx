@@ -8,10 +8,38 @@ import { MagneticButton } from '@/components/MagneticButton';
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsLoading(true);
+    setError('');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        throw new Error('Failed to send request');
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -61,6 +89,7 @@ export default function Contact() {
               <div>
                 <label className="block text-sm font-semibold text-primary mb-2">Full Name</label>
                 <input 
+                  name="name"
                   type="text" 
                   required
                   className="w-full px-5 py-4 bg-surface border border-border/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-primary placeholder:text-secondary/60"
@@ -70,6 +99,7 @@ export default function Contact() {
               <div>
                 <label className="block text-sm font-semibold text-primary mb-2">Email Address</label>
                 <input 
+                  name="email"
                   type="email" 
                   required
                   className="w-full px-5 py-4 bg-surface border border-border/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-primary placeholder:text-secondary/60"
@@ -79,15 +109,21 @@ export default function Contact() {
               <div>
                 <label className="block text-sm font-semibold text-primary mb-2">Phone Number</label>
                 <input 
+                  name="phone"
                   type="tel" 
                   required
                   className="w-full px-5 py-4 bg-surface border border-border/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-primary placeholder:text-secondary/60"
                   placeholder="+91 XXXXX XXXXX"
                 />
               </div>
-              <MagneticButton className="w-full py-4 mt-4" variant="primary">
-                Submit Request
-              </MagneticButton>
+              {error && <p className="text-red-500 text-sm font-medium">{error}</p>}
+              <button 
+                type="submit"
+                disabled={isLoading}
+                className="w-full py-4 mt-4 bg-primary text-background font-semibold rounded-2xl hover:opacity-90 transition-opacity disabled:opacity-50"
+              >
+                {isLoading ? 'Sending...' : 'Submit Request'}
+              </button>
             </form>
           )}
         </motion.div>

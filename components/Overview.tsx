@@ -45,7 +45,7 @@ export function Overview() {
             className="relative h-[400px] md:h-[600px] rounded-[2.5rem] overflow-hidden shadow-2xl"
           >
             <img 
-              src="/nexus-website/workspace-view-new.jpg" 
+              src="/workspace-view-new.jpg" 
               alt="Premium Workspace" 
               className="absolute inset-0 w-full h-full object-cover object-center"
             />

@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  basePath: '/nexus-website',
-  assetPrefix: '/nexus-website/',
   images: {
     unoptimized: true,
   },
