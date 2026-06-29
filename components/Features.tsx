@@ -1,89 +1,79 @@
 'use client';
 
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Wifi, Coffee, Users, Shield, MapPin, Monitor } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Wifi, Zap, Users, Wind, MapPin } from 'lucide-react';
 
 export function Features() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.9, 1, 1, 0.9]);
-  const opacity = useTransform(scrollYProgress, [0, 0.9, 1], [1, 1, 0]);
-
   const features = [
     {
       icon: <Wifi className="w-8 h-8" />,
-      title: "Gigabit Internet",
-      description: "Enterprise-grade fiber connection with built-in redundancy for zero downtime."
+      title: "Highspeed Internet",
+      description: "Dedicated gigabit fiber connection ensuring you stay online with lightning-fast speeds and uninterrupted reliability."
     },
     {
-      icon: <Coffee className="w-8 h-8" />,
-      title: "Artisan Cafe",
-      description: "Unlimited single-origin coffee and premium teas curated by local roasters."
+      icon: <Zap className="w-8 h-8" />,
+      title: "Free Electricity",
+      description: "Power is completely covered in your plan. Run your machines and equipment all day with zero extra utility bills."
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Boardrooms",
-      description: "Acoustically treated meeting spaces with 4K screens and Zoom Rooms integration."
+      title: "Free Meeting Cabin",
+      description: "Exclusive, complimentary access to premium meeting rooms for our members. Book your slots easily whenever needed."
     },
     {
-      icon: <Shield className="w-8 h-8" />,
-      title: "24/7 Security",
-      description: "Biometric access, secure VLANs, and physical security presence around the clock."
+      icon: <Wind className="w-8 h-8" />,
+      title: "Air Conditioned",
+      description: "Enjoy a perfectly chilled, whisper-quiet, and comfortable working environment all day long across the entire workspace."
     },
     {
       icon: <MapPin className="w-8 h-8" />,
-      title: "Prime Location",
-      description: "Located in the heart of the tech district with direct transit and parking access."
-    },
-    {
-      icon: <Monitor className="w-8 h-8" />,
-      title: "Ergonomic Setup",
-      description: "Herman Miller seating and motorized standing desks equipped for deep work."
+      title: "Best Greenery Location",
+      description: "Situated in a beautiful, natural environment surrounded by lush greenery, giving you peace of mind and fresh air while you work."
     }
   ];
 
   return (
-    <section id="features" ref={containerRef} className="h-[200vh] relative bg-surface">
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+    <section id="features" className="py-32 relative bg-surface overflow-hidden">
+      <div className="w-full max-w-7xl mx-auto px-6">
         <motion.div 
-          style={{ scale, opacity }}
-          className="w-full max-w-7xl mx-auto px-6 py-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
         >
-          <div className="text-center mb-20">
-            <span className="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block">
-              Why Nexa
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-primary tracking-tight">
-              Everything you need. <br className="hidden md:block"/> Nothing you don&apos;t.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div 
-                key={index} 
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="bg-background rounded-[2rem] p-10 border border-border/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] hover:border-accent/30 transition-all duration-300"
-              >
-                <div className="w-16 h-16 rounded-2xl bg-surface flex items-center justify-center text-primary mb-6">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-secondary font-medium leading-relaxed">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+          <span className="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block">
+            Enterprise Infrastructure
+          </span>
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-primary tracking-tight">
+            Engineered for Focus
+          </h2>
         </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+          {features.map((feature, index) => (
+            <motion.div 
+              key={index} 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="bg-background rounded-[2rem] p-10 border border-border/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] hover:border-accent/30 transition-all duration-300"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-surface flex items-center justify-center text-primary mb-6">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold text-primary mb-3">
+                {feature.title}
+              </h3>
+              <p className="text-secondary font-medium leading-relaxed">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
