@@ -19,9 +19,13 @@ export async function POST(req: Request) {
     const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
     if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-      console.error('Missing Telegram environment variables');
+      const missing = [];
+      if (!TELEGRAM_BOT_TOKEN) missing.push('TELEGRAM_BOT_TOKEN');
+      if (!TELEGRAM_CHAT_ID) missing.push('TELEGRAM_CHAT_ID');
+      const allKeys = Object.keys(process.env).filter(k => k.startsWith('TELEGRAM'));
+      console.error(`Missing variables: ${missing.join(', ')}. Found TELEGRAM keys: ${allKeys.join(', ')}`);
       return NextResponse.json(
-        { error: 'Server misconfiguration' },
+        { error: 'Server misconfiguration', missing, foundKeys: allKeys },
         { status: 500 }
       );
     }
