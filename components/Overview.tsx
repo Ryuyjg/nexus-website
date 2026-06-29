@@ -13,7 +13,7 @@ export function Overview() {
   // Complex 3D scroll mapping
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.9]);
   const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [20, 0, -10]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 1, 0]);
   const textY = useTransform(scrollYProgress, [0, 0.5], [100, 0]);
   const imageY = useTransform(scrollYProgress, [0.5, 1], [0, -50]);
 
