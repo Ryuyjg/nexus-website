@@ -1,82 +1,88 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Shield, MapPin, Zap } from 'lucide-react';
-
-const features = [
-  {
-    icon: <Shield className="w-6 h-6 text-accent" />,
-    title: 'Enterprise Security',
-    description: 'Bank-grade network security and 24/7 biometric physical access control for ultimate peace of mind.'
-  },
-  {
-    icon: <MapPin className="w-6 h-6 text-accent" />,
-    title: 'Prime Location',
-    description: 'Located in the heart of the tech district with premium restaurants, cafes, and transit options steps away.'
-  },
-  {
-    icon: <Zap className="w-6 h-6 text-accent" />,
-    title: 'Highspeed Internet',
-    description: 'Dedicated gigabit fiber connections with full redundancy so you never drop a critical call or commit.'
-  }
-];
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Wifi, Coffee, Users, Shield, MapPin, Monitor } from 'lucide-react';
 
 export function Features() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
-    },
-  };
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
 
-  const item = {
-    hidden: { opacity: 0, y: 40 },
-    show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 100, damping: 20 } },
-  };
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.9, 1, 1, 0.9]);
+  const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0]);
+
+  const features = [
+    {
+      icon: <Wifi className="w-8 h-8" />,
+      title: "Gigabit Internet",
+      description: "Enterprise-grade fiber connection with built-in redundancy for zero downtime."
+    },
+    {
+      icon: <Coffee className="w-8 h-8" />,
+      title: "Artisan Cafe",
+      description: "Unlimited single-origin coffee and premium teas curated by local roasters."
+    },
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "Boardrooms",
+      description: "Acoustically treated meeting spaces with 4K screens and Zoom Rooms integration."
+    },
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: "24/7 Security",
+      description: "Biometric access, secure VLANs, and physical security presence around the clock."
+    },
+    {
+      icon: <MapPin className="w-8 h-8" />,
+      title: "Prime Location",
+      description: "Located in the heart of the tech district with direct transit and parking access."
+    },
+    {
+      icon: <Monitor className="w-8 h-8" />,
+      title: "Ergonomic Setup",
+      description: "Herman Miller seating and motorized standing desks equipped for deep work."
+    }
+  ];
 
   return (
-    <section id="features" className="py-32 bg-surface">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="features" ref={containerRef} className="h-[200vh] relative bg-surface">
+      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-20"
+          style={{ scale, opacity }}
+          className="w-full max-w-7xl mx-auto px-6 py-20"
         >
-          <span className="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block">
-            Why Nexa
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-primary tracking-tight">
-            Everything you need. <br className="hidden md:block"/> Nothing you don&apos;t.
-          </h2>
-        </motion.div>
+          <div className="text-center mb-20">
+            <span className="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block">
+              Why Nexa
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-primary tracking-tight">
+              Everything you need. <br className="hidden md:block"/> Nothing you don&apos;t.
+            </h2>
+          </div>
 
-        <motion.div 
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          {features.map((feature, index) => (
-            <motion.div 
-              key={index} 
-              variants={item}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="bg-white rounded-[2rem] p-10 border border-border/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:border-accent/20 transition-all duration-300"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-8">
-                {feature.icon}
-              </div>
-              <h3 className="text-2xl font-semibold text-primary mb-4">{feature.title}</h3>
-              <p className="text-secondary leading-relaxed font-medium">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <motion.div 
+                key={index} 
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="bg-background rounded-[2rem] p-10 border border-border/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] hover:border-accent/30 transition-all duration-300"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-surface flex items-center justify-center text-primary mb-6">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-secondary font-medium leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

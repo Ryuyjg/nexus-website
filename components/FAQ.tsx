@@ -57,11 +57,11 @@ export function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="bg-white rounded-2xl overflow-hidden border border-border/50 shadow-sm"
+              className="bg-background rounded-2xl overflow-hidden border border-border/50 shadow-sm"
             >
               <button 
                 onClick={() => toggle(idx)}
-                className="w-full px-8 py-6 flex items-center justify-between bg-white hover:bg-surface/50 transition-colors"
+                className="w-full px-8 py-6 flex items-center justify-between bg-background hover:bg-surface/50 transition-colors"
               >
                 <span className="text-lg font-semibold text-primary text-left">{faq.q}</span>
                 <motion.div animate={{ rotate: openIndex === idx ? 180 : 0 }} transition={{ duration: 0.3 }}>

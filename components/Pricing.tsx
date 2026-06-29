@@ -58,7 +58,7 @@ export function Pricing() {
   };
 
   return (
-    <section id="pricing" className="py-32 bg-white border-t border-border/50">
+    <section id="pricing" className="py-32 bg-background border-t border-border/50">
       <div className="max-w-7xl mx-auto px-6">
         
         <div className="text-center mb-20">
@@ -84,8 +84,8 @@ export function Pricing() {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className={`relative flex flex-col p-10 rounded-[2rem] border transition-all duration-300 ${
                 plan.featured 
-                  ? 'border-accent shadow-[0_20px_40px_rgb(0,113,227,0.1)] bg-white z-10' 
-                  : 'border-border/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] bg-white/50 backdrop-blur-xl'
+                  ? 'border-accent shadow-[0_20px_40px_rgb(0,113,227,0.1)] bg-background z-10' 
+                  : 'border-border/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] dark:hover:shadow-[0_20px_40px_rgba(255,255,255,0.05)] bg-background/50 backdrop-blur-xl'
               }`}
             >
               <div className={`inline-flex self-start px-3 py-1 rounded-full text-xs font-bold mb-6 ${plan.badgeColor}`}>

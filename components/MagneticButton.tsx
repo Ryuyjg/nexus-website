@@ -29,8 +29,8 @@ export function MagneticButton({ children, className, href, variant = 'primary' 
   };
 
   const variants = {
-    primary: "bg-primary text-white hover:bg-black/90",
-    secondary: "bg-surface text-primary hover:bg-[#EAEAEA]",
+    primary: "bg-primary text-background hover:bg-primary/90",
+    secondary: "bg-surface text-primary hover:bg-surface/80",
     outline: "border border-border text-primary hover:bg-surface",
   };
 

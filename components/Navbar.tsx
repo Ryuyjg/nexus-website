@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import Link from 'next/link';
 import { MagneticButton } from './MagneticButton';
+import { ThemeToggle } from './ThemeToggle';
 
 export function Navbar() {
   const { scrollY } = useScroll();
@@ -35,7 +36,7 @@ export function Navbar() {
       transition={{ duration: 0.35, ease: "easeInOut" }}
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/80 backdrop-blur-md border-b border-border shadow-sm py-4' 
+          ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-sm py-4' 
           : 'bg-transparent py-6'
       }`}
     >
@@ -52,6 +53,7 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <Link href="/contact" className="hidden md:block text-sm font-medium text-secondary hover:text-primary transition-colors">
             Member Login
           </Link>

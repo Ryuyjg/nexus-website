@@ -3,8 +3,26 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: #FFFFFF;
+    --surface: #F5F5F7;
+    --primary: #1D1D1F;
+    --secondary: #6E6E73;
+    --accent: #0071E3;
+    --border: #E5E5E7;
+  }
+
+  .dark {
+    --background: #000000;
+    --surface: #1C1C1E;
+    --primary: #F5F5F7;
+    --secondary: #86868B;
+    --accent: #2997FF;
+    --border: #38383A;
+  }
+
   body {
-    @apply bg-background text-primary antialiased;
+    @apply bg-background text-primary antialiased transition-colors duration-300;
   }
 }
 
