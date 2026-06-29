@@ -35,7 +35,7 @@ export default function Contact() {
       }
 
       setIsSubmitted(true);
-    } catch (_) {
+    } catch {
       setError('Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
