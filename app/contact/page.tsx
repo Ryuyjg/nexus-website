@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { MagneticButton } from '@/components/MagneticButton';
+
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -35,7 +35,7 @@ export default function Contact() {
       }
 
       setIsSubmitted(true);
-    } catch (err) {
+    } catch (_) {
       setError('Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
