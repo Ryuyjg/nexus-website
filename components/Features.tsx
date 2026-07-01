@@ -46,7 +46,7 @@ export function Features() {
           <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
             Designed for work
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold text-primary tracking-[-0.05em]">
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold text-primary tracking-[-0.06em] leading-[0.95]">
             Details that reduce friction
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-secondary leading-8">
@@ -63,9 +63,9 @@ export function Features() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -8, scale: 1.01 }}
-              className="group rounded-[2rem] border border-border/70 bg-background/85 p-8 shadow-[0_18px_50px_rgba(20,18,15,0.05)] backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:shadow-[0_25px_70px_rgba(20,18,15,0.1)]"
+              className="group glass-panel rounded-[2rem] p-8 transition-all duration-300 hover:border-accent/40 hover:shadow-[0_28px_90px_rgba(47,125,246,0.14)]"
             >
-              <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center text-accent mb-6 ring-1 ring-accent/10 transition-colors group-hover:bg-accent group-hover:text-white">
+              <div className="w-16 h-16 rounded-2xl bg-[linear-gradient(135deg,rgba(47,125,246,0.16),rgba(68,217,196,0.14))] flex items-center justify-center text-accent mb-6 ring-1 ring-white/25 transition-colors group-hover:bg-[linear-gradient(135deg,rgba(47,125,246,1),rgba(68,217,196,0.85))] group-hover:text-white">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-semibold text-primary mb-3 tracking-tight">

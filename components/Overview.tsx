@@ -21,11 +21,11 @@ export function Overview() {
             <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
               Crafted atmosphere
             </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-primary tracking-[-0.05em] mb-6 leading-[1]">
-              Calm surfaces, sharp focus.
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-primary tracking-[-0.06em] mb-6 leading-[0.98]">
+              Calm surfaces, glassy depth, sharp focus.
             </h2>
             <p className="text-lg md:text-xl text-secondary leading-relaxed mb-8 max-w-xl">
-              The space is designed to lower friction: soft light, clean lines, and enough room for teams to think clearly without feeling boxed in.
+              The room now uses translucent layers, soft highlights, and cooler contrast so the environment feels lighter without losing clarity.
             </p>
 
             <div className="space-y-4">
@@ -34,8 +34,8 @@ export function Overview() {
                 { icon: Sofa, title: 'Comfort-first seating', copy: 'Furniture and layout choices that support long stretches of focused work.' },
                 { icon: MapPin, title: 'A quiet location', copy: 'A peaceful setting that keeps the energy high without the usual office noise.' },
               ].map((point) => (
-                <div key={point.title} className="flex items-start gap-4 rounded-[1.5rem] border border-border/70 bg-background/80 p-5 shadow-[0_16px_40px_rgba(20,18,15,0.05)] backdrop-blur-sm">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+                <div key={point.title} className="glass-panel flex items-start gap-4 rounded-[1.5rem] p-5">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(47,125,246,0.16),rgba(68,217,196,0.14))] text-accent ring-1 ring-white/20">
                     <point.icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -54,7 +54,7 @@ export function Overview() {
             transition={{ duration: 0.9, ease: "easeOut" }}
             className="order-1 lg:order-2 relative"
           >
-            <div className="relative h-[500px] md:h-[620px] overflow-hidden rounded-[2.5rem] border border-border/70 bg-surface shadow-[0_35px_90px_rgba(20,18,15,0.12)]">
+            <div className="glass-panel-strong relative h-[500px] md:h-[620px] overflow-hidden rounded-[2.75rem]">
               <Image
                 src="/workspace-view-new.jpg"
                 alt="Premium Workspace"
@@ -62,10 +62,11 @@ export function Overview() {
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/35 via-primary/0 to-transparent" />
-              <div className="absolute inset-0 rounded-[2.5rem] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] pointer-events-none" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_34%,rgba(7,17,31,0.42))]" />
+              <div className="absolute inset-0 rounded-[2.75rem] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] pointer-events-none" />
+              <div className="absolute -right-10 top-10 h-40 w-40 rounded-full bg-white/35 blur-3xl" />
 
-              <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-primary/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white backdrop-blur-md">
+              <div className="absolute left-5 top-5 rounded-full glass-chip px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em]">
                 Bookable tours available
               </div>
 
@@ -75,7 +76,7 @@ export function Overview() {
                   'Meeting cabin access',
                   'Quiet work zones',
                 ].map((label) => (
-                  <div key={label} className="rounded-[1.25rem] border border-white/12 bg-background/90 px-4 py-3 text-sm font-semibold text-primary backdrop-blur-md">
+                  <div key={label} className="rounded-[1.25rem] border border-white/20 bg-white/70 px-4 py-3 text-sm font-semibold text-primary backdrop-blur-2xl shadow-[0_12px_40px_rgba(7,17,31,0.1)] dark:bg-white/10 dark:text-white">
                     <Check className="mb-2 h-4 w-4 text-accent" />
                     {label}
                   </div>

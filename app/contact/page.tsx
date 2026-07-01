@@ -34,6 +34,8 @@ export default function Contact() {
       <Navbar />
       
       <div className="relative px-6 pb-20 pt-28 lg:pt-36">
+        <div className="absolute left-0 top-10 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
+        <div className="absolute right-0 top-40 h-80 w-80 rounded-full bg-cyan-300/20 blur-3xl dark:bg-cyan-500/10" />
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -45,7 +47,7 @@ export default function Contact() {
               <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
                 Book a visit
               </span>
-              <h1 className="text-4xl md:text-5xl font-semibold text-primary tracking-[-0.05em] leading-[0.98]">
+              <h1 className="text-4xl md:text-5xl font-semibold text-primary tracking-[-0.06em] leading-[0.95]">
                 Let&apos;s find the right room for your team.
               </h1>
               <p className="mt-5 max-w-xl text-lg leading-8 text-secondary">
@@ -60,7 +62,7 @@ export default function Contact() {
                 { icon: MapPin, title: 'Peaceful location', copy: 'A calm site with enough room to work, meet, and breathe.' },
                 { icon: Sparkles, title: 'Premium feel', copy: 'A polished workspace that feels good from the first minute.' },
               ].map((item) => (
-                <div key={item.title} className="rounded-[1.5rem] border border-border/70 bg-background/80 p-5 shadow-[0_16px_40px_rgba(20,18,15,0.05)] backdrop-blur-sm">
+                <div key={item.title} className="glass-panel rounded-[1.5rem] p-5">
                   <item.icon className="h-5 w-5 text-accent" />
                   <div className="mt-3 text-base font-semibold text-primary">{item.title}</div>
                   <div className="mt-1 text-sm leading-6 text-secondary">{item.copy}</div>
@@ -68,7 +70,7 @@ export default function Contact() {
               ))}
             </div>
 
-            <div className="rounded-[1.75rem] border border-border/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(242,248,243,0.82))] p-6 shadow-[0_24px_60px_rgba(20,18,15,0.08)]">
+            <div className="glass-panel-strong rounded-[1.75rem] p-6">
               <div className="text-sm font-semibold uppercase tracking-[0.24em] text-secondary">What happens next</div>
               <div className="mt-3 space-y-3 text-sm leading-7 text-secondary">
                 <p>1. We get your enquiry.</p>
@@ -82,7 +84,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="rounded-[2.25rem] border border-border/70 bg-background/85 p-6 shadow-[0_24px_70px_rgba(20,18,15,0.08)] backdrop-blur-sm md:p-8 lg:p-10"
+            className="glass-panel-strong rounded-[2.25rem] p-6 md:p-8 lg:p-10"
           >
             {isSubmitted ? (
               <motion.div 
@@ -90,7 +92,7 @@ export default function Contact() {
                 animate={{ scale: 1, opacity: 1 }}
                 className="flex min-h-[420px] flex-col items-center justify-center text-center"
               >
-                <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center text-accent mx-auto mb-6">
+                <div className="w-20 h-20 rounded-full bg-[linear-gradient(135deg,rgba(47,125,246,0.12),rgba(68,217,196,0.14))] flex items-center justify-center text-accent mx-auto mb-6 ring-1 ring-white/20">
                   <ShieldCheck className="w-10 h-10" />
                 </div>
                 <h3 className="text-3xl font-semibold text-primary mb-3">Request sent</h3>
@@ -106,7 +108,7 @@ export default function Contact() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full px-5 py-4 bg-surface border border-border/70 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-primary placeholder:text-secondary/60"
+                    className="glass-input"
                     placeholder="John Doe"
                   />
                 </div>
@@ -118,7 +120,7 @@ export default function Contact() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-5 py-4 bg-surface border border-border/70 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-primary placeholder:text-secondary/60"
+                    className="glass-input"
                     placeholder="john@company.com"
                   />
                 </div>
@@ -130,7 +132,7 @@ export default function Contact() {
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-5 py-4 bg-surface border border-border/70 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-primary placeholder:text-secondary/60"
+                    className="glass-input"
                     placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
@@ -138,7 +140,7 @@ export default function Contact() {
                 <button 
                   type="submit"
                   disabled={isLoading}
-                  className="mt-2 inline-flex w-full items-center justify-center rounded-2xl bg-primary px-5 py-4 font-semibold text-background transition-transform hover:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50"
+                  className="mt-2 inline-flex w-full items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(7,17,31,1),rgba(47,125,246,1))] px-5 py-4 font-semibold text-white transition-transform hover:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 shadow-[0_20px_60px_rgba(47,125,246,0.18)]"
                 >
                   {isLoading ? 'Opening WhatsApp...' : 'Submit Request'}
                 </button>

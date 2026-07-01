@@ -44,7 +44,7 @@ export function FAQ() {
           <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
             Got Questions?
           </span>
-          <h2 className="text-4xl font-semibold text-primary tracking-[-0.04em]">
+          <h2 className="text-4xl font-semibold text-primary tracking-[-0.06em] leading-[0.98]">
             Frequently Asked Questions
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-secondary leading-8">
@@ -60,11 +60,11 @@ export function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="rounded-[1.5rem] overflow-hidden border border-border/70 bg-background/85 shadow-[0_16px_40px_rgba(20,18,15,0.05)] backdrop-blur-sm"
+              className="glass-panel rounded-[1.5rem] overflow-hidden"
             >
               <button 
                 onClick={() => toggle(idx)}
-                className="w-full px-7 py-6 flex items-center justify-between hover:bg-surface/70 transition-colors"
+                className="w-full px-7 py-6 flex items-center justify-between hover:bg-white/20 transition-colors dark:hover:bg-white/10"
               >
                 <span className="text-left text-lg font-semibold text-primary">{faq.q}</span>
                 <motion.div animate={{ rotate: openIndex === idx ? 180 : 0 }} transition={{ duration: 0.3 }}>

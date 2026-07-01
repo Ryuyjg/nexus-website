@@ -29,12 +29,12 @@ export function MagneticButton({ children, className, href, variant = 'primary' 
   };
 
   const variants = {
-    primary: "bg-primary text-background hover:bg-primary/90",
-    secondary: "bg-surface text-primary hover:bg-surface/80",
-    outline: "border border-border text-primary hover:bg-surface",
+    primary: "bg-[linear-gradient(135deg,rgba(7,17,31,1),rgba(47,125,246,1))] text-white shadow-[0_18px_50px_rgba(47,125,246,0.18)] hover:shadow-[0_22px_60px_rgba(47,125,246,0.24)]",
+    secondary: "glass-panel text-primary hover:bg-white/70 dark:text-white dark:hover:bg-white/10",
+    outline: "border border-white/30 bg-white/25 text-primary backdrop-blur-xl hover:bg-white/45 dark:border-white/10 dark:bg-white/6 dark:text-white dark:hover:bg-white/10",
   };
 
-  const baseClasses = "relative inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-colors overflow-hidden group";
+  const baseClasses = "relative inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all overflow-hidden group";
 
   const content = (
     <motion.div

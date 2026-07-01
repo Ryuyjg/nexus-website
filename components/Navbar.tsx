@@ -36,15 +36,13 @@ export function Navbar() {
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'py-3'
-          : 'py-5'
+        isScrolled ? 'py-3' : 'py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between gap-4 rounded-full border border-border/70 bg-background/80 px-4 py-3 shadow-[0_20px_50px_rgba(20,18,15,0.08)] backdrop-blur-xl">
+        <div className="glass-panel-strong flex items-center justify-between gap-4 rounded-full px-4 py-3">
           <Link href="/" className="flex items-center gap-3 font-semibold text-base sm:text-lg tracking-tight text-primary">
-            <div className="w-9 h-9 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold shadow-lg shadow-accent/20">
+            <div className="w-9 h-9 rounded-full bg-[linear-gradient(135deg,rgba(47,125,246,1),rgba(68,217,196,1))] text-white flex items-center justify-center text-sm font-bold shadow-lg shadow-accent/20">
               N
             </div>
             <span className="hidden sm:inline">Nexa Workspace</span>
@@ -57,7 +55,7 @@ export function Navbar() {
             <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
           </div>
 
-          <div className="hidden xl:flex items-center gap-2 rounded-full bg-surface px-3 py-1 text-xs font-medium text-secondary">
+          <div className="hidden xl:flex items-center gap-2 rounded-full glass-chip px-3 py-1 text-xs font-medium">
             <Sparkles className="w-3.5 h-3.5 text-accent" />
             Open 8:00 AM - 8:00 PM
           </div>

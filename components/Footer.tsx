@@ -4,15 +4,17 @@ import { MagneticButton } from './MagneticButton';
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t border-border/70 bg-[linear-gradient(180deg,rgba(20,18,15,0.98),rgba(15,20,18,1))] text-white">
+    <footer className="mt-20 border-t border-white/15 bg-[linear-gradient(180deg,rgba(7,17,31,0.98),rgba(15,28,46,1))] text-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid gap-12 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/75">
-              Private offices with a calmer edge
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/75 backdrop-blur-xl">
+              Liquid-glass workspace, quietly premium
             </div>
             <Link href="/" className="mt-6 flex items-center gap-3 font-semibold text-2xl tracking-[-0.04em] text-white">
-              <div className="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold shadow-lg shadow-accent/20">N</div>
+              <div className="w-10 h-10 rounded-full bg-[linear-gradient(135deg,rgba(47,125,246,1),rgba(68,217,196,1))] text-white flex items-center justify-center text-sm font-bold shadow-lg shadow-accent/20">
+                N
+              </div>
               Nexa Workspace
             </Link>
             <p className="mt-5 max-w-xl text-white/72 leading-8">
@@ -21,12 +23,12 @@ export function Footer() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+            <div className="glass-panel rounded-[1.5rem] p-5 text-white">
               <div className="text-xs uppercase tracking-[0.22em] text-white/55">Visit</div>
               <div className="mt-2 text-lg font-semibold text-white">Book a walk-through</div>
               <div className="mt-2 text-sm leading-6 text-white/70">See the rooms, check the light, and feel the atmosphere in person.</div>
             </div>
-            <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+            <div className="glass-panel rounded-[1.5rem] p-5 text-white">
               <div className="text-xs uppercase tracking-[0.22em] text-white/55">Hours</div>
               <div className="mt-2 text-lg font-semibold text-white">8:00 AM - 8:00 PM</div>
               <div className="mt-2 text-sm leading-6 text-white/70">Monday through Saturday, with Sunday access on request.</div>

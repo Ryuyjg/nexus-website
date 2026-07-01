@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { LenisProvider } from "@/components/LenisProvider";
 
-const display = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-display" });
+const display = Manrope({ subsets: ["latin"], variable: "--font-display" });
 
 export const metadata: Metadata = {
-  title: "Nexa Workspace | Private Offices & Meeting Rooms",
-  description: "Premium private offices and dedicated desks built for teams that demand excellence.",
+  title: "Nexa Workspace | Liquid Glass Workspace Design",
+  description: "A premium coworking space redesigned with a liquid-glass visual system, fluid layouts, and calm focus.",
+};
+
+export const viewport = {
+  themeColor: "#dfeef8",
 };
 
 export default function RootLayout({
