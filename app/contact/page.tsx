@@ -11,36 +11,22 @@ export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
-    setError('');
-
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-    };
-
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok) {
-        throw new Error('Failed to send request');
-      }
-
-      setIsSubmitted(true);
-    } catch {
-      setError('Something went wrong. Please try again.');
-    } finally {
-      setIsLoading(false);
+    if (!name.trim() || !email.trim() || !phone.trim()) {
+      setError('Please fill in all three fields.');
+      return;
     }
+
+    setIsLoading(true);
+    const message = `Hello Nexa Workspace,%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0A%0AI'd like to book a visit.`;
+    window.open(`https://wa.me/918590691894?text=${message}`, '_blank', 'noopener,noreferrer');
+    setIsSubmitted(true);
+    setIsLoading(false);
   };
 
   return (
@@ -118,6 +104,8 @@ export default function Contact() {
                     name="name"
                     type="text" 
                     required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     className="w-full px-5 py-4 bg-surface border border-border/70 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-primary placeholder:text-secondary/60"
                     placeholder="John Doe"
                   />
@@ -128,6 +116,8 @@ export default function Contact() {
                     name="email"
                     type="email" 
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full px-5 py-4 bg-surface border border-border/70 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-primary placeholder:text-secondary/60"
                     placeholder="john@company.com"
                   />
@@ -138,6 +128,8 @@ export default function Contact() {
                     name="phone"
                     type="tel" 
                     required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                     className="w-full px-5 py-4 bg-surface border border-border/70 rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all text-primary placeholder:text-secondary/60"
                     placeholder="+91 XXXXX XXXXX"
                   />
@@ -148,7 +140,7 @@ export default function Contact() {
                   disabled={isLoading}
                   className="mt-2 inline-flex w-full items-center justify-center rounded-2xl bg-primary px-5 py-4 font-semibold text-background transition-transform hover:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {isLoading ? 'Sending...' : 'Submit Request'}
+                  {isLoading ? 'Opening WhatsApp...' : 'Submit Request'}
                 </button>
               </form>
             )}
