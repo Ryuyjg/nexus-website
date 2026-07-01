@@ -31,7 +31,7 @@ export function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-32 bg-surface">
+    <section id="faq" className="py-24 lg:py-32">
       <div className="max-w-3xl mx-auto px-6">
         
         <motion.div 
@@ -41,12 +41,15 @@ export function FAQ() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block">
+          <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
             Got Questions?
           </span>
-          <h2 className="text-4xl font-bold text-primary tracking-tight">
+          <h2 className="text-4xl font-semibold text-primary tracking-[-0.04em]">
             Frequently Asked Questions
           </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-secondary leading-8">
+            A few practical details that help people decide quickly whether the space is the right fit.
+          </p>
         </motion.div>
 
         <div className="space-y-4">
@@ -57,13 +60,13 @@ export function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="bg-background rounded-2xl overflow-hidden border border-border/50 shadow-sm"
+              className="rounded-[1.5rem] overflow-hidden border border-border/70 bg-background/85 shadow-[0_16px_40px_rgba(20,18,15,0.05)] backdrop-blur-sm"
             >
               <button 
                 onClick={() => toggle(idx)}
-                className="w-full px-8 py-6 flex items-center justify-between bg-background hover:bg-surface/50 transition-colors"
+                className="w-full px-7 py-6 flex items-center justify-between hover:bg-surface/70 transition-colors"
               >
-                <span className="text-lg font-semibold text-primary text-left">{faq.q}</span>
+                <span className="text-left text-lg font-semibold text-primary">{faq.q}</span>
                 <motion.div animate={{ rotate: openIndex === idx ? 180 : 0 }} transition={{ duration: 0.3 }}>
                   <ChevronDown className="w-5 h-5 text-secondary" />
                 </motion.div>
@@ -77,7 +80,7 @@ export function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <div className="px-8 pb-6 pt-0 text-secondary font-medium leading-relaxed">
+                    <div className="px-7 pb-6 pt-0 text-secondary leading-relaxed">
                       {faq.a}
                     </div>
                   </motion.div>

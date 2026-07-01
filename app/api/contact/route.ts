@@ -3,6 +3,15 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
+function escapeHtml(value: unknown) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -30,15 +39,19 @@ export async function POST(req: Request) {
       );
     }
 
-    const message = `
-🌟 <b>New Workspace Enquiry!</b> 🌟
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
 
-👤 <b>Name:</b> ${name}
-📧 <b>Email:</b> ${email}
-📱 <b>Phone:</b> ${phone}
-
-<i>Sent via Nexa Workspace Website</i>
-    `;
+    const message = [
+      '🌟 <b>New Workspace Enquiry!</b> 🌟',
+      '',
+      `👤 <b>Name:</b> ${safeName}`,
+      `📧 <b>Email:</b> ${safeEmail}`,
+      `📱 <b>Phone:</b> ${safePhone}`,
+      '',
+      '<i>Sent via Nexa Workspace Website</i>',
+    ].join('\n');
 
     const telegramResponse = await fetch(
       `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,

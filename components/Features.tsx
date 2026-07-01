@@ -34,7 +34,7 @@ export function Features() {
   ];
 
   return (
-    <section id="features" className="py-32 relative bg-surface overflow-hidden">
+    <section id="features" className="py-24 lg:py-32 relative overflow-hidden">
       <div className="w-full max-w-7xl mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -43,15 +43,18 @@ export function Features() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <span className="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block">
-            Enterprise Infrastructure
+          <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
+            Designed for work
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-primary tracking-tight">
-            Engineered for Focus
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold text-primary tracking-[-0.05em]">
+            Details that reduce friction
           </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-secondary leading-8">
+            Every feature reinforces the same goal: keep the room calm, reliable, and easy to work in for a whole day.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
           {features.map((feature, index) => (
             <motion.div 
               key={index} 
@@ -59,16 +62,16 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="bg-background rounded-[2rem] p-10 border border-border/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_30px_60px_rgb(0,0,0,0.12)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] hover:border-accent/30 transition-all duration-300"
+              whileHover={{ y: -8, scale: 1.01 }}
+              className="group rounded-[2rem] border border-border/70 bg-background/85 p-8 shadow-[0_18px_50px_rgba(20,18,15,0.05)] backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:shadow-[0_25px_70px_rgba(20,18,15,0.1)]"
             >
-              <div className="w-16 h-16 rounded-2xl bg-surface flex items-center justify-center text-primary mb-6">
+              <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center text-accent mb-6 ring-1 ring-accent/10 transition-colors group-hover:bg-accent group-hover:text-white">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-primary mb-3">
+              <h3 className="text-xl font-semibold text-primary mb-3 tracking-tight">
                 {feature.title}
               </h3>
-              <p className="text-secondary font-medium leading-relaxed">
+              <p className="text-secondary leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>

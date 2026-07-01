@@ -4,25 +4,48 @@
 
 @layer base {
   :root {
-    --background: #FFFFFF;
-    --surface: #F5F5F7;
-    --primary: #1D1D1F;
-    --secondary: #6E6E73;
-    --accent: #0071E3;
-    --border: #E5E5E7;
+    --background: #f4efe6;
+    --surface: #fbf8f2;
+    --primary: #14120f;
+    --secondary: #6d6458;
+    --accent: #3f6b4f;
+    --border: #ddd3c6;
   }
 
   .dark {
-    --background: #000000;
-    --surface: #1C1C1E;
-    --primary: #F5F5F7;
-    --secondary: #86868B;
-    --accent: #2997FF;
-    --border: #38383A;
+    --background: #0f1412;
+    --surface: #151c19;
+    --primary: #f5efe6;
+    --secondary: #9ca79f;
+    --accent: #8bbf9b;
+    --border: #24312b;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
     @apply bg-background text-primary antialiased transition-colors duration-300;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at top left, rgba(63, 107, 79, 0.12), transparent 28%),
+      radial-gradient(circle at 82% 18%, rgba(196, 148, 74, 0.16), transparent 24%),
+      radial-gradient(circle at 50% 100%, rgba(20, 18, 15, 0.05), transparent 26%);
+  }
+
+  ::selection {
+    background: rgba(63, 107, 79, 0.18);
+    color: var(--primary);
   }
 }
 
