@@ -15,6 +15,7 @@ interface MagneticButtonProps {
 export function MagneticButton({ children, className, href, variant = 'primary' }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const isFullWidth = Boolean(className?.includes('w-full'));
 
   const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
     const { clientX, clientY } = e;
@@ -52,8 +53,8 @@ export function MagneticButton({ children, className, href, variant = 'primary' 
   );
 
   if (href) {
-    return <Link href={href} passHref legacyBehavior><a className="inline-block">{content}</a></Link>;
+    return <Link href={href} passHref legacyBehavior><a className={isFullWidth ? 'inline-block w-full' : 'inline-block'}>{content}</a></Link>;
   }
 
-  return <div className="inline-block cursor-pointer">{content}</div>;
+  return <div className={isFullWidth ? 'inline-block w-full cursor-pointer' : 'inline-block cursor-pointer'}>{content}</div>;
 }
