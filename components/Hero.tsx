@@ -80,34 +80,34 @@ export function Hero() {
               Open 8:00 AM - 8:00 PM
             </div>
 
-            <div className="glass-panel-strong relative overflow-hidden rounded-[2.75rem]">
-              <div className="relative aspect-[4/5] w-full">
+            <div className="glass-panel-strong relative overflow-hidden rounded-[2.25rem]">
+              <div className="relative aspect-[4/4.45] w-full">
                 <Image
                   src="/gallery_lounge.png"
                   alt="Premium workspace lounge"
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 45vw"
-                  className="object-cover"
+                  className="object-cover object-[center_60%]"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),transparent_32%,rgba(24,20,16,0.45))]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),transparent_30%,rgba(24,20,16,0.42))]" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.24),transparent_28%)]" />
               </div>
 
-              <div className="absolute bottom-5 left-5 right-5 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-[1.4rem] border border-white/20 bg-[linear-gradient(135deg,rgba(24,20,16,0.72),rgba(79,107,88,0.35))] p-4 text-white backdrop-blur-2xl shadow-[0_18px_50px_rgba(24,20,16,0.26)]">
-                  <div className="flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-white/70">
+              <div className="absolute bottom-4 left-4 right-4 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-[1.25rem] border border-white/20 bg-[linear-gradient(135deg,rgba(24,20,16,0.72),rgba(79,107,88,0.35))] p-3.5 text-white backdrop-blur-2xl shadow-[0_16px_42px_rgba(24,20,16,0.22)]">
+                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/70">
                     <Building2 className="h-3.5 w-3.5" />
                     Workspace
                   </div>
-                  <div className="mt-2 text-lg font-semibold">Private offices and focused desks</div>
+                  <div className="mt-2 text-base font-semibold leading-6">Private offices and focused desks</div>
                 </div>
-                <div className="rounded-[1.4rem] border border-white/20 bg-[linear-gradient(135deg,rgba(255,255,255,0.86),rgba(255,255,255,0.58))] p-4 text-primary backdrop-blur-2xl shadow-[0_18px_50px_rgba(24,20,16,0.08)] dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] dark:text-white">
-                  <div className="flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-secondary">
+                <div className="rounded-[1.25rem] border border-white/20 bg-[linear-gradient(135deg,rgba(255,255,255,0.86),rgba(255,255,255,0.58))] p-3.5 text-primary backdrop-blur-2xl shadow-[0_16px_42px_rgba(24,20,16,0.08)] dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] dark:text-white">
+                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-secondary">
                     <Clock3 className="h-3.5 w-3.5 text-accent" />
                     Availability
                   </div>
-                  <div className="mt-2 text-lg font-semibold">Easy tours and flexible membership</div>
+                  <div className="mt-2 text-base font-semibold leading-6">Easy tours and flexible membership</div>
                 </div>
               </div>
             </div>

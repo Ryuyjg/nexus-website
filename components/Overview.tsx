@@ -54,29 +54,29 @@ export function Overview() {
             transition={{ duration: 0.9, ease: "easeOut" }}
             className="order-1 lg:order-2 relative"
           >
-            <div className="glass-panel-strong relative h-[500px] md:h-[620px] overflow-hidden rounded-[2.75rem]">
+            <div className="glass-panel-strong relative h-[440px] md:h-[540px] overflow-hidden rounded-[2.25rem]">
               <Image
-                src="/private_office.png"
-                alt="Premium Workspace"
+                src="/gallery_meeting.png"
+                alt="Premium meeting room"
                 fill
                 sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover object-center"
+                className="object-cover object-[center_46%]"
               />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_34%,rgba(24,20,16,0.42))]" />
-              <div className="absolute inset-0 rounded-[2.75rem] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] pointer-events-none" />
-              <div className="absolute -right-10 top-10 h-40 w-40 rounded-full bg-white/35 blur-3xl" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_34%,rgba(24,20,16,0.38))]" />
+              <div className="absolute inset-0 rounded-[2.25rem] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] pointer-events-none" />
+              <div className="absolute -right-10 top-10 h-36 w-36 rounded-full bg-white/28 blur-3xl" />
 
-              <div className="absolute left-5 top-5 rounded-full glass-chip px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em]">
+              <div className="absolute left-4 top-4 rounded-full glass-chip px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em]">
                 Bookable tours available
               </div>
 
-              <div className="absolute bottom-5 left-5 right-5 grid gap-3 sm:grid-cols-3">
+              <div className="absolute bottom-4 left-4 right-4 grid gap-3 sm:grid-cols-3">
                 {[
                   'Private office suites',
                   'Meeting cabin access',
                   'Quiet work zones',
                 ].map((label) => (
-                  <div key={label} className="rounded-[1.25rem] border border-white/20 bg-white/70 px-4 py-3 text-sm font-semibold text-primary backdrop-blur-2xl shadow-[0_12px_40px_rgba(7,17,31,0.1)] dark:bg-white/10 dark:text-white">
+                  <div key={label} className="rounded-[1.15rem] border border-white/20 bg-white/72 px-4 py-3 text-sm font-semibold text-primary backdrop-blur-2xl shadow-[0_12px_34px_rgba(7,17,31,0.1)] dark:bg-white/10 dark:text-white">
                     <Check className="mb-2 h-4 w-4 text-accent" />
                     {label}
                   </div>
