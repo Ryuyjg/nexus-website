@@ -37,18 +37,18 @@ export function Hero() {
           <div className="max-w-2xl">
             <motion.div variants={item} className="inline-flex items-center gap-2 rounded-full glass-chip px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em]">
               <Leaf className="w-3.5 h-3.5 text-accent" />
-              Warm liquid glass workspace, calmer by design
+              Designed for calm, focused work
             </motion.div>
 
             <motion.h1 variants={item} className="mt-8 text-5xl font-semibold tracking-[-0.06em] text-primary sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.92]">
               A workspace that feels
               <span className="block bg-[linear-gradient(135deg,#4f6b58,#c4aa7d_55%,#181410)] bg-clip-text text-transparent dark:bg-[linear-gradient(135deg,#8eb89a,#d9c39a_55%,#f4efe6)]">
-                grounded, refined, and quietly premium.
+                calm, refined, and premium.
               </span>
             </motion.h1>
 
             <motion.p variants={item} className="mt-7 max-w-xl text-lg sm:text-xl leading-8 text-secondary">
-              Nexa Workspace now feels like polished glass over warm stone: airy, luminous, and intentionally layered for teams that want design to support the work instead of distracting from it.
+              Nexa Workspace pairs warm interiors with a clear layout, so the space feels polished, comfortable, and ready for focused work.
             </motion.p>
 
             <motion.div variants={item} className="mt-10 flex flex-col gap-4 sm:flex-row">

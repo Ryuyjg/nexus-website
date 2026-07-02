@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid gap-12 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/75 backdrop-blur-xl">
-              Liquid-glass workspace, quietly premium
+              Premium workspace, thoughtfully designed
             </div>
             <Link href="/" className="mt-6 flex items-center gap-3 font-semibold text-2xl tracking-[-0.04em] text-white">
               <div className="w-10 h-10 rounded-full bg-[linear-gradient(135deg,rgba(24,20,16,1),rgba(79,107,88,1))] text-white flex items-center justify-center text-sm font-bold shadow-lg shadow-accent/20">
