@@ -1,12 +1,9 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { MagneticButton } from './MagneticButton';
 import { Building2, Clock3, Leaf, Wifi, Users, ShieldCheck } from 'lucide-react';
-
-const BASE_PATH = "/nexus-website";
 
 export function Hero() {
   const container = {
@@ -84,13 +81,12 @@ export function Hero() {
 
             <div className="glass-panel-strong relative overflow-hidden rounded-[2.25rem]">
               <div className="relative aspect-[4/4.45] w-full">
-                <Image
-                  src={`${BASE_PATH}/gallery_lounge.png`}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="gallery_lounge.png"
                   alt="Premium workspace lounge"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                  className="object-cover object-[center_60%]"
+                  loading="eager"
+                  className="absolute inset-0 h-full w-full object-cover object-[center_60%]"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),transparent_30%,rgba(24,20,16,0.42))]" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.24),transparent_28%)]" />

@@ -2,10 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { Check, MapPin, Sofa, SunMedium } from 'lucide-react';
-
-const BASE_PATH = "/nexus-website";
 
 export function Overview() {
   return (
@@ -57,12 +54,12 @@ export function Overview() {
             className="order-1 lg:order-2 relative"
           >
             <div className="glass-panel-strong relative h-[440px] md:h-[540px] overflow-hidden rounded-[2.25rem]">
-              <Image
-                src={`${BASE_PATH}/gallery_meeting.png`}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="gallery_meeting.png"
                 alt="Premium meeting room"
-                fill
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover object-[center_46%]"
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover object-[center_46%]"
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_34%,rgba(24,20,16,0.38))]" />
               <div className="absolute inset-0 rounded-[2.25rem] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] pointer-events-none" />
