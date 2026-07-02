@@ -53,7 +53,8 @@ export function Overview() {
             transition={{ duration: 0.9, ease: "easeOut" }}
             className="order-1 lg:order-2 relative"
           >
-            <div className="glass-panel-strong relative h-[320px] sm:h-[400px] md:h-[540px] overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem]">
+            <div className="glass-panel-strong relative overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem]">
+              <div className="relative h-[320px] sm:h-[400px] md:h-[540px] w-full">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="gallery_meeting.png"
@@ -64,12 +65,13 @@ export function Overview() {
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_34%,rgba(24,20,16,0.38))]" />
               <div className="absolute inset-0 rounded-[2.25rem] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] pointer-events-none" />
               <div className="absolute -right-10 top-10 h-36 w-36 rounded-full bg-white/28 blur-3xl" />
+              </div>
 
-              <div className="absolute left-3 top-3 rounded-full glass-chip px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] sm:left-4 sm:top-4 sm:text-xs sm:tracking-[0.22em]">
+              <div className="mt-3 inline-flex rounded-full glass-chip px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] sm:mt-4 sm:text-xs sm:tracking-[0.22em] lg:absolute lg:left-4 lg:top-4 lg:mt-0">
                 Bookable tours available
               </div>
 
-              <div className="absolute bottom-3 left-3 right-3 grid gap-3 sm:bottom-4 sm:left-4 sm:right-4 sm:grid-cols-3">
+              <div className="mt-3 grid gap-3 sm:mt-4 sm:grid-cols-3 lg:absolute lg:bottom-4 lg:left-4 lg:right-4 lg:mt-0">
                 {[
                   'Private office suites',
                   'Meeting cabin access',
