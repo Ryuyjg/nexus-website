@@ -92,7 +92,7 @@ export default function Contact() {
                 animate={{ scale: 1, opacity: 1 }}
                 className="flex min-h-[420px] flex-col items-center justify-center text-center"
               >
-                <div className="w-20 h-20 rounded-full bg-[linear-gradient(135deg,rgba(47,125,246,0.12),rgba(68,217,196,0.14))] flex items-center justify-center text-accent mx-auto mb-6 ring-1 ring-white/20">
+                <div className="w-20 h-20 rounded-full bg-[linear-gradient(135deg,rgba(79,107,88,0.12),rgba(196,170,125,0.14))] flex items-center justify-center text-accent mx-auto mb-6 ring-1 ring-white/20">
                   <ShieldCheck className="w-10 h-10" />
                 </div>
                 <h3 className="text-3xl font-semibold text-primary mb-3">Request sent</h3>
@@ -140,7 +140,7 @@ export default function Contact() {
                 <button 
                   type="submit"
                   disabled={isLoading}
-                  className="mt-2 inline-flex w-full items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(7,17,31,1),rgba(47,125,246,1))] px-5 py-4 font-semibold text-white transition-transform hover:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 shadow-[0_20px_60px_rgba(47,125,246,0.18)]"
+                  className="mt-2 inline-flex w-full items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(24,20,16,1),rgba(79,107,88,1))] px-5 py-4 font-semibold text-white transition-transform hover:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 shadow-[0_20px_60px_rgba(79,107,88,0.18)]"
                 >
                   {isLoading ? 'Opening WhatsApp...' : 'Submit Request'}
                 </button>

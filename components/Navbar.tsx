@@ -42,7 +42,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="glass-panel-strong flex items-center justify-between gap-4 rounded-full px-4 py-3">
           <Link href="/" className="flex items-center gap-3 font-semibold text-base sm:text-lg tracking-tight text-primary">
-            <div className="w-9 h-9 rounded-full bg-[linear-gradient(135deg,rgba(47,125,246,1),rgba(68,217,196,1))] text-white flex items-center justify-center text-sm font-bold shadow-lg shadow-accent/20">
+            <div className="w-9 h-9 rounded-full bg-[linear-gradient(135deg,rgba(24,20,16,1),rgba(79,107,88,1))] text-white flex items-center justify-center text-sm font-bold shadow-lg shadow-accent/20">
               N
             </div>
             <span className="hidden sm:inline">Nexa Workspace</span>

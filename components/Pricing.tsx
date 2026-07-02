@@ -12,7 +12,7 @@ const plans = [
     period: '/ Month',
     desc: 'Perfect for professionals looking for a productive workspace with flexible access.',
     badge: 'Fast Filling',
-    badgeColor: 'text-amber-700 bg-amber-100/70 dark:text-amber-200 dark:bg-amber-500/15',
+    badgeColor: 'text-amber-800 bg-amber-100/70 dark:text-amber-200 dark:bg-amber-500/15',
     featured: false,
   },
   {
@@ -30,7 +30,7 @@ const plans = [
     period: '/ 6 Months',
     desc: 'Our best-value plan for professionals and businesses seeking a dedicated workspace.',
     badge: 'Only 2 Left',
-    badgeColor: 'text-rose-700 bg-rose-100/70 dark:text-rose-200 dark:bg-rose-500/15',
+    badgeColor: 'text-rose-800 bg-rose-100/70 dark:text-rose-200 dark:bg-rose-500/15',
     featured: false,
   },
 ];

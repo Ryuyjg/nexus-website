@@ -7,12 +7,12 @@ import { LenisProvider } from "@/components/LenisProvider";
 const display = Manrope({ subsets: ["latin"], variable: "--font-display" });
 
 export const metadata: Metadata = {
-  title: "Nexa Workspace | Liquid Glass Workspace Design",
-  description: "A premium coworking space redesigned with a liquid-glass visual system, fluid layouts, and calm focus.",
+  title: "Nexa Workspace | Warm Liquid Glass Design",
+  description: "A premium coworking space with warm liquid-glass surfaces, soft neutrals, and calm focus.",
 };
 
 export const viewport = {
-  themeColor: "#dfeef8",
+  themeColor: "#f5efe6",
 };
 
 export default function RootLayout({

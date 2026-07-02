@@ -22,10 +22,10 @@ export function Overview() {
               Crafted atmosphere
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-primary tracking-[-0.06em] mb-6 leading-[0.98]">
-              Calm surfaces, glassy depth, sharp focus.
+              Warm surfaces, glassy depth, sharp focus.
             </h2>
             <p className="text-lg md:text-xl text-secondary leading-relaxed mb-8 max-w-xl">
-              The room now uses translucent layers, soft highlights, and cooler contrast so the environment feels lighter without losing clarity.
+              The room now uses translucent layers, soft highlights, and warmer contrast so the environment feels lighter without losing clarity.
             </p>
 
             <div className="space-y-4">
@@ -35,7 +35,7 @@ export function Overview() {
                 { icon: MapPin, title: 'A quiet location', copy: 'A peaceful setting that keeps the energy high without the usual office noise.' },
               ].map((point) => (
                 <div key={point.title} className="glass-panel flex items-start gap-4 rounded-[1.5rem] p-5">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(47,125,246,0.16),rgba(68,217,196,0.14))] text-accent ring-1 ring-white/20">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(79,107,88,0.16),rgba(196,170,125,0.14))] text-accent ring-1 ring-white/20">
                     <point.icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -56,13 +56,13 @@ export function Overview() {
           >
             <div className="glass-panel-strong relative h-[500px] md:h-[620px] overflow-hidden rounded-[2.75rem]">
               <Image
-                src="/workspace-view-new.jpg"
+                src="/private_office.png"
                 alt="Premium Workspace"
                 fill
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_34%,rgba(7,17,31,0.42))]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_34%,rgba(24,20,16,0.42))]" />
               <div className="absolute inset-0 rounded-[2.75rem] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] pointer-events-none" />
               <div className="absolute -right-10 top-10 h-40 w-40 rounded-full bg-white/35 blur-3xl" />
 

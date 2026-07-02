@@ -4,7 +4,7 @@ import { MagneticButton } from './MagneticButton';
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t border-white/15 bg-[linear-gradient(180deg,rgba(7,17,31,0.98),rgba(15,28,46,1))] text-white">
+    <footer className="mt-20 border-t border-white/15 bg-[linear-gradient(180deg,rgba(13,20,16,0.98),rgba(20,28,23,1))] text-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid gap-12 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
@@ -12,7 +12,7 @@ export function Footer() {
               Liquid-glass workspace, quietly premium
             </div>
             <Link href="/" className="mt-6 flex items-center gap-3 font-semibold text-2xl tracking-[-0.04em] text-white">
-              <div className="w-10 h-10 rounded-full bg-[linear-gradient(135deg,rgba(47,125,246,1),rgba(68,217,196,1))] text-white flex items-center justify-center text-sm font-bold shadow-lg shadow-accent/20">
+              <div className="w-10 h-10 rounded-full bg-[linear-gradient(135deg,rgba(24,20,16,1),rgba(79,107,88,1))] text-white flex items-center justify-center text-sm font-bold shadow-lg shadow-accent/20">
                 N
               </div>
               Nexa Workspace

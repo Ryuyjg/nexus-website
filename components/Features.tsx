@@ -63,9 +63,9 @@ export function Features() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -8, scale: 1.01 }}
-              className="group glass-panel rounded-[2rem] p-8 transition-all duration-300 hover:border-accent/40 hover:shadow-[0_28px_90px_rgba(47,125,246,0.14)]"
+              className="group glass-panel rounded-[2rem] p-8 transition-all duration-300 hover:border-accent/40 hover:shadow-[0_28px_90px_rgba(79,107,88,0.14)]"
             >
-              <div className="w-16 h-16 rounded-2xl bg-[linear-gradient(135deg,rgba(47,125,246,0.16),rgba(68,217,196,0.14))] flex items-center justify-center text-accent mb-6 ring-1 ring-white/25 transition-colors group-hover:bg-[linear-gradient(135deg,rgba(47,125,246,1),rgba(68,217,196,0.85))] group-hover:text-white">
+              <div className="w-16 h-16 rounded-2xl bg-[linear-gradient(135deg,rgba(79,107,88,0.16),rgba(196,170,125,0.14))] flex items-center justify-center text-accent mb-6 ring-1 ring-white/25 transition-colors group-hover:bg-[linear-gradient(135deg,rgba(79,107,88,1),rgba(196,170,125,0.9))] group-hover:text-white">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-semibold text-primary mb-3 tracking-tight">
