@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 import { MagneticButton } from './MagneticButton';
 import { Building2, Clock3, Leaf, Wifi, Users, ShieldCheck } from 'lucide-react';
 
+const BASE_PATH = "/nexus-website";
+
 export function Hero() {
   const container = {
     hidden: { opacity: 0 },
@@ -83,7 +85,7 @@ export function Hero() {
             <div className="glass-panel-strong relative overflow-hidden rounded-[2.25rem]">
               <div className="relative aspect-[4/4.45] w-full">
                 <Image
-                  src="/gallery_lounge.png"
+                  src={`${BASE_PATH}/gallery_lounge.png`}
                   alt="Premium workspace lounge"
                   fill
                   priority

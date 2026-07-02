@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Check, MapPin, Sofa, SunMedium } from 'lucide-react';
 
+const BASE_PATH = "/nexus-website";
+
 export function Overview() {
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden">
@@ -56,7 +58,7 @@ export function Overview() {
           >
             <div className="glass-panel-strong relative h-[440px] md:h-[540px] overflow-hidden rounded-[2.25rem]">
               <Image
-                src="/gallery_meeting.png"
+                src={`${BASE_PATH}/gallery_meeting.png`}
                 alt="Premium meeting room"
                 fill
                 sizes="(max-width: 1024px) 100vw, 55vw"
