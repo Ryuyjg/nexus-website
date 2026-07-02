@@ -39,9 +39,17 @@ export function Hero() {
               Designed for calm, focused work
             </motion.div>
 
-            <motion.h1 variants={item} className="mt-7 text-4xl font-semibold tracking-[-0.06em] text-primary sm:text-5xl lg:text-7xl xl:text-8xl leading-[0.92]">
-              A workspace that feels
-              <span className="block bg-[linear-gradient(135deg,#4f6b58,#c4aa7d_55%,#181410)] bg-clip-text text-transparent dark:bg-[linear-gradient(135deg,#8eb89a,#d9c39a_55%,#f4efe6)]">
+            <motion.h1
+              variants={item}
+              className="mt-7 max-w-3xl text-balance tracking-[-0.08em] text-primary"
+            >
+              <span className="block text-[clamp(2.9rem,7vw,5.8rem)] font-semibold leading-[0.92]">
+                A workspace
+              </span>
+              <span className="mt-2 block text-[clamp(2.9rem,7vw,5.8rem)] font-semibold leading-[0.92]">
+                that feels
+              </span>
+              <span className="mt-3 block text-[clamp(2.2rem,5.2vw,4.4rem)] font-medium leading-[0.96] bg-[linear-gradient(135deg,#4f6b58,#c4aa7d_55%,#181410)] bg-clip-text text-transparent dark:bg-[linear-gradient(135deg,#8eb89a,#d9c39a_55%,#f4efe6)]">
                 calm, refined, and premium.
               </span>
             </motion.h1>
