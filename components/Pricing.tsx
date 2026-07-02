@@ -58,16 +58,16 @@ export function Pricing() {
   };
 
   return (
-    <section id="pricing" className="py-24 lg:py-32 border-t border-white/20 dark:border-white/10">
+    <section id="pricing" className="py-20 sm:py-24 lg:py-32 border-t border-white/20 dark:border-white/10">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-14 sm:mb-16 lg:mb-20">
           <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
             Flexible Memberships
           </span>
-          <h2 className="text-4xl md:text-5xl font-semibold text-primary tracking-[-0.06em] leading-[0.98]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-primary tracking-[-0.06em] leading-[0.98]">
             Choose your perfect plan
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-secondary leading-8">
+          <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-secondary leading-7 sm:leading-8">
             Straightforward pricing for people who want a premium workspace without the friction of a long lease.
           </p>
         </div>
@@ -77,14 +77,14 @@ export function Pricing() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 gap-6 mb-24 md:grid-cols-3"
+          className="grid grid-cols-1 gap-5 sm:gap-6 mb-16 sm:mb-20 lg:mb-24 md:grid-cols-3"
         >
           {plans.map((plan, idx) => (
             <motion.div
               key={idx}
               variants={item}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className={`relative flex flex-col overflow-hidden rounded-[2rem] border p-8 transition-all duration-300 ${
+              className={`relative flex flex-col overflow-hidden rounded-[2rem] border p-6 sm:p-8 transition-all duration-300 ${
                 plan.featured ? 'glass-panel-strong z-10' : 'glass-panel'
               }`}
             >
@@ -92,12 +92,12 @@ export function Pricing() {
               <div className={`inline-flex self-start px-3 py-1 rounded-full text-xs font-semibold mb-6 ${plan.badgeColor}`}>
                 {plan.badge}
               </div>
-              <h3 className="text-2xl font-semibold text-primary mb-2 tracking-tight">{plan.name}</h3>
-              <div className="flex items-baseline gap-2 mb-6">
-                <span className="text-4xl font-bold text-primary">{plan.price}</span>
+              <h3 className="text-xl sm:text-2xl font-semibold text-primary mb-2 tracking-tight">{plan.name}</h3>
+              <div className="flex items-baseline gap-2 mb-5 sm:mb-6">
+                <span className="text-3xl sm:text-4xl font-bold text-primary">{plan.price}</span>
                 <span className="text-sm font-medium text-secondary">{plan.period}</span>
               </div>
-              <p className="text-secondary leading-relaxed mb-10 flex-grow">
+              <p className="text-sm sm:text-base text-secondary leading-relaxed mb-8 sm:mb-10 flex-grow">
                 {plan.desc}
               </p>
               <MagneticButton href="/contact" variant={plan.featured ? 'primary' : 'secondary'} className="w-full">
@@ -107,9 +107,9 @@ export function Pricing() {
           ))}
         </motion.div>
 
-        <div className="pt-16 border-t border-white/20 dark:border-white/10">
-          <div className="text-center mb-16">
-            <h3 className="text-3xl font-semibold text-primary tracking-[-0.04em]">Membership Benefits</h3>
+        <div className="pt-12 sm:pt-16 border-t border-white/20 dark:border-white/10">
+          <div className="text-center mb-12 sm:mb-16">
+            <h3 className="text-2xl sm:text-3xl font-semibold text-primary tracking-[-0.04em]">Membership Benefits</h3>
           </div>
 
           <motion.div
@@ -117,7 +117,7 @@ export function Pricing() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: '-50px' }}
-            className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4"
+            className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-4"
           >
             {benefits.map((benefit, idx) => (
               <motion.div

@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="mt-20 border-t border-white/15 bg-[linear-gradient(180deg,rgba(13,20,16,0.98),rgba(20,28,23,1))] text-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid gap-12 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+        <div className="grid gap-10 py-14 sm:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/75 backdrop-blur-xl">
               Premium workspace, thoughtfully designed
@@ -36,9 +36,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-6 border-t border-white/10 py-7 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-4 border-t border-white/10 py-7 md:flex-row md:items-center md:justify-between">
           <p className="text-sm text-white/60">© {new Date().getFullYear()} Nexa Workspace. Designed for excellence.</p>
-          <div className="flex flex-wrap items-center gap-6 text-sm text-white/70">
+          <div className="flex flex-wrap items-center gap-5 text-sm text-white/70">
             <Link href="#features" className="hover:text-white transition-colors">Features</Link>
             <Link href="#pricing" className="hover:text-white transition-colors">Pricing</Link>
             <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
@@ -46,7 +46,7 @@ export function Footer() {
         </div>
 
         <div className="pb-12">
-          <MagneticButton href="/contact" className="bg-white text-primary hover:bg-white/90">
+          <MagneticButton href="/contact" className="w-full sm:w-auto bg-white text-primary hover:bg-white/90">
             Schedule a visit
           </MagneticButton>
         </div>

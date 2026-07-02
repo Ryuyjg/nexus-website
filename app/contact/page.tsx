@@ -33,10 +33,10 @@ export default function Contact() {
     <main className="min-h-screen bg-background">
       <Navbar />
       
-      <div className="relative px-6 pb-20 pt-28 lg:pt-36">
+      <div className="relative px-5 pb-16 pt-24 sm:px-6 sm:pb-20 sm:pt-28 lg:pt-36">
         <div className="absolute left-0 top-10 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
         <div className="absolute right-0 top-40 h-80 w-80 rounded-full bg-cyan-300/20 blur-3xl dark:bg-cyan-500/10" />
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -47,10 +47,10 @@ export default function Contact() {
               <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
                 Book a visit
               </span>
-              <h1 className="text-4xl md:text-5xl font-semibold text-primary tracking-[-0.06em] leading-[0.95]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-primary tracking-[-0.06em] leading-[0.95]">
                 Let&apos;s find the right room for your team.
               </h1>
-              <p className="mt-5 max-w-xl text-lg leading-8 text-secondary">
+              <p className="mt-5 max-w-xl text-base sm:text-lg leading-7 sm:leading-8 text-secondary">
                 Share your details and we&apos;ll help you plan a tour, answer questions, and show you the membership that fits your workflow.
               </p>
             </div>
@@ -84,18 +84,18 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="glass-panel-strong rounded-[2.25rem] p-6 md:p-8 lg:p-10"
+            className="glass-panel-strong rounded-[1.75rem] sm:rounded-[2.25rem] p-5 sm:p-6 md:p-8 lg:p-10"
           >
             {isSubmitted ? (
               <motion.div 
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="flex min-h-[420px] flex-col items-center justify-center text-center"
+                className="flex min-h-[320px] sm:min-h-[420px] flex-col items-center justify-center text-center"
               >
                 <div className="w-20 h-20 rounded-full bg-[linear-gradient(135deg,rgba(79,107,88,0.12),rgba(196,170,125,0.14))] flex items-center justify-center text-accent mx-auto mb-6 ring-1 ring-white/20">
                   <ShieldCheck className="w-10 h-10" />
                 </div>
-                <h3 className="text-3xl font-semibold text-primary mb-3">Request sent</h3>
+                <h3 className="text-2xl sm:text-3xl font-semibold text-primary mb-3">Request sent</h3>
                 <p className="max-w-md text-secondary leading-7">We&apos;ll be in touch shortly to confirm your visit and help with the next step.</p>
               </motion.div>
             ) : (

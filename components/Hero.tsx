@@ -20,7 +20,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-28 pb-20 lg:pt-36 lg:pb-28">
+    <section className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-36 lg:pb-28">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(79,107,88,0.14),transparent_24%),radial-gradient(circle_at_82%_18%,rgba(196,170,125,0.16),transparent_22%),radial-gradient(circle_at_50%_110%,rgba(255,255,255,0.86),transparent_28%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(142,184,154,0.16),transparent_26%),radial-gradient(circle_at_82%_18%,rgba(196,170,125,0.14),transparent_24%),linear-gradient(180deg,rgba(13,20,16,0.98),rgba(20,28,23,1))]" />
       <div className="absolute -left-24 top-28 h-72 w-72 rounded-full bg-accent/18 blur-3xl" />
       <div className="absolute right-0 top-10 h-80 w-80 rounded-full bg-amber-200/25 blur-3xl dark:bg-amber-500/10" />
@@ -31,7 +31,7 @@ export function Hero() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]"
+          className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16"
         >
           <div className="max-w-2xl">
             <motion.div variants={item} className="inline-flex items-center gap-2 rounded-full glass-chip px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em]">
@@ -39,33 +39,33 @@ export function Hero() {
               Designed for calm, focused work
             </motion.div>
 
-            <motion.h1 variants={item} className="mt-8 text-5xl font-semibold tracking-[-0.06em] text-primary sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.92]">
+            <motion.h1 variants={item} className="mt-7 text-4xl font-semibold tracking-[-0.06em] text-primary sm:text-5xl lg:text-7xl xl:text-8xl leading-[0.92]">
               A workspace that feels
               <span className="block bg-[linear-gradient(135deg,#4f6b58,#c4aa7d_55%,#181410)] bg-clip-text text-transparent dark:bg-[linear-gradient(135deg,#8eb89a,#d9c39a_55%,#f4efe6)]">
                 calm, refined, and premium.
               </span>
             </motion.h1>
 
-            <motion.p variants={item} className="mt-7 max-w-xl text-lg sm:text-xl leading-8 text-secondary">
+            <motion.p variants={item} className="mt-6 max-w-xl text-base sm:text-lg sm:leading-8 leading-7 text-secondary">
               Nexa Workspace pairs warm interiors with a clear layout, so the space feels polished, comfortable, and ready for focused work.
             </motion.p>
 
-            <motion.div variants={item} className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <MagneticButton href="/contact" className="px-7 py-4 text-base shadow-lg shadow-accent/10">
+            <motion.div variants={item} className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <MagneticButton href="/contact" className="w-full px-7 py-4 text-base shadow-lg shadow-accent/10 sm:w-auto">
                 Book a Visit
               </MagneticButton>
-              <MagneticButton href="#pricing" variant="outline" className="px-7 py-4 text-base">
+              <MagneticButton href="#pricing" variant="outline" className="w-full px-7 py-4 text-base sm:w-auto">
                 View Plans
               </MagneticButton>
             </motion.div>
 
-            <motion.div variants={item} className="mt-10 grid gap-4 sm:grid-cols-3">
+            <motion.div variants={item} className="mt-8 grid gap-4 sm:grid-cols-3">
               {[
                 { icon: Wifi, label: 'Gigabit Wi-Fi', copy: 'Reliable connection for teams and calls' },
                 { icon: Users, label: 'Meeting Cabin', copy: 'Private room for client sessions' },
                 { icon: ShieldCheck, label: 'Power Backup', copy: 'Built for long, uninterrupted workdays' },
               ].map((feature) => (
-                <div key={feature.label} className="glass-panel rounded-[1.75rem] p-4">
+                <div key={feature.label} className="glass-panel rounded-[1.75rem] p-4 sm:p-4">
                   <feature.icon className="h-5 w-5 text-accent" />
                   <div className="mt-3 text-sm font-semibold text-primary">{feature.label}</div>
                   <div className="mt-1 text-sm leading-6 text-secondary">{feature.copy}</div>
@@ -79,8 +79,8 @@ export function Hero() {
               Open 8:00 AM - 8:00 PM
             </div>
 
-            <div className="glass-panel-strong relative overflow-hidden rounded-[2.25rem]">
-              <div className="relative aspect-[4/4.45] w-full">
+            <div className="glass-panel-strong relative overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem]">
+              <div className="relative aspect-[4/4.2] sm:aspect-[4/4.45] w-full">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="gallery_lounge.png"
@@ -92,7 +92,7 @@ export function Hero() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.24),transparent_28%)]" />
               </div>
 
-              <div className="absolute bottom-4 left-4 right-4 grid gap-3 sm:grid-cols-2">
+              <div className="absolute bottom-3 left-3 right-3 grid gap-3 sm:bottom-4 sm:left-4 sm:right-4 sm:grid-cols-2">
                 <div className="rounded-[1.25rem] border border-white/20 bg-[linear-gradient(135deg,rgba(24,20,16,0.72),rgba(79,107,88,0.35))] p-3.5 text-white backdrop-blur-2xl shadow-[0_16px_42px_rgba(24,20,16,0.22)]">
                   <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/70">
                     <Building2 className="h-3.5 w-3.5" />
@@ -110,7 +110,7 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="mt-5 grid gap-4 sm:grid-cols-3">
+            <div className="mt-4 grid gap-4 sm:mt-5 sm:grid-cols-3">
               {[
                 { value: '100%', label: 'air-conditioned comfort' },
                 { value: '24/7', label: 'power backup support' },

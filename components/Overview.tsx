@@ -6,7 +6,7 @@ import { Check, MapPin, Sofa, SunMedium } from 'lucide-react';
 
 export function Overview() {
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden">
+    <section className="py-20 sm:py-24 lg:py-32 relative overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="w-full max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-center w-full">
@@ -20,10 +20,10 @@ export function Overview() {
             <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
               Crafted atmosphere
             </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-primary tracking-[-0.06em] mb-6 leading-[0.98]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary tracking-[-0.06em] mb-5 sm:mb-6 leading-[0.98]">
               Warm surfaces, glassy depth, sharp focus.
             </h2>
-            <p className="text-lg md:text-xl text-secondary leading-relaxed mb-8 max-w-xl">
+            <p className="text-base sm:text-lg md:text-xl text-secondary leading-relaxed mb-7 sm:mb-8 max-w-xl">
               The room now uses translucent layers, soft highlights, and warmer contrast so the environment feels lighter without losing clarity.
             </p>
 
@@ -33,7 +33,7 @@ export function Overview() {
                 { icon: Sofa, title: 'Comfort-first seating', copy: 'Furniture and layout choices that support long stretches of focused work.' },
                 { icon: MapPin, title: 'A quiet location', copy: 'A peaceful setting that keeps the energy high without the usual office noise.' },
               ].map((point) => (
-                <div key={point.title} className="glass-panel flex items-start gap-4 rounded-[1.5rem] p-5">
+                <div key={point.title} className="glass-panel flex items-start gap-4 rounded-[1.5rem] p-4 sm:p-5">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(79,107,88,0.16),rgba(196,170,125,0.14))] text-accent ring-1 ring-white/20">
                     <point.icon className="h-5 w-5" />
                   </div>
@@ -53,7 +53,7 @@ export function Overview() {
             transition={{ duration: 0.9, ease: "easeOut" }}
             className="order-1 lg:order-2 relative"
           >
-            <div className="glass-panel-strong relative h-[440px] md:h-[540px] overflow-hidden rounded-[2.25rem]">
+            <div className="glass-panel-strong relative h-[320px] sm:h-[400px] md:h-[540px] overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="gallery_meeting.png"
@@ -65,11 +65,11 @@ export function Overview() {
               <div className="absolute inset-0 rounded-[2.25rem] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] pointer-events-none" />
               <div className="absolute -right-10 top-10 h-36 w-36 rounded-full bg-white/28 blur-3xl" />
 
-              <div className="absolute left-4 top-4 rounded-full glass-chip px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em]">
+              <div className="absolute left-3 top-3 rounded-full glass-chip px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] sm:left-4 sm:top-4 sm:text-xs sm:tracking-[0.22em]">
                 Bookable tours available
               </div>
 
-              <div className="absolute bottom-4 left-4 right-4 grid gap-3 sm:grid-cols-3">
+              <div className="absolute bottom-3 left-3 right-3 grid gap-3 sm:bottom-4 sm:left-4 sm:right-4 sm:grid-cols-3">
                 {[
                   'Private office suites',
                   'Meeting cabin access',

@@ -31,7 +31,7 @@ export function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 lg:py-32">
+    <section id="faq" className="py-20 sm:py-24 lg:py-32">
       <div className="max-w-3xl mx-auto px-6">
         
         <motion.div 
@@ -39,15 +39,15 @@ export function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
             Got Questions?
           </span>
-          <h2 className="text-4xl font-semibold text-primary tracking-[-0.06em] leading-[0.98]">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-primary tracking-[-0.06em] leading-[0.98]">
             Frequently Asked Questions
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-secondary leading-8">
+          <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-secondary leading-7 sm:leading-8">
             A few practical details that help people decide quickly whether the space is the right fit.
           </p>
         </motion.div>
@@ -64,9 +64,9 @@ export function FAQ() {
             >
               <button 
                 onClick={() => toggle(idx)}
-                className="w-full px-7 py-6 flex items-center justify-between hover:bg-white/20 transition-colors dark:hover:bg-white/10"
+                className="w-full px-5 py-5 sm:px-7 sm:py-6 flex items-center justify-between gap-4 hover:bg-white/20 transition-colors dark:hover:bg-white/10"
               >
-                <span className="text-left text-lg font-semibold text-primary">{faq.q}</span>
+                <span className="text-left text-base sm:text-lg font-semibold text-primary">{faq.q}</span>
                 <motion.div animate={{ rotate: openIndex === idx ? 180 : 0 }} transition={{ duration: 0.3 }}>
                   <ChevronDown className="w-5 h-5 text-secondary" />
                 </motion.div>
@@ -80,7 +80,7 @@ export function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <div className="px-7 pb-6 pt-0 text-secondary leading-relaxed">
+                    <div className="px-5 pb-5 pt-0 text-sm sm:text-base sm:px-7 sm:pb-6 text-secondary leading-relaxed">
                       {faq.a}
                     </div>
                   </motion.div>
