@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { MagneticButton } from './MagneticButton';
 
-const logoSrc = '/nexus-website/nexa-logo-mark.png';
+const logoSrc = '/nexus-website/nexa-logo-clean.png';
 
 export function Footer() {
   return (
@@ -14,7 +14,7 @@ export function Footer() {
               Premium workspace, thoughtfully designed
             </div>
             <Link href="/" className="mt-6 flex items-center gap-3 font-semibold text-2xl tracking-[-0.04em] text-white">
-              <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-white/90 p-1.5 shadow-lg shadow-accent/20">
+              <div className="flex h-12 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white/90 p-1.5 shadow-lg shadow-accent/20">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={logoSrc}
