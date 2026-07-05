@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { MagneticButton } from './MagneticButton';
 
+const logoSrc = '/nexus-website/nexa-logo-mark.png';
+
 export function Footer() {
   return (
     <footer className="mt-20 border-t border-white/15 bg-[linear-gradient(180deg,rgba(13,20,16,0.98),rgba(20,28,23,1))] text-white">
@@ -15,7 +17,7 @@ export function Footer() {
               <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-white/90 p-1.5 shadow-lg shadow-accent/20">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/nexa-logo-mark.png"
+                  src={logoSrc}
                   alt="Nexa Workspace logo"
                   className="h-full w-full object-contain"
                 />
