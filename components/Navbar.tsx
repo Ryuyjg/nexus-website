@@ -7,7 +7,7 @@ import { MagneticButton } from './MagneticButton';
 import { ThemeToggle } from './ThemeToggle';
 import { Menu, Sparkles, X } from 'lucide-react';
 
-const logoSrc = '/nexus-website/nexa-logo-clean.png';
+const logoSrc = '/nexus-website/nexa-mark-only.png';
 
 export function Navbar() {
   const { scrollY } = useScroll();
@@ -46,7 +46,7 @@ export function Navbar() {
         <div className="glass-panel-strong rounded-[1.5rem] px-4 py-3 sm:rounded-full">
           <div className="flex items-center justify-between gap-3">
           <Link href="/" className="flex items-center gap-3 font-semibold text-base sm:text-lg tracking-tight text-primary">
-            <div className="flex h-10 w-14 items-center justify-center overflow-hidden rounded-2xl bg-white/70 p-1 shadow-lg shadow-accent/10 ring-1 ring-white/40 dark:bg-white/90">
+            <div className="flex h-10 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white/85 px-2 shadow-lg shadow-accent/10 ring-1 ring-white/40 dark:bg-white/95">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={logoSrc}
