@@ -12,8 +12,13 @@ export function Footer() {
               Premium workspace, thoughtfully designed
             </div>
             <Link href="/" className="mt-6 flex items-center gap-3 font-semibold text-2xl tracking-[-0.04em] text-white">
-              <div className="w-10 h-10 rounded-full bg-[linear-gradient(135deg,rgba(24,20,16,1),rgba(79,107,88,1))] text-white flex items-center justify-center text-sm font-bold shadow-lg shadow-accent/20">
-                N
+              <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-white/90 p-1.5 shadow-lg shadow-accent/20">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/nexa-logo-mark.png"
+                  alt="Nexa Workspace logo"
+                  className="h-full w-full object-contain"
+                />
               </div>
               Nexa Workspace
             </Link>

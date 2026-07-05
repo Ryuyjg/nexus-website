@@ -44,8 +44,13 @@ export function Navbar() {
         <div className="glass-panel-strong rounded-[1.5rem] px-4 py-3 sm:rounded-full">
           <div className="flex items-center justify-between gap-3">
           <Link href="/" className="flex items-center gap-3 font-semibold text-base sm:text-lg tracking-tight text-primary">
-            <div className="w-9 h-9 rounded-full bg-[linear-gradient(135deg,rgba(24,20,16,1),rgba(79,107,88,1))] text-white flex items-center justify-center text-sm font-bold shadow-lg shadow-accent/20">
-              N
+            <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white/70 p-1 shadow-lg shadow-accent/10 ring-1 ring-white/40 dark:bg-white/90">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/nexa-logo-mark.png"
+                alt="Nexa Workspace logo"
+                className="h-full w-full object-contain"
+              />
             </div>
             <span className="hidden sm:inline">Nexa Workspace</span>
           </Link>
