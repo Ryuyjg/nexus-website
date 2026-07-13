@@ -14,19 +14,45 @@ export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [preferredDate, setPreferredDate] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError('');
+
     if (!name.trim() || !email.trim() || !phone.trim()) {
       setError('Please fill in all three fields.');
       return;
     }
 
     setIsLoading(true);
-    const message = `Hello Nexa Workspace,%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0A%0AI'd like to book a visit.`;
-    window.open(`https://wa.me/918590691894?text=${message}`, '_blank', 'noopener,noreferrer');
-    setIsSubmitted(true);
-    setIsLoading(false);
+
+    try {
+      const response = await fetch('/api/enquiries.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          preferredDate,
+          message,
+        }),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.error || 'Could not send your request.');
+      }
+
+      setIsSubmitted(true);
+    } catch (submitError) {
+      setError(submitError instanceof Error ? submitError.message : 'Could not send your request.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -136,13 +162,35 @@ export default function Contact() {
                     placeholder="+91 XXXXX XXXXX"
                   />
                 </div>
+                <div>
+                  <label className="block text-sm font-semibold text-primary mb-2">Preferred Visit Date</label>
+                  <input
+                    name="preferredDate"
+                    type="text"
+                    value={preferredDate}
+                    onChange={(e) => setPreferredDate(e.target.value)}
+                    className="glass-input"
+                    placeholder="Tomorrow evening, Saturday, etc."
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-primary mb-2">Message</label>
+                  <textarea
+                    name="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className="glass-input min-h-32 resize-y"
+                    placeholder="Tell us what kind of workspace you need."
+                  />
+                </div>
+                <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
                 {error && <p className="text-sm font-medium text-rose-600">{error}</p>}
                 <button 
                   type="submit"
                   disabled={isLoading}
                   className="mt-2 inline-flex w-full items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(24,20,16,1),rgba(79,107,88,1))] px-5 py-4 font-semibold text-white transition-transform hover:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 shadow-[0_20px_60px_rgba(79,107,88,0.18)]"
                 >
-                  {isLoading ? 'Opening WhatsApp...' : 'Submit Request'}
+                  {isLoading ? 'Sending request...' : 'Submit Request'}
                 </button>
               </form>
             )}
