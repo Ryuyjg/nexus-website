@@ -21,7 +21,7 @@ function require_admin(): void
 
 function db(): PDO
 {
-    $private = dirname(__DIR__, 2) . '/private';
+    $private = dirname(__DIR__) . '/private';
     if (!is_dir($private) && !mkdir($private, 0750, true) && !is_dir($private)) {
         throw new RuntimeException('Could not create storage directory.');
     }
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([':status' => $status, ':id' => $id]);
     }
 
-    header('Location: /admin/enquiries.php');
+    header('Location: /admin');
     exit;
 }
 
