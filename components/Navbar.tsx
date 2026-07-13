@@ -71,9 +71,6 @@ export function Navbar() {
 
           <div className="flex items-center gap-2 sm:gap-4">
             <ThemeToggle />
-            <Link href="/contact" className="hidden lg:block text-sm font-medium text-secondary hover:text-primary transition-colors">
-              Member Login
-            </Link>
             <MagneticButton href="/contact" className="hidden sm:inline-flex text-sm px-5 py-2.5">
               Book Visit
             </MagneticButton>

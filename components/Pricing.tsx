@@ -8,7 +8,7 @@ import { Check } from 'lucide-react';
 const plans = [
   {
     name: 'Monthly',
-    price: '₹3,000',
+    price: 'Rs. 3,000',
     period: '/ Month',
     desc: 'Perfect for professionals looking for a productive workspace with flexible access.',
     badge: 'Fast Filling',
@@ -17,7 +17,7 @@ const plans = [
   },
   {
     name: 'Quarterly',
-    price: '₹8,000',
+    price: 'Rs. 8,000',
     period: '/ 3 Months',
     desc: 'Save more with a long-term commitment while enjoying all member benefits.',
     badge: 'Most Popular',
@@ -26,7 +26,7 @@ const plans = [
   },
   {
     name: 'Semi-Annual',
-    price: '₹15,000',
+    price: 'Rs. 15,000',
     period: '/ 6 Months',
     desc: 'Our best-value plan for professionals and businesses seeking a dedicated workspace.',
     badge: 'Only 2 Left',

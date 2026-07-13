@@ -44,7 +44,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col gap-4 border-t border-white/10 py-7 md:flex-row md:items-center md:justify-between">
-          <p className="text-sm text-white/60">© {new Date().getFullYear()} Nexa Workspace. Designed for excellence.</p>
+          <p className="text-sm text-white/60">Copyright {new Date().getFullYear()} Nexa Workspace. Designed for excellence.</p>
           <div className="flex flex-wrap items-center gap-5 text-sm text-white/70">
             <Link href="#features" className="hover:text-white transition-colors">Features</Link>
             <Link href="#pricing" className="hover:text-white transition-colors">Pricing</Link>

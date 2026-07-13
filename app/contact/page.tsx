@@ -135,7 +135,7 @@ export default function Contact() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="glass-input"
-                    placeholder="John Doe"
+                    placeholder="Your full name"
                   />
                 </div>
                 <div>
@@ -147,7 +147,7 @@ export default function Contact() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="glass-input"
-                    placeholder="john@company.com"
+                    placeholder="you@company.com"
                   />
                 </div>
                 <div>
