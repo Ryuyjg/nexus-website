@@ -45,8 +45,8 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="glass-panel-strong rounded-[1.5rem] px-4 py-3 sm:rounded-full">
           <div className="flex items-center justify-between gap-3">
-          <Link href="/" className="flex items-center gap-3 font-semibold text-base sm:text-lg tracking-tight text-primary">
-            <div className="flex h-10 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white/85 px-2 shadow-lg shadow-accent/10 ring-1 ring-white/40 dark:bg-white/95">
+          <Link href="/" className="flex items-center gap-3 text-base font-semibold tracking-[-0.03em] text-primary sm:text-lg">
+            <div className="flex h-10 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white/90 px-2 shadow-lg shadow-accent/10 ring-1 ring-white/50 dark:bg-white/95">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={logoSrc}
@@ -57,14 +57,14 @@ export function Navbar() {
             <span className="hidden sm:inline">Nexa Workspace</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-7 text-sm font-medium text-secondary">
+          <div className="hidden items-center gap-7 text-sm font-medium text-secondary md:flex">
             <Link href="#features" className="hover:text-primary transition-colors">Features</Link>
             <Link href="#pricing" className="hover:text-primary transition-colors">Pricing</Link>
             <Link href="#faq" className="hover:text-primary transition-colors">FAQ</Link>
             <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
           </div>
 
-          <div className="hidden xl:flex items-center gap-2 rounded-full glass-chip px-3 py-1 text-xs font-medium">
+          <div className="hidden items-center gap-2 rounded-full border border-white/35 bg-white/30 px-3 py-1 text-xs font-medium text-secondary backdrop-blur-xl xl:flex">
             <Sparkles className="w-3.5 h-3.5 text-accent" />
             Open 8:00 AM - 8:00 PM
           </div>

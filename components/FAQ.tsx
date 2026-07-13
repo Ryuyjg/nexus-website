@@ -41,10 +41,10 @@ export function FAQ() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.28em] text-accent">
             Got Questions?
           </span>
-          <h2 className="text-3xl sm:text-4xl font-semibold text-primary tracking-[-0.06em] leading-[0.98]">
+          <h2 className="font-display text-4xl font-semibold leading-[0.9] tracking-[-0.055em] text-primary sm:text-5xl">
             Frequently Asked Questions
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-secondary leading-7 sm:leading-8">
@@ -60,11 +60,11 @@ export function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="glass-panel rounded-[1.5rem] overflow-hidden"
+              className="glass-panel overflow-hidden rounded-[1.65rem]"
             >
               <button 
                 onClick={() => toggle(idx)}
-                className="w-full px-5 py-5 sm:px-7 sm:py-6 flex items-center justify-between gap-4 hover:bg-white/20 transition-colors dark:hover:bg-white/10"
+                className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left transition-colors hover:bg-white/25 dark:hover:bg-white/10 sm:px-7 sm:py-6"
               >
                 <span className="text-left text-base sm:text-lg font-semibold text-primary">{faq.q}</span>
                 <motion.div animate={{ rotate: openIndex === idx ? 180 : 0 }} transition={{ duration: 0.3 }}>

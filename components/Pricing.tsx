@@ -12,7 +12,7 @@ const plans = [
     period: '/ Month',
     desc: 'Perfect for professionals looking for a productive workspace with flexible access.',
     badge: 'Fast Filling',
-    badgeColor: 'text-amber-800 bg-amber-100/70 dark:text-amber-200 dark:bg-amber-500/15',
+    badgeColor: 'text-[#7a5523] bg-[#d6b77a]/20 dark:text-[#f1d99c] dark:bg-[#d6b77a]/15',
     featured: false,
   },
   {
@@ -21,7 +21,7 @@ const plans = [
     period: '/ 3 Months',
     desc: 'Save more with a long-term commitment while enjoying all member benefits.',
     badge: 'Most Popular',
-    badgeColor: 'text-accent bg-accent/10',
+    badgeColor: 'text-[#173126] bg-[#d6b77a]/25 dark:text-[#f1d99c] dark:bg-[#d6b77a]/15',
     featured: true,
   },
   {
@@ -30,7 +30,7 @@ const plans = [
     period: '/ 6 Months',
     desc: 'Our best-value plan for professionals and businesses seeking a dedicated workspace.',
     badge: 'Only 2 Left',
-    badgeColor: 'text-rose-800 bg-rose-100/70 dark:text-rose-200 dark:bg-rose-500/15',
+    badgeColor: 'text-[#7a5523] bg-white/50 dark:text-[#f1d99c] dark:bg-white/10',
     featured: false,
   },
 ];
@@ -58,13 +58,13 @@ export function Pricing() {
   };
 
   return (
-    <section id="pricing" className="py-20 sm:py-24 lg:py-32 border-t border-white/20 dark:border-white/10">
+    <section id="pricing" className="border-t border-white/20 py-20 dark:border-white/10 sm:py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14 sm:mb-16 lg:mb-20">
-          <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.28em] text-accent">
             Flexible Memberships
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-primary tracking-[-0.06em] leading-[0.98]">
+          <h2 className="font-display text-4xl font-semibold leading-[0.9] tracking-[-0.055em] text-primary sm:text-5xl md:text-6xl">
             Choose your perfect plan
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-secondary leading-7 sm:leading-8">
@@ -84,17 +84,17 @@ export function Pricing() {
               key={idx}
               variants={item}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className={`relative flex flex-col overflow-hidden rounded-[2rem] border p-6 sm:p-8 transition-all duration-300 ${
+              className={`relative flex flex-col overflow-hidden rounded-[2rem] border p-6 transition-all duration-300 sm:p-8 ${
                 plan.featured ? 'glass-panel-strong z-10' : 'glass-panel'
               }`}
             >
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0.55),transparent)] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent)]" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-[linear-gradient(180deg,rgba(255,250,240,0.72),transparent)] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent)]" />
               <div className={`inline-flex self-start px-3 py-1 rounded-full text-xs font-semibold mb-6 ${plan.badgeColor}`}>
                 {plan.badge}
               </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-primary mb-2 tracking-tight">{plan.name}</h3>
+              <h3 className="mb-2 text-xl font-semibold tracking-[-0.03em] text-primary sm:text-2xl">{plan.name}</h3>
               <div className="flex items-baseline gap-2 mb-5 sm:mb-6">
-                <span className="text-3xl sm:text-4xl font-bold text-primary">{plan.price}</span>
+                <span className="font-display text-4xl font-semibold leading-none text-primary sm:text-5xl">{plan.price}</span>
                 <span className="text-sm font-medium text-secondary">{plan.period}</span>
               </div>
               <p className="text-sm sm:text-base text-secondary leading-relaxed mb-8 sm:mb-10 flex-grow">
@@ -109,7 +109,7 @@ export function Pricing() {
 
         <div className="pt-12 sm:pt-16 border-t border-white/20 dark:border-white/10">
           <div className="text-center mb-12 sm:mb-16">
-            <h3 className="text-2xl sm:text-3xl font-semibold text-primary tracking-[-0.04em]">Membership Benefits</h3>
+            <h3 className="font-display text-3xl font-semibold tracking-[-0.04em] text-primary sm:text-4xl">Membership Benefits</h3>
           </div>
 
           <motion.div

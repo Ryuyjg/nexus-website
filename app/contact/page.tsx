@@ -73,7 +73,7 @@ export default function Contact() {
               <span className="text-accent font-semibold tracking-[0.24em] uppercase text-xs mb-4 block">
                 Book a visit
               </span>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-primary tracking-[-0.06em] leading-[0.95]">
+              <h1 className="font-display text-4xl font-semibold leading-[0.9] tracking-[-0.055em] text-primary sm:text-5xl md:text-6xl">
                 Let&apos;s find the right room for your team.
               </h1>
               <p className="mt-5 max-w-xl text-base sm:text-lg leading-7 sm:leading-8 text-secondary">

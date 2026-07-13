@@ -30,12 +30,12 @@ export function MagneticButton({ children, className, href, variant = 'primary' 
   };
 
   const variants = {
-    primary: "bg-[linear-gradient(135deg,rgba(24,20,16,1),rgba(79,107,88,1))] text-white shadow-[0_18px_50px_rgba(79,107,88,0.18)] hover:shadow-[0_22px_60px_rgba(79,107,88,0.24)]",
+    primary: "bg-[linear-gradient(135deg,#111812,#173126_52%,#9b7138)] text-white shadow-[0_20px_60px_rgba(23,49,38,0.22)] hover:shadow-[0_26px_70px_rgba(155,113,56,0.24)]",
     secondary: "glass-panel text-primary hover:bg-white/70 dark:text-white dark:hover:bg-white/10",
-    outline: "border border-white/30 bg-white/25 text-primary backdrop-blur-xl hover:bg-white/45 dark:border-white/10 dark:bg-white/6 dark:text-white dark:hover:bg-white/10",
+    outline: "border border-white/35 bg-white/30 text-primary backdrop-blur-xl hover:bg-white/50 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10",
   };
 
-  const baseClasses = "relative inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all overflow-hidden group";
+  const baseClasses = "relative inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-semibold tracking-[-0.01em] transition-all overflow-hidden group";
 
   const content = (
     <motion.div
