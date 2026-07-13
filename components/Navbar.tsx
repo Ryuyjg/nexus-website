@@ -7,7 +7,7 @@ import { MagneticButton } from './MagneticButton';
 import { ThemeToggle } from './ThemeToggle';
 import { Menu, Sparkles, X } from 'lucide-react';
 
-const logoSrc = '/nexus-website/nexa-mark-only.png';
+const logoSrc = '/nexa-mark-only.png';
 
 export function Navbar() {
   const { scrollY } = useScroll();

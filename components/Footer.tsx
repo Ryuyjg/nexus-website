@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { MagneticButton } from './MagneticButton';
 
-const logoSrc = '/nexus-website/nexa-mark-only.png';
+const logoSrc = '/nexa-mark-only.png';
 
 export function Footer() {
   return (
