@@ -58,10 +58,10 @@ export function Pricing() {
   };
 
   return (
-    <section id="pricing" className="border-t border-white/20 py-20 dark:border-white/10 sm:py-24 lg:py-32">
+    <section id="pricing" className="border-t border-[#e2d3bd] bg-[#f5efe5] py-20 dark:border-white/10 sm:py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14 sm:mb-16 lg:mb-20">
-          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.28em] text-accent">
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.28em] text-[#9e7434]">
             Flexible Memberships
           </span>
           <h2 className="font-display text-4xl font-semibold leading-[0.9] tracking-[-0.055em] text-primary sm:text-5xl md:text-6xl">
@@ -85,19 +85,19 @@ export function Pricing() {
               variants={item}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className={`relative flex flex-col overflow-hidden rounded-[2rem] border p-6 transition-all duration-300 sm:p-8 ${
-                plan.featured ? 'glass-panel-strong z-10' : 'glass-panel'
+                plan.featured ? 'z-10 border-[#07120d] bg-[#07120d] text-white shadow-[0_32px_100px_rgba(7,18,13,0.26)]' : 'border-[#e2d3bd] bg-[#fffaf1] shadow-[0_22px_70px_rgba(17,17,15,0.08)]'
               }`}
             >
               <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-[linear-gradient(180deg,rgba(255,250,240,0.72),transparent)] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent)]" />
               <div className={`inline-flex self-start px-3 py-1 rounded-full text-xs font-semibold mb-6 ${plan.badgeColor}`}>
                 {plan.badge}
               </div>
-              <h3 className="mb-2 text-xl font-semibold tracking-[-0.03em] text-primary sm:text-2xl">{plan.name}</h3>
+              <h3 className={`mb-2 text-xl font-semibold tracking-[-0.03em] sm:text-2xl ${plan.featured ? 'text-white' : 'text-primary'}`}>{plan.name}</h3>
               <div className="flex items-baseline gap-2 mb-5 sm:mb-6">
-                <span className="font-display text-4xl font-semibold leading-none text-primary sm:text-5xl">{plan.price}</span>
-                <span className="text-sm font-medium text-secondary">{plan.period}</span>
+                <span className={`font-display text-4xl font-semibold leading-none sm:text-5xl ${plan.featured ? 'text-[#d9bd80]' : 'text-primary'}`}>{plan.price}</span>
+                <span className={`text-sm font-medium ${plan.featured ? 'text-white/55' : 'text-secondary'}`}>{plan.period}</span>
               </div>
-              <p className="text-sm sm:text-base text-secondary leading-relaxed mb-8 sm:mb-10 flex-grow">
+              <p className={`mb-8 flex-grow text-sm leading-relaxed sm:mb-10 sm:text-base ${plan.featured ? 'text-white/62' : 'text-secondary'}`}>
                 {plan.desc}
               </p>
               <MagneticButton href="/contact" variant={plan.featured ? 'primary' : 'secondary'} className="w-full">

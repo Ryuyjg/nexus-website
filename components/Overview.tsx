@@ -6,7 +6,7 @@ import { Check, MapPin, Sofa, SunMedium } from 'lucide-react';
 
 export function Overview() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32">
+    <section className="relative overflow-hidden bg-[#f5efe5] py-20 sm:py-24 lg:py-32">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="absolute left-0 top-24 h-72 w-72 rounded-full bg-[rgba(214,183,122,0.16)] blur-3xl" />
       <div className="w-full max-w-7xl mx-auto px-6">
@@ -18,11 +18,11 @@ export function Overview() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="order-2 lg:order-1"
           >
-            <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.28em] text-accent">
+            <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.28em] text-[#9e7434]">
               Crafted atmosphere
             </span>
             <h2 className="mb-5 font-display text-4xl font-semibold leading-[0.9] tracking-[-0.055em] text-primary sm:mb-6 sm:text-5xl md:text-6xl lg:text-7xl">
-              Quiet luxury for real work.
+              Quiet luxury, made practical.
             </h2>
             <p className="mb-7 max-w-xl text-base leading-relaxed text-secondary sm:mb-8 sm:text-lg md:text-xl">
               A warm room, green views, soft light, and reliable basics. The experience feels premium without becoming loud or distracting.
@@ -54,7 +54,7 @@ export function Overview() {
             transition={{ duration: 0.9, ease: "easeOut" }}
             className="order-1 lg:order-2 relative"
           >
-            <div className="glass-panel-strong relative overflow-hidden rounded-[2rem] p-2 sm:rounded-[2.75rem] sm:p-3">
+            <div className="relative overflow-hidden rounded-[2rem] border border-[#e2d3bd] bg-[#fffaf1] p-2 shadow-[0_30px_90px_rgba(17,17,15,0.14)] sm:rounded-[2.75rem] sm:p-3">
               <div className="relative h-[320px] w-full overflow-hidden rounded-[1.55rem] sm:h-[400px] sm:rounded-[2.25rem] md:h-[540px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -68,7 +68,7 @@ export function Overview() {
               <div className="absolute -right-10 top-10 h-36 w-36 rounded-full bg-white/30 blur-3xl" />
               </div>
 
-              <div className="mt-3 inline-flex rounded-full border border-white/35 bg-white/45 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-primary shadow-[0_12px_34px_rgba(17,24,18,0.08)] backdrop-blur-2xl sm:mt-4 sm:text-xs lg:absolute lg:left-6 lg:top-6 lg:mt-0">
+              <div className="mt-3 inline-flex rounded-full border border-white/40 bg-[#fffaf1]/72 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-primary shadow-[0_12px_34px_rgba(17,17,15,0.08)] backdrop-blur-2xl sm:mt-4 sm:text-xs lg:absolute lg:left-6 lg:top-6 lg:mt-0">
                 Bookable tours available
               </div>
 

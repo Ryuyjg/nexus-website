@@ -43,10 +43,10 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="glass-panel-strong rounded-[1.5rem] px-4 py-3 sm:rounded-full">
+        <div className="rounded-[1.5rem] border border-white/12 bg-[#07120d]/72 px-4 py-3 text-white shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur-2xl sm:rounded-full">
           <div className="flex items-center justify-between gap-3">
-          <Link href="/" className="flex items-center gap-3 text-base font-semibold tracking-[-0.03em] text-primary sm:text-lg">
-            <div className="flex h-10 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white/90 px-2 shadow-lg shadow-accent/10 ring-1 ring-white/50 dark:bg-white/95">
+          <Link href="/" className="flex items-center gap-3 text-base font-semibold tracking-[-0.03em] text-white sm:text-lg">
+            <div className="flex h-10 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white/95 px-2 shadow-lg shadow-black/10 ring-1 ring-white/20">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={logoSrc}
@@ -57,15 +57,15 @@ export function Navbar() {
             <span className="hidden sm:inline">Nexa Workspace</span>
           </Link>
 
-          <div className="hidden items-center gap-7 text-sm font-medium text-secondary md:flex">
-            <Link href="#features" className="hover:text-primary transition-colors">Features</Link>
-            <Link href="#pricing" className="hover:text-primary transition-colors">Pricing</Link>
-            <Link href="#faq" className="hover:text-primary transition-colors">FAQ</Link>
-            <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
+          <div className="hidden items-center gap-7 text-sm font-medium text-white/62 md:flex">
+            <Link href="#features" className="transition-colors hover:text-white">Features</Link>
+            <Link href="#pricing" className="transition-colors hover:text-white">Pricing</Link>
+            <Link href="#faq" className="transition-colors hover:text-white">FAQ</Link>
+            <Link href="/contact" className="transition-colors hover:text-white">Contact</Link>
           </div>
 
-          <div className="hidden items-center gap-2 rounded-full border border-white/35 bg-white/30 px-3 py-1 text-xs font-medium text-secondary backdrop-blur-xl xl:flex">
-            <Sparkles className="w-3.5 h-3.5 text-accent" />
+          <div className="hidden items-center gap-2 rounded-full border border-white/12 bg-white/8 px-3 py-1 text-xs font-medium text-white/68 backdrop-blur-xl xl:flex">
+            <Sparkles className="w-3.5 h-3.5 text-[#cda45d]" />
             Open 8:00 AM - 8:00 PM
           </div>
 
@@ -77,7 +77,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setMenuOpen((value) => !value)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/45 text-primary backdrop-blur-xl transition-colors hover:bg-white/60 md:hidden dark:border-white/10 dark:bg-white/10 dark:text-white"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/8 text-white backdrop-blur-xl transition-colors hover:bg-white/14 md:hidden"
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}
             >
@@ -92,12 +92,12 @@ export function Navbar() {
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="overflow-hidden md:hidden"
           >
-            <div className="rounded-[1.35rem] border border-white/30 bg-white/70 p-3 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur-2xl dark:border-white/10 dark:bg-white/10">
-              <div className="grid gap-2 text-sm font-medium text-primary">
-                <Link href="#features" onClick={() => setMenuOpen(false)} className="rounded-2xl px-4 py-3 hover:bg-white/60 dark:hover:bg-white/10">Features</Link>
-                <Link href="#pricing" onClick={() => setMenuOpen(false)} className="rounded-2xl px-4 py-3 hover:bg-white/60 dark:hover:bg-white/10">Pricing</Link>
-                <Link href="#faq" onClick={() => setMenuOpen(false)} className="rounded-2xl px-4 py-3 hover:bg-white/60 dark:hover:bg-white/10">FAQ</Link>
-                <Link href="/contact" onClick={() => setMenuOpen(false)} className="rounded-2xl px-4 py-3 hover:bg-white/60 dark:hover:bg-white/10">Contact</Link>
+            <div className="rounded-[1.35rem] border border-white/12 bg-[#07120d]/92 p-3 shadow-[0_20px_60px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
+              <div className="grid gap-2 text-sm font-medium text-white">
+                <Link href="#features" onClick={() => setMenuOpen(false)} className="rounded-2xl px-4 py-3 hover:bg-white/10">Features</Link>
+                <Link href="#pricing" onClick={() => setMenuOpen(false)} className="rounded-2xl px-4 py-3 hover:bg-white/10">Pricing</Link>
+                <Link href="#faq" onClick={() => setMenuOpen(false)} className="rounded-2xl px-4 py-3 hover:bg-white/10">FAQ</Link>
+                <Link href="/contact" onClick={() => setMenuOpen(false)} className="rounded-2xl px-4 py-3 hover:bg-white/10">Contact</Link>
               </div>
               <div className="mt-3 flex flex-col gap-3 border-t border-white/20 pt-3 dark:border-white/10">
                 <div className="rounded-2xl glass-chip px-4 py-3 text-xs font-medium">

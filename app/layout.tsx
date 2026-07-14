@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Sora } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { LenisProvider } from "@/components/LenisProvider";
 
-const sans = Sora({ subsets: ["latin"], variable: "--font-sans" });
-const display = Cormorant_Garamond({
+const sans = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-sans" });
+const display = Playfair_Display({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
   variable: "--font-display",

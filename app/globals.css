@@ -4,15 +4,15 @@
 
 @layer base {
   :root {
-    --background: #efe7d8;
-    --surface: #fffaf0;
-    --primary: #111812;
-    --secondary: #64705f;
-    --accent: #9b7138;
-    --border: #ddcfb8;
-    --forest: #173126;
-    --champagne: #d6b77a;
-    --mist: #f9f2e6;
+    --background: #f3ece0;
+    --surface: #fffaf1;
+    --primary: #11110f;
+    --secondary: #625b50;
+    --accent: #b48743;
+    --border: #ded0bb;
+    --forest: #07120d;
+    --champagne: #cda45d;
+    --mist: #fbf5eb;
   }
 
   .dark {
@@ -45,10 +45,9 @@
     z-index: -1;
     pointer-events: none;
     background:
-      radial-gradient(circle at 10% 8%, rgba(23, 49, 38, 0.16), transparent 25%),
-      radial-gradient(circle at 88% 10%, rgba(214, 183, 122, 0.28), transparent 23%),
-      radial-gradient(circle at 52% 0%, rgba(255, 250, 240, 0.82), transparent 36%),
-      linear-gradient(135deg, rgba(239, 231, 216, 0.96), rgba(247, 239, 225, 0.86) 42%, rgba(226, 213, 193, 0.92));
+      radial-gradient(circle at 15% 8%, rgba(180, 135, 67, 0.18), transparent 24%),
+      radial-gradient(circle at 82% 14%, rgba(7, 18, 13, 0.08), transparent 26%),
+      linear-gradient(135deg, #f3ece0, #fbf5eb 44%, #eadfcc);
   }
 
   body::after {
@@ -58,11 +57,9 @@
     z-index: -1;
     pointer-events: none;
     background:
-      linear-gradient(115deg, rgba(255, 255, 255, 0.2), transparent 18%, rgba(214, 183, 122, 0.12) 38%, transparent 55%, rgba(23, 49, 38, 0.1) 78%, transparent),
-      repeating-linear-gradient(90deg, rgba(17, 24, 18, 0.025) 0 1px, transparent 1px 42px),
-      radial-gradient(circle at 74% 66%, rgba(155, 113, 56, 0.14), transparent 22%);
-    opacity: 0.62;
-    mix-blend-mode: screen;
+      repeating-linear-gradient(90deg, rgba(17, 17, 15, 0.025) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(0deg, rgba(17, 17, 15, 0.018) 0 1px, transparent 1px 64px);
+    opacity: 0.42;
   }
 
   ::selection {
@@ -73,11 +70,11 @@
 
 @layer components {
   .glass-panel {
-    @apply border border-white/45 bg-white/45 shadow-[0_28px_90px_rgba(23,49,38,0.12)] backdrop-blur-2xl ring-1 ring-white/35 dark:border-white/10 dark:bg-white/5 dark:shadow-[0_30px_100px_rgba(0,0,0,0.35)] dark:ring-white/10;
+    @apply border border-white/60 bg-white/65 shadow-[0_22px_70px_rgba(17,17,15,0.09)] backdrop-blur-2xl ring-1 ring-white/45 dark:border-white/10 dark:bg-white/5 dark:shadow-[0_30px_100px_rgba(0,0,0,0.35)] dark:ring-white/10;
   }
 
   .glass-panel-strong {
-    @apply border border-white/60 bg-white/60 shadow-[0_34px_120px_rgba(23,49,38,0.16)] backdrop-blur-3xl ring-1 ring-white/45 dark:border-white/15 dark:bg-white/10 dark:shadow-[0_36px_120px_rgba(0,0,0,0.42)] dark:ring-white/10;
+    @apply border border-white/70 bg-white/80 shadow-[0_28px_90px_rgba(17,17,15,0.12)] backdrop-blur-3xl ring-1 ring-white/50 dark:border-white/15 dark:bg-white/10 dark:shadow-[0_36px_120px_rgba(0,0,0,0.42)] dark:ring-white/10;
   }
 
   .glass-chip {
@@ -103,12 +100,13 @@
 
   .premium-shell {
     background:
-      linear-gradient(135deg, rgba(255, 250, 240, 0.7), rgba(255, 255, 255, 0.28)),
-      radial-gradient(circle at 20% 12%, rgba(214, 183, 122, 0.2), transparent 28%);
+      radial-gradient(circle at 12% 8%, rgba(205, 164, 93, 0.24), transparent 24%),
+      radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.08), transparent 30%),
+      linear-gradient(135deg, #07120d 0%, #0d1c15 46%, #1a1710 100%);
   }
 
   .gold-text {
-    background: linear-gradient(135deg, #173126 0%, #9b7138 48%, #d6b77a 100%);
+    background: linear-gradient(135deg, #fff7e8 0%, #d7b46d 45%, #9e7434 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

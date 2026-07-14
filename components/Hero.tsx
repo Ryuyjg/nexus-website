@@ -20,42 +20,42 @@ export function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-36 lg:pb-28">
-      <div className="absolute inset-0 -z-10 premium-shell dark:bg-[linear-gradient(135deg,rgba(7,17,13,0.98),rgba(18,31,24,0.96)_54%,rgba(47,35,18,0.92))]" />
-      <div className="absolute -left-24 top-24 h-80 w-80 rounded-full bg-[rgba(23,49,38,0.2)] blur-3xl" />
-      <div className="absolute right-0 top-12 h-96 w-96 rounded-full bg-[rgba(214,183,122,0.28)] blur-3xl dark:bg-[rgba(214,183,122,0.14)]" />
-      <div className="absolute bottom-10 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-white/45 blur-3xl dark:bg-white/5" />
+    <section className="relative overflow-hidden bg-[#07120d] pt-24 pb-16 text-white sm:pt-28 sm:pb-20 lg:pt-36 lg:pb-28">
+      <div className="absolute inset-0 -z-0 premium-shell" />
+      <div className="absolute inset-0 -z-0 bg-[linear-gradient(90deg,rgba(7,18,13,0.96),rgba(7,18,13,0.72)_46%,rgba(7,18,13,0.18))]" />
+      <div className="absolute -left-24 top-24 h-80 w-80 rounded-full bg-[rgba(205,164,93,0.18)] blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-[rgba(205,164,93,0.16)] blur-3xl" />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
           className="grid items-center gap-12 lg:grid-cols-[0.98fr_1.02fr] lg:gap-16"
         >
-          <div className="max-w-2xl">
-            <motion.div variants={item} className="inline-flex items-center gap-2 rounded-full glass-chip px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.3em]">
-              <Leaf className="w-3.5 h-3.5 text-accent" />
-              Private workspace with a resort calm
+          <div className="max-w-3xl">
+            <motion.div variants={item} className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-white/75 backdrop-blur-xl">
+              <Leaf className="w-3.5 h-3.5 text-[#cda45d]" />
+              Premium private workspace
             </motion.div>
 
             <motion.h1
               variants={item}
-              className="mt-7 max-w-3xl text-balance font-display text-primary"
+              className="mt-7 max-w-4xl text-balance font-display text-white"
             >
-              <span className="block text-[clamp(3.5rem,8vw,7.8rem)] font-semibold leading-[0.82] tracking-[-0.07em]">
-                Work in
+              <span className="block text-[clamp(3.75rem,8vw,8.4rem)] font-semibold leading-[0.78] tracking-[-0.075em]">
+                Private offices,
               </span>
-              <span className="block text-[clamp(3.5rem,8vw,7.8rem)] font-semibold italic leading-[0.82] tracking-[-0.055em]">
-                stillness.
+              <span className="block text-[clamp(3.75rem,8vw,8.4rem)] font-semibold italic leading-[0.78] tracking-[-0.065em] text-[#d9bd80]">
+                quiet views.
               </span>
-              <span className="gold-text mt-4 block font-sans text-[clamp(1.55rem,3.6vw,3.15rem)] font-semibold leading-[1.02] tracking-[-0.065em]">
-                Built for focused days, warm meetings, and premium first impressions.
+              <span className="mt-5 block font-sans text-[clamp(1.35rem,2.8vw,2.55rem)] font-semibold leading-[1.04] tracking-[-0.055em] text-white/82">
+                A polished workspace for teams who want calm, privacy, and a better first impression.
               </span>
             </motion.h1>
 
-            <motion.p variants={item} className="mt-6 max-w-xl text-base sm:text-lg sm:leading-8 leading-7 text-secondary">
-              Nexa Workspace blends private offices, steady infrastructure, and quiet greenery into a polished room that feels calm from the moment you arrive.
+            <motion.p variants={item} className="mt-6 max-w-2xl text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
+              Work from a refined, fully serviced room with high-speed internet, power backup, meeting access, and a peaceful green outlook.
             </motion.p>
 
             <motion.div variants={item} className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
@@ -73,21 +73,21 @@ export function Hero() {
                 { icon: Users, label: 'Meeting Cabin', copy: 'Private room for client sessions' },
                 { icon: ShieldCheck, label: 'Power Backup', copy: 'Built for long, uninterrupted workdays' },
               ].map((feature) => (
-                <div key={feature.label} className="glass-panel rounded-[1.75rem] p-4 sm:p-5">
-                  <feature.icon className="h-5 w-5 text-accent" />
-                  <div className="mt-3 text-sm font-semibold tracking-[-0.02em] text-primary">{feature.label}</div>
-                  <div className="mt-1 text-xs leading-5 text-secondary sm:text-sm sm:leading-6">{feature.copy}</div>
+                <div key={feature.label} className="rounded-[1.5rem] border border-white/10 bg-white/8 p-4 backdrop-blur-xl sm:p-5">
+                  <feature.icon className="h-5 w-5 text-[#cda45d]" />
+                  <div className="mt-3 text-sm font-semibold tracking-[-0.02em] text-white">{feature.label}</div>
+                  <div className="mt-1 text-xs leading-5 text-white/56 sm:text-sm sm:leading-6">{feature.copy}</div>
                 </div>
               ))}
             </motion.div>
           </div>
 
           <motion.div variants={item} className="relative">
-            <div className="absolute -left-7 top-12 z-20 hidden rounded-full border border-white/35 bg-[#111812]/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white shadow-[0_18px_50px_rgba(17,24,18,0.25)] backdrop-blur-2xl lg:block">
+            <div className="absolute -left-7 top-12 z-20 hidden rounded-full border border-white/15 bg-[#07120d]/82 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-2xl lg:block">
               Open 8:00 AM - 8:00 PM
             </div>
 
-            <div className="glass-panel-strong relative overflow-hidden rounded-[2rem] p-2 sm:rounded-[2.75rem] sm:p-3">
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-white/8 p-2 shadow-[0_40px_120px_rgba(0,0,0,0.34)] backdrop-blur-2xl sm:rounded-[2.75rem] sm:p-3">
               <div className="relative aspect-[4/3.85] overflow-hidden rounded-[1.6rem] sm:aspect-[4/4.25] sm:rounded-[2.25rem] lg:aspect-[4/4.18]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -124,9 +124,9 @@ export function Hero() {
                 { value: '24/7', label: 'power backup support' },
                 { value: '1', label: 'peaceful location choice' },
               ].map((stat) => (
-                <div key={stat.label} className="glass-panel rounded-[1.65rem] px-4 py-5 text-center">
-                  <div className="font-display text-4xl font-semibold leading-none text-primary">{stat.value}</div>
-                  <div className="mt-1 text-sm leading-6 text-secondary">{stat.label}</div>
+                <div key={stat.label} className="rounded-[1.5rem] border border-white/10 bg-white/8 px-4 py-5 text-center backdrop-blur-xl">
+                  <div className="font-display text-4xl font-semibold leading-none text-white">{stat.value}</div>
+                  <div className="mt-1 text-sm leading-6 text-white/55">{stat.label}</div>
                 </div>
               ))}
             </div>
